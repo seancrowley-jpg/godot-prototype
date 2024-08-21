@@ -14,6 +14,7 @@ var sprint_speed: float = 10
 
 func enter() -> void:
 	super()
+	parent.stand_collision()
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor():

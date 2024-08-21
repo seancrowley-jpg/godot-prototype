@@ -3,8 +3,7 @@ extends CharacterBody3D
 
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5
-#@onready
-#var animations = $animations
+@export var crouch_shapecast: Node3D
 @onready 
 var animation_tree = $AnimationTree
 @onready var playback  = animation_tree["parameters/playback"]
@@ -14,10 +13,14 @@ var animation_tree = $AnimationTree
 @onready var spring_arm_3d = $camera_mount/SpringArm3D
 @onready var alt_cam_pos = $alt_cam_pos
 @onready var default_cam_pos = $default_cam_pos
+@onready var collision = $CollisionShape3D
+#@onready var crouch_collision = $CollisionShape3DCrouch
+
 
 @export var f_view = {"Default": 75.0, "Zoom": 50.0}
 var cam_switched = false
 var ADS_LERP = 20
+var is_crouching = false
 
 @onready
 var state_machine = $state_machine
@@ -28,6 +31,7 @@ func _ready() -> void:
 	state_machine.init(self)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	animation_tree.active = true
+	crouch_shapecast.add_exception($".")
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
@@ -75,3 +79,14 @@ func cam_switch(delta):
 
 	elif !cam_switched:
 		spring_arm_3d.transform = spring_arm_3d.transform.interpolate_with(default_cam_pos.transform, delta * 2 )
+		
+
+func crouch_collision():
+	var t := create_tween()
+	t.tween_property(collision,"position:y",0.583,0.001)
+	t.tween_property(collision,"shape:height",1.12,0.001)
+	
+func stand_collision():
+	var t := create_tween()
+	t.tween_property(collision,"position:y",0.858,0.001)
+	t.tween_property(collision,"shape:height",1.677,0.001)

@@ -16,16 +16,17 @@ var crouch_walk_state: State
 func enter() -> void:
 	super()
 	parent.velocity = Vector3.ZERO
+	parent.crouch_collision()
 
 func process_input(event: InputEvent) -> State:
 	
-	if Input.is_action_just_pressed("crouch"):
+	if Input.is_action_just_pressed("crouch") and !parent.crouch_shapecast.is_colliding():
 		return idle_state
-	elif Input.is_action_just_pressed('jump') and parent.is_on_floor():
+	elif Input.is_action_just_pressed('jump') and parent.is_on_floor() and !parent.crouch_shapecast.is_colliding():
 		return jump_state
 	elif Input.get_vector("left", "right", "forward", "back") && !Input.is_action_pressed("run"):
 		return crouch_walk_state
-	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("run"):
+	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("run") and !parent.crouch_shapecast.is_colliding():
 		return sprint_state
 	return null
 

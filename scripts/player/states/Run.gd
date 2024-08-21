@@ -13,6 +13,7 @@ var crouch_walk : State
 
 func enter() -> void:
 	super()
+	parent.stand_collision()
 
 func process_input(event: InputEvent) -> State:
 	if parent.is_on_floor():

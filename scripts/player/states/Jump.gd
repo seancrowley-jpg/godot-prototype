@@ -15,6 +15,7 @@ var jump_force: float = 10
 func enter() -> void:
 	super()
 	parent.velocity.y = jump_force
+	parent.stand_collision()
 
 
 func process_physics(delta: float) -> State:

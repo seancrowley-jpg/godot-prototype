@@ -13,14 +13,15 @@ var crouch_idle_state: State
 
 func enter() -> void:
 	super()
+	parent.crouch_collision()
 
 func process_input(event: InputEvent) -> State:
 	
-	if Input.is_action_pressed("crouch"):
+	if Input.is_action_pressed("crouch") and !parent.crouch_shapecast.is_colliding():
 		return run_state
-	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
+	if Input.is_action_just_pressed('jump') and parent.is_on_floor() and !parent.crouch_shapecast.is_colliding():
 		return jump_state
-	if Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("run"):
+	if Input.get_vector("left", "right", "forward", "back") and Input.is_action_pressed("run") and !parent.crouch_shapecast.is_colliding():
 		return sprint_state
 	return null
 
