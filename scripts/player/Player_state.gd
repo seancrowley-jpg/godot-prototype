@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var crouch_shapecast: Node3D
 @onready 
 var animation_tree = $AnimationTree
+@onready var state_label = $StateText
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals
 @onready var camera_mount = $camera_mount

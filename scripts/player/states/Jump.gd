@@ -31,6 +31,5 @@ func process_physics(delta: float) -> State:
 			return run_state
 		else:
 			return sprint_state
-		return idle_state
 	
 	return null

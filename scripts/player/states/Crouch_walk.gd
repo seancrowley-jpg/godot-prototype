@@ -17,7 +17,7 @@ func enter() -> void:
 
 func process_input(event: InputEvent) -> State:
 	
-	if Input.is_action_pressed("crouch") and !parent.crouch_shapecast.is_colliding():
+	if Input.is_action_just_pressed("crouch") and !parent.crouch_shapecast.is_colliding():
 		return run_state
 	if Input.is_action_just_pressed('jump') and parent.is_on_floor() and !parent.crouch_shapecast.is_colliding():
 		return jump_state

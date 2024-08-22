@@ -14,8 +14,8 @@ var parent: Player
 
 func enter() -> void:
 	parent.playback.travel(animation_name)
-	print("Entering " + state_name)
-	pass
+	parent.state_label.text = state_name
+	#print("Entering " + state_name)
 
 func exit() -> void:
 	pass

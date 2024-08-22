@@ -45,6 +45,13 @@ transform = Transform3D(0.614065, 0, -0.789256, 0, 1, 0, 0.789256, 0, 0.614065, 
 material_override = SubResource("StandardMaterial3D_nmihp")
 use_collision = true
 
+[node name="box5" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.614065, 0, -0.789256, 0, 1, 0, 0.789256, 0, 0.614065, -4.07564, 1.79584, -20.3653)
+material_override = SubResource("StandardMaterial3D_nmihp")
+gi_mode = 2
+use_collision = true
+size = Vector3(5, 1, 9.07764)
+
 [node name="box4" type="CSGBox3D" parent="Map"]
 transform = Transform3D(0.614065, 0, -0.789256, 0, 1, 0, 0.789256, 0, 0.614065, -0.428798, 1.84537, -10.4783)
 material_override = SubResource("StandardMaterial3D_nmihp")
