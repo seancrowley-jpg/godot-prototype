@@ -24,11 +24,12 @@ func process_input(event: InputEvent) -> State:
 		return idle_state
 	elif Input.is_action_just_pressed('jump') and parent.is_on_floor() and !parent.crouch_shapecast.is_colliding():
 		return jump_state
-	elif Input.get_vector("left", "right", "forward", "back") && !Input.is_action_pressed("run"):
+	elif Input.get_vector("left", "right", "forward", "back") && !Input.is_action_pressed("sprint"):
 		return crouch_walk_state
-	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("run") and !parent.crouch_shapecast.is_colliding():
+	if Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint") and !parent.crouch_shapecast.is_colliding():
 		return sprint_state
-	return null
+	else:
+		return crouch_walk_state
 
 func process_physics(delta: float) -> State:
 	if not parent.is_on_floor():

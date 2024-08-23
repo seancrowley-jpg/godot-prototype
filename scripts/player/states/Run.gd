@@ -19,7 +19,7 @@ func process_input(event: InputEvent) -> State:
 	if parent.is_on_floor():
 		if Input.is_action_just_pressed('jump'):
 			return jump_state
-		if Input.is_action_just_pressed('run'):
+		if Input.is_action_just_pressed('sprint'):
 			return sprint_state
 		if Input.is_action_just_pressed('crouch'):
 			return crouch_walk

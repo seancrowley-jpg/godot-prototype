@@ -22,9 +22,9 @@ func process_input(event: InputEvent) -> State:
 			return crouch_state
 	elif event.is_action_pressed("jump") and parent.is_on_floor():
 			return jump_state
-	elif Input.get_vector("left", "right", "forward", "back") && !event.is_action_pressed("run"):
+	elif Input.get_vector("left", "right", "forward", "back") && !event.is_action_pressed("sprint"):
 		return run_state
-	elif Input.get_vector("left", "right", "forward", "back") && !event.is_action_pressed("run"):
+	elif Input.get_vector("left", "right", "forward", "back") && !event.is_action_pressed("sprint"):
 		return sprint_state
 	return null
 

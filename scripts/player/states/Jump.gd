@@ -27,7 +27,7 @@ func process_physics(delta: float) -> State:
 	
 	
 	if parent.is_on_floor():
-		if parent.velocity != Vector3.ZERO && !Input.is_action_pressed("run"):
+		if parent.velocity != Vector3.ZERO && !Input.is_action_pressed("sprint"):
 			return run_state
 		else:
 			return sprint_state

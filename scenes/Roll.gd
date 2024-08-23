@@ -27,9 +27,9 @@ func process_physics(delta: float) -> State:
 		return fall_state
 		
 	if anim_fin && !parent.crouch_shapecast.is_colliding():
-		if !Input.is_action_pressed("run") && parent.velocity:
+		if !Input.is_action_pressed("sprint") && parent.velocity:
 			return run_state
-		elif Input.is_action_pressed("run") && parent.velocity:
+		elif Input.is_action_pressed("sprint") && parent.velocity:
 			return sprint_state
 		elif !parent.velocity:
 			return idle_state
@@ -39,6 +39,7 @@ func process_physics(delta: float) -> State:
 	
 	return null
 
+#Signals when roll animation has finished
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "sprint to roll":
 		anim_fin = true
