@@ -11,7 +11,7 @@ var sprint_state: State
 @export
 var crouch_state: State
 
-
+var idling
 
 func enter() -> void:
 	super()
@@ -20,11 +20,11 @@ func enter() -> void:
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("crouch"):
 			return crouch_state
-	elif event.is_action_pressed("jump") and parent.is_on_floor():
+	elif Input.is_action_pressed("jump") and parent.is_on_floor():
 			return jump_state
-	elif Input.get_vector("left", "right", "forward", "back") && !event.is_action_pressed("sprint"):
+	elif Input.get_vector("left", "right", "forward", "back") && !Input.is_action_pressed("sprint"):
 		return run_state
-	elif Input.get_vector("left", "right", "forward", "back") && !event.is_action_pressed("sprint"):
+	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint"):
 		return sprint_state
 	return null
 
@@ -32,7 +32,17 @@ func process_physics(delta: float) -> State:
 	if not parent.is_on_floor():
 		parent.velocity.y -= gravity * delta
 	parent.move_and_slide()
-	
 	if !parent.is_on_floor():
 		return fall_state
+	if idling:
+		parent.playback.travel(parent.idle_animations.pick_random())
 	return null
+
+func exit() -> void:
+	super()
+	idling = false
+	parent.playback.next()
+
+func _on_animation_tree_animation_finished(anim_name):
+	if anim_name == "idle 2":
+		idling = true

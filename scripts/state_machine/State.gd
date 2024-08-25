@@ -6,7 +6,6 @@ var animation_name: String
 
 @export
 var state_name: String
-
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 ## Hold a reference to the parent so that it can be controlled by the state

@@ -26,14 +26,14 @@ func process_input(event: InputEvent) -> State:
 		return jump_state
 	elif Input.get_vector("left", "right", "forward", "back") && !Input.is_action_pressed("sprint"):
 		return crouch_walk_state
-	if Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint") and !parent.crouch_shapecast.is_colliding():
+	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint") and !parent.crouch_shapecast.is_colliding():
 		return sprint_state
 	else:
-		return crouch_walk_state
+		return null
 
 func process_physics(delta: float) -> State:
-	if not parent.is_on_floor():
-		parent.velocity.y -= gravity * delta
+	#if not parent.is_on_floor():
+		#parent.velocity.y -= gravity * delta
 	parent.move_and_slide()
 	
 	if !parent.is_on_floor():

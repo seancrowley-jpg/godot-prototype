@@ -22,6 +22,7 @@ var animation_tree = $AnimationTree
 var cam_switched = false
 var ADS_LERP = 20
 var is_crouching = false
+var idle_animations = ["idle 1","idle 3","idle 2"]
 
 @onready
 var state_machine = $state_machine
@@ -91,3 +92,4 @@ func stand_collision():
 	var t := create_tween()
 	t.tween_property(collision,"position:y",0.858,0.001)
 	t.tween_property(collision,"shape:height",1.677,0.001)
+	

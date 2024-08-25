@@ -10,6 +10,8 @@ var run_state: State
 var idle_state: State
 @export
 var crouch_idle_state: State
+@export
+var crouch_walk_state: State
 
 @export
 var roll_speed: float = 12
@@ -34,7 +36,10 @@ func process_physics(delta: float) -> State:
 		elif !parent.velocity:
 			return idle_state
 	elif anim_fin && parent.crouch_shapecast.is_colliding():
-		return crouch_idle_state
+		if parent.velocity:
+			return crouch_walk_state
+		else:
+			return crouch_idle_state
 		
 	
 	return null
