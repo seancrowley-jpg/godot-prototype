@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5
 @export var crouch_shapecast: Node3D
+@export var cover_raycast: Node3D
 @onready 
 var animation_tree = $AnimationTree
 @onready var state_label = $StateText
