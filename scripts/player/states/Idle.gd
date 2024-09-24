@@ -28,7 +28,7 @@ func process_input(event: InputEvent) -> State:
 		return run_state
 	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint"):
 		return sprint_state
-	elif Input.is_action_just_pressed("cover") and parent.cover_raycast.is_colliding():
+	elif Input.is_action_just_pressed("cover") and parent.cover_raycast_middle.is_colliding():
 		return cover_state
 	return null
 

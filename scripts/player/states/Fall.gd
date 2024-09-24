@@ -13,7 +13,7 @@ func enter() -> void:
 	
 func process_physics(delta: float) -> State:
 	parent.velocity.y -= gravity * delta
-	parent.movement(5)
+	parent.movement(5,5)
 	
 	if parent.is_on_floor():
 		if parent.velocity != Vector3.ZERO && !Input.is_action_pressed("sprint"):

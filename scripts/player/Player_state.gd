@@ -4,7 +4,9 @@ extends CharacterBody3D
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5
 @export var crouch_shapecast: Node3D
-@export var cover_raycast: Node3D
+@export var cover_raycast_left: Node3D
+@export var cover_raycast_middle: Node3D
+@export var cover_raycast_right: Node3D
 @onready 
 var animation_tree = $AnimationTree
 @onready var state_label = $StateText
@@ -54,14 +56,15 @@ func _input(event):
 		camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
 		camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
-func movement(move_speed):
+func movement(x, z):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var movement = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if movement:
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-input_dir.x, -input_dir.y), .25)
-	velocity.x = movement.x * move_speed
-	velocity.z = movement.z * move_speed
+	velocity.x = movement.x * x
+	velocity.z = movement.z * z
 	move_and_slide()
+
 	
 func zoom(delta):
 	if Input.is_action_pressed("zoom"):

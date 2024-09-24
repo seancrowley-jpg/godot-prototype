@@ -26,7 +26,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.movement(sprint_speed)
+	parent.movement(sprint_speed, sprint_speed)
 
 	if !Input.is_action_pressed("sprint") && parent.velocity:
 		return run_state

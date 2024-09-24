@@ -23,7 +23,7 @@ func process_physics(delta: float) -> State:
 	if parent.velocity.y < 0:
 		return fall_state
 
-	parent.movement(5)
+	parent.movement(5, 5)
 	
 	
 	if parent.is_on_floor():

@@ -25,13 +25,13 @@ func process_input(event: InputEvent) -> State:
 			return sprint_state
 		elif Input.is_action_just_pressed('crouch'):
 			return crouch_walk
-		elif Input.is_action_pressed("cover") and parent.cover_raycast.is_colliding():
+		elif Input.is_action_pressed("cover") and parent.cover_raycast_middle.is_colliding():
 			return cover_state
 	return null
 
 func process_physics(delta: float) -> State:
 	parent.velocity.y -= gravity * delta
-	parent.movement(5)
+	parent.movement(5,5)
 	if parent.velocity == Vector3.ZERO:
 		return idle_state
 	
