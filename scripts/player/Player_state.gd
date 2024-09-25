@@ -18,7 +18,6 @@ var animation_tree = $AnimationTree
 @onready var alt_cam_pos = $alt_cam_pos
 @onready var default_cam_pos = $default_cam_pos
 @onready var collision = $CollisionShape3D
-#@onready var crouch_collision = $CollisionShape3DCrouch
 
 
 @export var f_view = {"Default": 75.0, "Zoom": 50.0}
