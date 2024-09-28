@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var cover_raycast_left: Node3D
 @export var cover_raycast_middle: Node3D
 @export var cover_raycast_right: Node3D
+@export var cover_shapecast: Node3D
 @onready 
 var animation_tree = $AnimationTree
 @onready var state_label = $StateText

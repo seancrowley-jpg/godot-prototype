@@ -20,12 +20,8 @@ func enter() -> void:
 		parent.playback.travel("left cover sneak")
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_pressed("left"):
-		parent.playback.travel("right cover sneak")
-	if Input.is_action_pressed("right"):
-		parent.playback.travel("left cover sneak")
-	elif Input.is_action_just_pressed("cover"):
-		return run_state
+	if Input.is_action_just_pressed("cover"):
+		return idle_state
 	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint"):
 		return sprint_state
 	
@@ -33,12 +29,11 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	parent.velocity.y -= gravity * delta
-	
+
 	if parent.cover_raycast_middle.is_colliding():
 		parent.movement(1,1)
-	elif !parent.cover_raycast_left.is_colliding():
-		return run_state
-	elif !parent.cover_raycast_right.is_colliding():
+	elif !parent.cover_raycast_left.is_colliding() or !parent.cover_raycast_right.is_colliding():
+		parent.playback.start("running")
 		return run_state
 
 	if !parent.is_on_floor():
