@@ -16,14 +16,20 @@ func enter() -> void:
 	super()
 	if Input.is_action_pressed("left"):
 		parent.playback.travel("right cover sneak")
+
 	if Input.is_action_pressed("right"):
 		parent.playback.travel("left cover sneak")
+
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("cover"):
 		return idle_state
 	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint"):
+		parent.playback.start("sprint")
 		return sprint_state
+	elif Input.is_action_just_pressed("back"):
+		parent.playback.start("running")
+		return run_state
 	
 	return null
 

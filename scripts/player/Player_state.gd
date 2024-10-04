@@ -8,6 +8,9 @@ extends CharacterBody3D
 @export var cover_raycast_middle: Node3D
 @export var cover_raycast_right: Node3D
 @export var cover_shapecast: Node3D
+@export var ledge_raycast_1: Node3D
+@export var ledge_raycast_2: Node3D
+
 @onready 
 var animation_tree = $AnimationTree
 @onready var state_label = $StateText
@@ -18,7 +21,7 @@ var animation_tree = $AnimationTree
 @onready var spring_arm_3d = $camera_mount/SpringArm3D
 @onready var alt_cam_pos = $alt_cam_pos
 @onready var default_cam_pos = $default_cam_pos
-@onready var collision = $CollisionShape3D
+@onready var collision = $PlayerCollisionShape3D
 
 
 @export var f_view = {"Default": 75.0, "Zoom": 50.0}
@@ -48,6 +51,7 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	zoom(delta)
 	cam_switch(delta)
+	#print("FPS " , (Engine.get_frames_per_second()))
 	
 func _input(event):
 	if event is InputEventMouseMotion:

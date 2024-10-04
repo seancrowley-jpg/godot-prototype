@@ -13,7 +13,7 @@ var crouch_state: State
 @export
 var cover_state: State
 
-var idling
+var idling: bool
 
 func enter() -> void:
 	super()
