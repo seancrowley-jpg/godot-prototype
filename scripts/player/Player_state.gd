@@ -10,6 +10,7 @@ extends CharacterBody3D
 @export var cover_shapecast: Node3D
 @export var ledge_raycast_1: Node3D
 @export var ledge_raycast_2: Node3D
+@export var timer: Node
 
 @onready 
 var animation_tree = $AnimationTree
@@ -101,3 +102,7 @@ func stand_collision():
 	t.tween_property(collision,"position:y",0.858,0.001)
 	t.tween_property(collision,"shape:height",1.677,0.001)
 	
+func _on_timer_timeout():
+	print("Teset")
+	ledge_raycast_1.enabled = true
+	ledge_raycast_2.enabled = true
