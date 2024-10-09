@@ -11,6 +11,9 @@ extends CharacterBody3D
 @export var ledge_raycast_1: Node3D
 @export var ledge_raycast_2: Node3D
 @export var timer: Node
+@export var stick_point_holder: Node3D
+@export var stick_point: Node3D
+@export var wall_check_ray: Node3D
 
 @onready 
 var animation_tree = $AnimationTree
@@ -23,7 +26,6 @@ var animation_tree = $AnimationTree
 @onready var alt_cam_pos = $alt_cam_pos
 @onready var default_cam_pos = $default_cam_pos
 @onready var collision = $PlayerCollisionShape3D
-
 
 @export var f_view = {"Default": 75.0, "Zoom": 50.0}
 var cam_switched = false
@@ -41,6 +43,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	animation_tree.active = true
 	crouch_shapecast.add_exception($".")
+	cover_shapecast.add_exception($".")
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
@@ -68,9 +71,17 @@ func movement(x, z):
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-input_dir.x, -input_dir.y), .25)
 	velocity.x = movement.x * x
 	velocity.z = movement.z * z
+	
 	move_and_slide()
 
+func move_left_right(): 
+	move_and_slide()
+	var rot = -(atan2(ledge_raycast_1.get_collision_normal().z, ledge_raycast_1.get_collision_normal().x) - PI/2)
+	var h_input = Input.get_action_strength("right") - Input.get_action_strength("left")
+	velocity = Vector3(h_input,0,0).rotated(Vector3.UP,rot).normalized()
+	#visuals.rotation_degrees.y = rot
 	
+
 func zoom(delta):
 	if Input.is_action_pressed("zoom"):
 		camera_3d.fov = lerp(camera_3d.fov, f_view["Zoom"], ADS_LERP * delta)
@@ -103,6 +114,5 @@ func stand_collision():
 	t.tween_property(collision,"shape:height",1.677,0.001)
 	
 func _on_timer_timeout():
-	print("Teset")
 	ledge_raycast_1.enabled = true
 	ledge_raycast_2.enabled = true
