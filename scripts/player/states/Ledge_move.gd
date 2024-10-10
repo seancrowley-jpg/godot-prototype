@@ -13,6 +13,12 @@ func enter() -> void:
 	parent.ledge_raycast_1.enabled = false
 	parent.ledge_raycast_2.enabled = false
 	
+	if Input.is_action_pressed("left"):
+		parent.playback.travel("hang shimmy animations_hang shimmy left")
+
+	if Input.is_action_pressed("right"):
+		parent.playback.travel("hang shimmy animations_hang shimmy right")
+	
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_pressed("jump"):
 		parent.timer.start()

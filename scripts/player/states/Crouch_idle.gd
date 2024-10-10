@@ -39,3 +39,7 @@ func process_physics(delta: float) -> State:
 	if !parent.is_on_floor():
 		return fall_state
 	return null
+	
+func exit() -> void:
+	super()
+	parent.stand_collision()

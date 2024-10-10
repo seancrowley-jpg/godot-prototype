@@ -16,7 +16,6 @@ func enter() -> void:
 	super()
 	if Input.is_action_pressed("left"):
 		parent.playback.travel("right cover sneak")
-
 	if Input.is_action_pressed("right"):
 		parent.playback.travel("left cover sneak")
 
@@ -51,3 +50,6 @@ func process_physics(delta: float) -> State:
 	parent.visuals.rotation.y = 0
 	return null
 	
+func exit() -> void:
+	super()
+	parent.stand_collision()
