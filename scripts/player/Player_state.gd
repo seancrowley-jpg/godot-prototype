@@ -3,6 +3,8 @@ extends CharacterBody3D
 
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5
+@export var fall_acceleration = 2
+
 @export var crouch_shapecast: Node3D
 @export var cover_raycast_left: Node3D
 @export var cover_raycast_middle: Node3D
@@ -64,13 +66,17 @@ func _input(event):
 		camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
 		camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
-func movement(x, z):
+func movement(x, z, delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var movement = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if movement:
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-input_dir.x, -input_dir.y), .25)
 	velocity.x = movement.x * x
-	velocity.z = movement.z * z
+	velocity.z = movement.z * z 
+	
+	if not is_on_floor():
+		velocity.y = velocity.y - (fall_acceleration * delta)
+	
 	
 	move_and_slide()
 
@@ -105,14 +111,15 @@ func cam_switch(delta):
 
 func crouch_collision():
 	var t := create_tween()
-	t.tween_property(collision,"position:y",0.583,0.001)
-	t.tween_property(collision,"shape:height",1.12,0.001)
+	t.tween_property(collision,"position:y",0.583,0)
+	t.tween_property(collision,"shape:height",1.12,0)
 	
 func stand_collision():
 	var t := create_tween()
-	t.tween_property(collision,"position:y",0.858,0.001)
-	t.tween_property(collision,"shape:height",1.677,0.001)
+	t.tween_property(collision,"position:y",0.858,0)
+	t.tween_property(collision,"shape:height",2.191,0)
 	
 func _on_timer_timeout():
+	#disables ledge detection ray casts
 	ledge_raycast_1.enabled = true
 	ledge_raycast_2.enabled = true
