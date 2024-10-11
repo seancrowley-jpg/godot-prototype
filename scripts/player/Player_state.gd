@@ -1,10 +1,13 @@
 class_name Player
 extends CharacterBody3D
 
+@export_group("Player Stats")
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5
 @export var fall_acceleration = 2
+@export var f_view = {"Default": 75.0, "Zoom": 50.0}
 
+@export_group("Nodes")
 @export var crouch_shapecast: Node3D
 @export var cover_raycast_left: Node3D
 @export var cover_raycast_middle: Node3D
@@ -16,27 +19,26 @@ extends CharacterBody3D
 @export var stick_point_holder: Node3D
 @export var stick_point: Node3D
 @export var wall_check_ray: Node3D
+@export 
+var animation_tree = Node3D
+@export var state_label = Node3D
+@export var player_collision = Node3D
+@export var alt_cam_pos = Node3D
+@export var default_cam_pos = Node3D
 
-@onready 
-var animation_tree = $AnimationTree
-@onready var state_label = $StateText
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals
 @onready var camera_mount = $camera_mount
 @onready var camera_3d = $camera_mount/SpringArm3D/Camera3D
 @onready var spring_arm_3d = $camera_mount/SpringArm3D
-@onready var alt_cam_pos = $alt_cam_pos
-@onready var default_cam_pos = $default_cam_pos
-@onready var collision = $PlayerCollisionShape3D
+@onready
+var state_machine = $state_machine
 
-@export var f_view = {"Default": 75.0, "Zoom": 50.0}
 var cam_switched = false
 var ADS_LERP = 20
 var is_crouching = false
 var idle_animations = ["idle 1","idle 3","idle 2"]
 
-@onready
-var state_machine = $state_machine
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
@@ -76,6 +78,7 @@ func movement(x, z, delta):
 	
 	if not is_on_floor():
 		velocity.y = velocity.y - (fall_acceleration * delta)
+		
 	
 	move_and_slide()
 
@@ -85,7 +88,6 @@ func move_left_right():
 	var rot = -(atan2(ledge_raycast_1.get_collision_normal().z, ledge_raycast_1.get_collision_normal().x) - PI/2)
 	var h_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	velocity = Vector3(h_input,0,0).rotated(Vector3.UP,rot).normalized()
-	#visuals.rotation_degrees.y = rot
 	
 
 func zoom(delta):
@@ -111,13 +113,13 @@ func cam_switch(delta):
 
 func crouch_collision():
 	var t := create_tween()
-	t.tween_property(collision,"position:y",0.6,0)
-	t.tween_property(collision,"shape:height",1.5,0)
+	t.tween_property(player_collision,"position:y",0.6,0)
+	t.tween_property(player_collision,"shape:height",1.5,0)
 	
 func stand_collision():
 	var t := create_tween()
-	t.tween_property(collision,"position:y",0.858,0)
-	t.tween_property(collision,"shape:height",2.191,0)
+	t.tween_property(player_collision,"position:y",0.858,0)
+	t.tween_property(player_collision,"shape:height",2.191,0)
 	
 func _on_timer_timeout():
 	#disables ledge detection ray casts
