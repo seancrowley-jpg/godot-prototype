@@ -14,8 +14,7 @@ func enter() -> void:
 
 	
 func process_physics(delta: float) -> State:
-	parent.velocity.y -= gravity * delta
-	parent.movement(5,5, delta)
+	parent.movement(5, delta)
 	
 	if parent.ledge_raycast_1.is_colliding() and !parent.ledge_raycast_2.is_colliding():
 		return ledge_idle_state

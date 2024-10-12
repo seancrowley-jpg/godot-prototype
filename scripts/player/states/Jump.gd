@@ -11,21 +11,17 @@ var sprint_state: State
 @export
 var ledge_idle_state: State
 
-@export
-var jump_force: float = 10
-
 func enter() -> void:
 	super()
-	parent.velocity.y = jump_force
+	parent.velocity.y += parent.jump_force
 	parent.stand_collision()
 
 
 func process_physics(delta: float) -> State:
-	parent.velocity.y -= gravity * delta
 	if parent.velocity.y < 0:
 		return fall_state
 
-	parent.movement(5, 5,delta)
+	parent.movement(5,delta)
 	
 	if parent.ledge_raycast_1.is_colliding() and !parent.ledge_raycast_2.is_colliding():
 		return ledge_idle_state

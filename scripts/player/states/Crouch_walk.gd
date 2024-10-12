@@ -26,12 +26,11 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.movement(1,1, delta)
+	parent.movement(1, delta)
 	if parent.velocity == Vector3.ZERO:
 		return crouch_idle_state
 	
 	if !parent.is_on_floor():
-		parent.velocity.y -= gravity * delta
 		return fall_state
 		
 	parent.move_and_slide()

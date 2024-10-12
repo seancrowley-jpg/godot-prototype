@@ -33,10 +33,8 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.velocity.y -= gravity * delta
-
 	if parent.cover_raycast_middle.is_colliding():
-		parent.movement(1,1, delta)
+		parent.movement(1, delta)
 	elif !parent.cover_raycast_left.is_colliding() or !parent.cover_raycast_right.is_colliding():
 		parent.playback.start("running")
 		return run_state

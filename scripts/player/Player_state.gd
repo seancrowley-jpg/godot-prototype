@@ -4,8 +4,11 @@ extends CharacterBody3D
 @export_group("Player Stats")
 @export var sens_horizontal = 0.5
 @export var sens_vertical = 0.5
-@export var fall_acceleration = 2
+@export var fall_acceleration: float = 50
 @export var f_view = {"Default": 75.0, "Zoom": 50.0}
+@export var jump_force: float = 20
+@export var acceleration: float = 30.0
+@export var sprint_speed: float = 10
 
 @export_group("Nodes")
 @export var crouch_shapecast: Node3D
@@ -19,8 +22,7 @@ extends CharacterBody3D
 @export var stick_point_holder: Node3D
 @export var stick_point: Node3D
 @export var wall_check_ray: Node3D
-@export 
-var animation_tree = Node3D
+@export var animation_tree = Node3D
 @export var state_label = Node3D
 @export var player_collision = Node3D
 @export var alt_cam_pos = Node3D
@@ -31,8 +33,7 @@ var animation_tree = Node3D
 @onready var camera_mount = $camera_mount
 @onready var camera_3d = $camera_mount/SpringArm3D/Camera3D
 @onready var spring_arm_3d = $camera_mount/SpringArm3D
-@onready
-var state_machine = $state_machine
+@onready var state_machine = $state_machine
 
 var cam_switched = false
 var ADS_LERP = 20
@@ -62,22 +63,28 @@ func _process(delta: float) -> void:
 	#print("FPS " , (Engine.get_frames_per_second()))
 	
 func _input(event):
-	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
-		visuals.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
-		camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
-		camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
+			visuals.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
+			camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
+			camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+	
+	if event.is_action_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	elif event.is_action_pressed("left click"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func movement(x, z, delta):
+func movement(speed, delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var movement = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if movement:
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-input_dir.x, -input_dir.y), .25)
-	velocity.x = movement.x * x
-	velocity.z = movement.z * z 
+
+	velocity = velocity.move_toward(movement * speed, delta * acceleration)
 	
 	if not is_on_floor():
-		velocity.y = velocity.y - (fall_acceleration * delta)
+		velocity.y -= fall_acceleration * delta
 		
 	
 	move_and_slide()
@@ -85,10 +92,11 @@ func movement(x, z, delta):
 func move_left_right():
 	#Enables movement of character to the left or right of the object its facing
 	move_and_slide()
-	var rot = -(atan2(ledge_raycast_1.get_collision_normal().z, ledge_raycast_1.get_collision_normal().x) - PI/2)
+	var rot = -(atan2(wall_check_ray.get_collision_normal().z, wall_check_ray.get_collision_normal().x) - PI/2)
 	var h_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	velocity = Vector3(h_input,0,0).rotated(Vector3.UP,rot).normalized()
-	
+	#visuals.rotation.y = lerp_angle(visuals.rotation.y, rot, .25)
+
 
 func zoom(delta):
 	if Input.is_action_pressed("zoom"):

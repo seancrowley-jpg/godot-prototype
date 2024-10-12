@@ -11,9 +11,6 @@ var jump_state: State
 @export
 var roll_state: State
 
-@export
-var sprint_speed: float = 10
-
 func enter() -> void:
 	super()
 	parent.stand_collision()
@@ -26,7 +23,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.movement(sprint_speed, sprint_speed, delta)
+	parent.movement(parent.sprint_speed,delta)
 
 	if !Input.is_action_pressed("sprint") && parent.velocity:
 		return run_state

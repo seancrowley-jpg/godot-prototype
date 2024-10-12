@@ -23,7 +23,7 @@ func enter() -> void:
 	parent.crouch_collision()
 	
 func process_physics(delta: float) -> State:
-	parent.movement(roll_speed, roll_speed, delta)
+	parent.movement(roll_speed, delta)
 	
 	if !parent.is_on_floor():
 		return fall_state
@@ -52,3 +52,4 @@ func _on_animation_tree_animation_finished(anim_name):
 func exit() -> void:
 	super()
 	anim_fin = false
+	parent.stand_collision()
