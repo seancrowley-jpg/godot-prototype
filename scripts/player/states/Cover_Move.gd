@@ -18,6 +18,7 @@ func enter() -> void:
 		parent.playback.travel("right cover sneak")
 	if Input.is_action_pressed("right"):
 		parent.playback.travel("left cover sneak")
+	parent.left_right_lock = true
 
 
 func process_input(event: InputEvent) -> State:
@@ -33,21 +34,20 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	if parent.cover_raycast_middle.is_colliding():
-		parent.movement(1, delta)
-	elif !parent.cover_raycast_left.is_colliding() or !parent.cover_raycast_right.is_colliding():
-		parent.playback.start("running")
+	parent.move_left_right()
+	
+	if !parent.cover_shapecast.is_colliding():
 		return run_state
-
+	
 	if !parent.is_on_floor():
 		return fall_state
 		
 	if parent.velocity == Vector3.ZERO:
 		return cover_idle
 		
-	parent.visuals.rotation.y = 0
 	return null
 	
 func exit() -> void:
 	super()
 	parent.stand_collision()
+	parent.left_right_lock = false

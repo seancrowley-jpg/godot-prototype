@@ -17,6 +17,7 @@ func enter() -> void:
 	super()
 	parent.velocity = Vector3.ZERO
 	parent.crouch_collision()
+	
 
 func process_input(event: InputEvent) -> State:
 	
@@ -33,7 +34,8 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	parent.move_and_slide()
-	
+	var rot = -(atan2(parent.wall_check_ray.get_collision_normal().z, parent.wall_check_ray.get_collision_normal().x) - PI/2)
+	parent.visuals.rotation.y = lerp_angle(parent.rotation.y, rot, 1)
 	if !parent.is_on_floor():
 		return fall_state
 	return null

@@ -27,6 +27,7 @@ extends CharacterBody3D
 @export var player_collision = Node3D
 @export var alt_cam_pos = Node3D
 @export var default_cam_pos = Node3D
+@export var ray_casts = Node3D
 
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals
@@ -34,11 +35,13 @@ extends CharacterBody3D
 @onready var camera_3d = $camera_mount/SpringArm3D/Camera3D
 @onready var spring_arm_3d = $camera_mount/SpringArm3D
 @onready var state_machine = $state_machine
+@onready var remote_transform_3d = $RemoteTransform3D
 
 var cam_switched = false
 var ADS_LERP = 20
 var is_crouching = false
 var idle_animations = ["idle 1","idle 3","idle 2"]
+var left_right_lock := false
 
 
 func _ready() -> void:
@@ -50,8 +53,19 @@ func _ready() -> void:
 	crouch_shapecast.add_exception($".")
 	cover_shapecast.add_exception($".")
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
+			camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+			rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
+			if !left_right_lock:
+				remote_transform_3d.update_rotation = true
+				remote_transform_3d.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
+			else:
+				remote_transform_3d.update_rotation = false
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
@@ -60,16 +74,11 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	zoom(delta)
 	cam_switch(delta)
+	ray_casts.global_basis = visuals.global_basis
 	#print("FPS " , (Engine.get_frames_per_second()))
+	print(left_right_lock)
 	
 func _input(event):
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventMouseMotion:
-			rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
-			visuals.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
-			camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
-			camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-	
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif event.is_action_pressed("left click"):
@@ -79,7 +88,7 @@ func movement(speed, delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var movement = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if movement:
-		visuals.rotation.y = lerp_angle(visuals.rotation.y, atan2(-input_dir.x, -input_dir.y), .25)
+		remote_transform_3d.rotation.y = lerp_angle(remote_transform_3d.rotation.y, atan2(-input_dir.x, -input_dir.y), 15 * delta)
 
 	velocity = velocity.move_toward(movement * speed, delta * acceleration)
 	
@@ -95,7 +104,7 @@ func move_left_right():
 	var rot = -(atan2(wall_check_ray.get_collision_normal().z, wall_check_ray.get_collision_normal().x) - PI/2)
 	var h_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	velocity = Vector3(h_input,0,0).rotated(Vector3.UP,rot).normalized()
-	#visuals.rotation.y = lerp_angle(visuals.rotation.y, rot, .25)
+	#remote_transform_3d.rotation.y = lerp_angle(remote_transform_3d.rotation.y, rot, 1)
 
 
 func zoom(delta):
@@ -133,3 +142,4 @@ func _on_timer_timeout():
 	#disables ledge detection ray casts
 	ledge_raycast_1.enabled = true
 	ledge_raycast_2.enabled = true
+	

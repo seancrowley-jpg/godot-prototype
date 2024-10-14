@@ -12,7 +12,7 @@ func enter() -> void:
 	parent.velocity = Vector3.ZERO
 	parent.ledge_raycast_1.enabled = false
 	parent.ledge_raycast_2.enabled = false
-	
+	parent.left_right_lock = true
 	if Input.is_action_pressed("left"):
 		parent.playback.travel("hang shimmy animations_hang shimmy left")
 
@@ -30,7 +30,7 @@ func process_input(event: InputEvent) -> State:
 	
 func process_physics(delta: float) -> State:
 	parent.move_left_right()
-	if !parent.wall_check_ray.is_colliding():
+	if !parent.cover_shapecast.is_colliding():
 		parent.timer.start()
 		return fall_state
 	
@@ -41,3 +41,4 @@ func process_physics(delta: float) -> State:
 	
 func exit() -> void:
 	super()
+	parent.left_right_lock = false
