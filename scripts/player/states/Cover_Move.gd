@@ -37,6 +37,7 @@ func process_physics(delta: float) -> State:
 	parent.move_left_right()
 	
 	if !parent.cover_shapecast.is_colliding():
+		parent.playback.start("running")
 		return run_state
 	
 	if !parent.is_on_floor():

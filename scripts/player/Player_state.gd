@@ -76,7 +76,6 @@ func _process(delta: float) -> void:
 	cam_switch(delta)
 	ray_casts.global_basis = visuals.global_basis
 	#print("FPS " , (Engine.get_frames_per_second()))
-	print(left_right_lock)
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

@@ -37,10 +37,15 @@ func process_physics(delta: float) -> State:
 	if !parent.is_on_floor():
 		return fall_state
 		
-	var rot = -(atan2(parent.cover_raycast_middle.get_collision_normal().z, parent.cover_raycast_middle.get_collision_normal().x) - PI/2)
-	parent.visuals.rotation.y = lerp_angle(parent.rotation.y, rot, 1)
+	#var rot = -(atan2(parent.cover_raycast_middle.get_collision_normal().z, parent.cover_raycast_middle.get_collision_normal().x) - PI/2)
+	#parent.visuals.rotation.y = lerp_angle(parent.rotation.y, rot, 1)
 	parent.move_and_slide()
 	
+	return null
+	
+func process_frame(delta: float) -> State:
+	var rot = -(atan2(parent.cover_raycast_middle.get_collision_normal().z, parent.cover_raycast_middle.get_collision_normal().x) - PI/2)
+	parent.visuals.rotation.y = lerp_angle(parent.rotation.y, rot, 1)
 	return null
 	
 func exit() -> void:
