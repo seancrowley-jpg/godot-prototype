@@ -15,6 +15,7 @@ func enter() -> void:
 	#var rot = -(atan2(parent.wall_check_ray.get_collision_normal().z, parent.wall_check_ray.get_collision_normal().x) - PI/2)
 	#parent.visuals.rotation.y = lerp_angle(parent.rotation.y, rot, 1)
 	parent.left_right_lock = true
+
 	
 	
 func process_input(event: InputEvent) -> State:
@@ -29,8 +30,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 	
 func process_physics(delta: float) -> State:
-	#var rot = -(atan2(parent.wall_check_ray.get_collision_normal().z, parent.wall_check_ray.get_collision_normal().x) - PI/2)
-	#parent.visuals.rotation.y = lerp_angle(parent.rotation.y, rot, 1)
+	#pull player towards ledge
 	if!parent.cover_shapecast.is_colliding():
 		var obj =parent.cover_raycast_middle.get_collision_point()
 		parent.velocity = Vector3((parent.position.x - obj.x) * -1, 0, (parent.position.z - obj.z) * -1)

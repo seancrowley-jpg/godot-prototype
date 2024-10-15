@@ -13,9 +13,6 @@ var crouch_idle_state: State
 @export
 var crouch_walk_state: State
 
-@export
-var roll_speed: float = 12
-
 var anim_fin = false
 
 func enter() -> void:
@@ -23,7 +20,7 @@ func enter() -> void:
 	parent.crouch_collision()
 	
 func process_physics(delta: float) -> State:
-	parent.movement(roll_speed, delta)
+	parent.movement(parent.roll_speed, delta)
 	
 	if !parent.is_on_floor():
 		return fall_state
