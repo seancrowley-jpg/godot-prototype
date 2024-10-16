@@ -19,7 +19,7 @@ extends CharacterBody3D
 @export var cover_shapecast: Node3D
 @export var ledge_raycast_1: Node3D
 @export var ledge_raycast_2: Node3D
-@export var timer: Node
+@export var raycast_timer: Node
 @export var stick_point_holder: Node3D
 @export var stick_point: Node3D
 @export var wall_check_ray: Node3D
@@ -43,6 +43,7 @@ var ADS_LERP = 20
 var is_crouching = false
 var idle_animations = ["idle 1","idle 3","idle 2"]
 var left_right_lock := false
+var on_ledge := false
 
 
 func _ready() -> void:
@@ -62,22 +63,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
 			camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 			rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
-			if !left_right_lock:
-				remote_transform_3d.update_rotation = true
-				remote_transform_3d.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
-			else:
-				remote_transform_3d.update_rotation = false
+			remote_transform_3d.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
+	ray_casts.global_basis = visuals.global_basis
+	if !left_right_lock:
+		remote_transform_3d.update_rotation = true
+	else:
+		remote_transform_3d.update_rotation = false
+
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	zoom(delta)
 	cam_switch(delta)
-	ray_casts.global_basis = visuals.global_basis
-	#print("FPS " , (Engine.get_frames_per_second()))
-	
+	print("FPS " , (Engine.get_frames_per_second()))
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -94,18 +96,16 @@ func movement(speed, delta):
 	
 	if not is_on_floor():
 		velocity.y -= fall_acceleration * delta
-		
+	
 	
 	move_and_slide()
 
-func move_left_right():
+func move_left_right(raycast: Node3D):
 	#Enables movement of character to the left or right of the object its facing
 	move_and_slide()
-	var rot = -(atan2(wall_check_ray.get_collision_normal().z, wall_check_ray.get_collision_normal().x) - PI/2)
+	var rot = -(atan2(raycast.get_collision_normal().z, raycast.get_collision_normal().x) - PI/2)
 	var h_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	velocity = Vector3(h_input,0,0).rotated(Vector3.UP,rot).normalized()
-	#remote_transform_3d.rotation.y = lerp_angle(remote_transform_3d.rotation.y, rot, 1)
-
 
 func zoom(delta):
 	if Input.is_action_pressed("zoom"):
@@ -126,20 +126,37 @@ func cam_switch(delta):
 
 	elif !cam_switched:
 		spring_arm_3d.transform = spring_arm_3d.transform.interpolate_with(default_cam_pos.transform, delta * 2 )
-		
+	
 
 func crouch_collision():
 	var t := create_tween()
 	t.tween_property(player_collision,"position:y",0.575,0)
 	t.tween_property(player_collision,"shape:height",1.5,0)
-	
+
 func stand_collision():
 	var t := create_tween()
 	t.tween_property(player_collision,"position:y",0.84,0)
 	t.tween_property(player_collision,"shape:height",2.191,0)
-	
-func _on_timer_timeout():
-	#disables ledge detection ray casts
+
+func disbable_ledge_raycasts():
+	ledge_raycast_1.enabled = false
+	ledge_raycast_2.enabled = false
+
+func _enable_raycast_timer_timeout():
+	#enables ledge detection ray casts
 	ledge_raycast_1.enabled = true
 	ledge_raycast_2.enabled = true
+	on_ledge = false
+
+func rotate_player_visuals(raycast: Node3D):
+	var rot = -(atan2(raycast.get_collision_normal().z, raycast.get_collision_normal().x) - PI/2)
+	visuals.rotation.y = lerp_angle(rotation.y, rot, 1)
+	pass
+
+func pull_player_toward_obj(raycast: Node3D):
+	if!cover_shapecast.is_colliding():
+		var obj = raycast.get_collision_point()
+		velocity = Vector3((position.x - obj.x) * -1, 0, (position.z - obj.z) * -1)
+	else:
+		velocity = Vector3.ZERO
 	

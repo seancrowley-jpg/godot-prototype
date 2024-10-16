@@ -34,7 +34,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.move_left_right()
+	parent.move_left_right(parent.wall_check_ray)
 	
 	if !parent.cover_shapecast.is_colliding():
 		parent.playback.start("running")
