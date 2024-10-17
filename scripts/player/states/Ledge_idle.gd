@@ -28,7 +28,6 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	parent.pull_player_toward_obj(parent.ledge_raycast_1)
-	
 	if parent.ledge_raycast_1.is_colliding() and parent.ledge_raycast_2.is_colliding():
 		parent.disbable_ledge_raycasts()
 		parent.raycast_timer.start()
@@ -41,6 +40,8 @@ func process_physics(delta: float) -> State:
 
 func process_frame(delta: float) -> State:
 	parent.rotate_player_visuals(parent.wall_check_ray)
+	if !parent.wall_check_ray.is_colliding():
+		parent.playback.travel("y-bot free hang_Free hang idle")
 	return null
 
 func exit() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://v4grtipktv4t"]
+[gd_scene load_steps=18 format=3 uid="uid://v4grtipktv4t"]
 
 [ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://env.tres" id="1_axcsu"]
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="1_vvie1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://ds1j28u417n1v" path="res://arch_grid.tres" id="7_422tr"]
 [ext_resource type="Texture2D" uid="uid://d38xa30ruie15" path="res://assests/textures/grids/Dark/texture_12.png" id="7_rfuv1"]
 [ext_resource type="Texture2D" uid="uid://d2m8qf54p78pp" path="res://assests/textures/grids/Orange/texture_03.png" id="8_s6nmw"]
+[ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://assests/textures/grids/Orange/texture_01.png" id="9_jklaf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48xpd"]
 albedo_texture = ExtResource("1_vvie1")
@@ -16,6 +17,7 @@ uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nmihp"]
 albedo_texture = ExtResource("2_elhkh")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28q8w"]
 albedo_texture = ExtResource("3_fomk0")
@@ -31,6 +33,10 @@ uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ybq2"]
 albedo_texture = ExtResource("8_s6nmw")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qhlp"]
+albedo_texture = ExtResource("9_jklaf")
 uv1_triplanar = true
 
 [node name="World" type="Node3D"]
@@ -186,5 +192,12 @@ size = Vector3(2, 0.2, 1.315)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56385, 1.79986, 0)
 operation = 2
 size = Vector3(2, 0.2, 1.315)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, -12.1268, 2.47502, -6.87575)
+material_override = SubResource("StandardMaterial3D_6qhlp")
+use_collision = true
+radius = 0.1
+sides = 20
 
 [node name="Player" parent="." instance=ExtResource("5_lbcqo")]

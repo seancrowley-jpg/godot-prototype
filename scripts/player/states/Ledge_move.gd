@@ -13,10 +13,16 @@ func enter() -> void:
 	parent.on_ledge = true
 	parent.left_right_lock = true
 	if Input.is_action_pressed("left"):
-		parent.playback.travel("hang shimmy animations_hang shimmy left")
+		if !parent.wall_check_ray.is_colliding():
+			parent.playback.travel("y-bot free hang_Free hang left")
+		else:
+			parent.playback.travel("hang shimmy animations_hang shimmy left")
 
 	if Input.is_action_pressed("right"):
-		parent.playback.travel("hang shimmy animations_hang shimmy right")
+		if !parent.wall_check_ray.is_colliding():
+			parent.playback.travel("y-bot free hang_Free hang right")
+		else:
+			parent.playback.travel("hang shimmy animations_hang shimmy right")
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_pressed("jump"):
