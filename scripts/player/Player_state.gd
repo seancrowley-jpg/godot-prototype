@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	zoom(delta)
 	cam_switch(delta)
-	print("FPS " , (Engine.get_frames_per_second()))
+	#print("FPS " , (Engine.get_frames_per_second()))
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -129,11 +129,13 @@ func cam_switch(delta):
 	
 
 func crouch_collision():
+	is_crouching = true
 	var t := create_tween()
 	t.tween_property(player_collision,"position:y",0.575,0)
 	t.tween_property(player_collision,"shape:height",1.5,0)
 
 func stand_collision():
+	is_crouching = false
 	var t := create_tween()
 	t.tween_property(player_collision,"position:y",0.84,0)
 	t.tween_property(player_collision,"shape:height",2.191,0)

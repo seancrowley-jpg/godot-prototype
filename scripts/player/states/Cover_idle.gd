@@ -7,7 +7,11 @@ var fall_state: State
 @export
 var run_state: State
 @export
-var cover_move: State
+var cover_move_state: State
+@export
+var crouch_walk_state: State
+@export
+var crouch_idle_state: State
 
 
 func enter() -> void:
@@ -16,11 +20,22 @@ func enter() -> void:
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("cover"):
-		return idle_state
+		if parent.is_crouching:
+			return crouch_idle_state
+		else:
+			return idle_state
 	elif Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right") && parent.cover_raycast_middle.is_colliding():
-		return cover_move
+		return cover_move_state
 	elif Input.is_action_just_pressed("back"):
-		return run_state
+		if parent.is_crouching:
+			return crouch_walk_state
+		else:
+			run_state
+	elif Input.is_action_just_pressed("crouch"):
+		if parent.is_crouching:
+			parent.stand_collision()
+		else:
+			parent.crouch_collision()
 	
 	return null
 
