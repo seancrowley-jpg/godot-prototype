@@ -19,9 +19,15 @@ var crouch_idle_state: State
 func enter() -> void:
 	super()
 	if Input.is_action_pressed("left"):
-		parent.playback.travel("right cover sneak")
+		if parent.is_crouching:
+			parent.playback.travel("left crouch sneak")
+		else:
+			parent.playback.travel("right cover sneak")
 	if Input.is_action_pressed("right"):
-		parent.playback.travel("left cover sneak")
+		if parent.is_crouching:
+			parent.playback.travel("right crouch sneak")
+		else:
+			parent.playback.travel("left cover sneak")
 	parent.left_right_lock = true
 
 
@@ -48,6 +54,17 @@ func process_input(event: InputEvent) -> State:
 			parent.stand_collision()
 		else:
 			parent.crouch_collision()
+			
+	elif Input.is_action_pressed("left"):
+		if parent.is_crouching:
+			parent.playback.travel("left crouch sneak")
+		else:
+			parent.playback.travel("right cover sneak")
+	elif Input.is_action_pressed("right"):
+		if parent.is_crouching:
+			parent.playback.travel("right crouch sneak")
+		else:
+			parent.playback.travel("left cover sneak")
 	
 	return null
 

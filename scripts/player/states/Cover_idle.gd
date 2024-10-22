@@ -17,6 +17,10 @@ var crouch_idle_state: State
 func enter() -> void:
 	super()
 	parent.left_right_lock = true
+	if parent.is_crouching:
+		parent.playback.travel("crouch cover idle")
+	else:
+		parent.playback.travel("cover idle")
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("cover"):
@@ -33,8 +37,10 @@ func process_input(event: InputEvent) -> State:
 			run_state
 	elif Input.is_action_just_pressed("crouch"):
 		if parent.is_crouching:
+			parent.playback.travel("cover idle")
 			parent.stand_collision()
 		else:
+			parent.playback.travel("crouch cover idle")
 			parent.crouch_collision()
 	
 	return null
