@@ -16,6 +16,9 @@ extends CharacterBody3D
 @export var cover_raycast_left: Node3D
 @export var cover_raycast_middle: Node3D
 @export var cover_raycast_right: Node3D
+@export var crouch_cover_raycast_left: Node3D
+@export var crouch_cover_raycast_middle: Node3D
+@export var crouch_cover_raycast_right: Node3D
 @export var cover_shapecast: Node3D
 @export var ledge_raycast_1: Node3D
 @export var ledge_raycast_2: Node3D
@@ -133,12 +136,14 @@ func crouch_collision():
 	var t := create_tween()
 	t.tween_property(player_collision,"position:y",0.575,0)
 	t.tween_property(player_collision,"shape:height",1.5,0)
+	t.tween_property(cover_shapecast,"position:y",1.6,0)
 
 func stand_collision():
 	is_crouching = false
 	var t := create_tween()
 	t.tween_property(player_collision,"position:y",0.84,0)
 	t.tween_property(player_collision,"shape:height",2.191,0)
+	t.tween_property(cover_shapecast,"position:y",1.901,0)
 
 func disbable_ledge_raycasts():
 	ledge_raycast_1.enabled = false

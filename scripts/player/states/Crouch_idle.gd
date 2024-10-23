@@ -12,6 +12,8 @@ var sprint_state: State
 var idle_state: State
 @export
 var crouch_walk_state: State
+@export
+var cover_idle_state: State
 
 func enter() -> void:
 	super()
@@ -29,6 +31,8 @@ func process_input(event: InputEvent) -> State:
 		return crouch_walk_state
 	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint") and !parent.crouch_shapecast.is_colliding():
 		return sprint_state
+	elif Input.is_action_just_pressed("cover") and parent.crouch_cover_raycast_middle.is_colliding() :
+		return cover_idle_state
 	else:
 		return null
 

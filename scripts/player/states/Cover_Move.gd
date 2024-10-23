@@ -69,7 +69,10 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.move_left_right(parent.wall_check_ray)
+	if parent.crouch_cover_raycast_middle.is_colliding() and !parent.cover_raycast_middle.is_colliding():
+		parent.move_left_right(parent.crouch_cover_raycast_middle)
+	else:
+		parent.move_left_right(parent.cover_raycast_middle)
 	
 	if !parent.cover_shapecast.is_colliding():
 		if parent.is_crouching:
