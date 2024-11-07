@@ -41,6 +41,7 @@ extends CharacterBody3D
 @onready var state_machine = $state_machine
 @onready var remote_transform_3d = $RemoteTransform3D
 
+
 var cam_switched = false
 var ADS_LERP = 20
 var is_crouching = false
@@ -75,6 +76,8 @@ func _physics_process(delta: float) -> void:
 		remote_transform_3d.update_rotation = true
 	else:
 		remote_transform_3d.update_rotation = false
+
+
 
 
 func _process(delta: float) -> void:
