@@ -222,10 +222,15 @@ curve = SubResource("Curve3D_3420f")
 [node name="PathFollow3D" type="PathFollow3D" parent="Map/Path3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 9.54424, 1.57536, -5.19743)
 rotation_mode = 0
-loop = false
 script = ExtResource("10_m2fqn")
 speed = 0.1
 
-[node name="Platform" parent="Map/Path3D/PathFollow3D" instance=ExtResource("10_ko5c1")]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Map/Path3D/PathFollow3D"]
+remote_path = NodePath("../../../../Platform")
+update_rotation = false
+update_scale = false
 
 [node name="Player" parent="." instance=ExtResource("5_lbcqo")]
+
+[node name="Platform" parent="." instance=ExtResource("10_ko5c1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 9.98739, 1.27387, -5.05001)
