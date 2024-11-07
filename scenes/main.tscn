@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://v4grtipktv4t"]
+[gd_scene load_steps=21 format=3 uid="uid://v4grtipktv4t"]
 
 [ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://env.tres" id="1_axcsu"]
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="1_vvie1"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://d38xa30ruie15" path="res://assests/textures/grids/Dark/texture_12.png" id="7_rfuv1"]
 [ext_resource type="Texture2D" uid="uid://d2m8qf54p78pp" path="res://assests/textures/grids/Orange/texture_03.png" id="8_s6nmw"]
 [ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://assests/textures/grids/Orange/texture_01.png" id="9_jklaf"]
+[ext_resource type="PackedScene" uid="uid://payov3gcgm3b" path="res://scenes/platform.tscn" id="10_ko5c1"]
+[ext_resource type="Script" path="res://scripts/MovingPlatform.gd" id="10_m2fqn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48xpd"]
 albedo_texture = ExtResource("1_vvie1")
@@ -38,6 +40,13 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qhlp"]
 albedo_texture = ExtResource("9_jklaf")
 uv1_triplanar = true
+
+[sub_resource type="Curve3D" id="Curve3D_3420f"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.54424, 1.57536, -5.19743, 0, 0, 0, 0, 0, 0, 27.703, 1.58392, -5.14635, 0, 0, 0, 0, 0, 0, 18.7984, 7.14059, -23.6537, 0, 0, 0, 0, 0, 0, 9.54424, 1.57536, -5.19743),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="World" type="Node3D"]
 
@@ -205,5 +214,18 @@ material_override = SubResource("StandardMaterial3D_6qhlp")
 use_collision = true
 radius = 0.1
 sides = 20
+
+[node name="Path3D" type="Path3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.443143, -0.301488, 0.147428)
+curve = SubResource("Curve3D_3420f")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Map/Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 9.54424, 1.57536, -5.19743)
+rotation_mode = 0
+loop = false
+script = ExtResource("10_m2fqn")
+speed = 0.1
+
+[node name="Platform" parent="Map/Path3D/PathFollow3D" instance=ExtResource("10_ko5c1")]
 
 [node name="Player" parent="." instance=ExtResource("5_lbcqo")]
