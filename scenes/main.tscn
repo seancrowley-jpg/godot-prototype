@@ -43,10 +43,10 @@ uv1_triplanar = true
 
 [sub_resource type="Curve3D" id="Curve3D_3420f"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 22.6342, 5.95483, -10.5665, 0, 0, 0, 0, 0, 0, 27.703, 1.58392, -5.14635, 0, 0, 0, 0, 0, 0, 20.2351, 1.57536, 1.09152, 0, 0, 0, 0, 0, 0, 17.3074, 3.43103, -15.9148, 0, 0, 0, 0, 0, 0, 20.7035, 4.00572, -19.0418),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 22.6342, 3.31951, -10.5665, 0, 0, 0, 0, 0, 0, 27.703, 3.34628, -5.14635, 0, 0, 0, 0, 0, 0, 20.2351, 3.52494, 1.09152, 0, 0, 0, 0, 0, 0, 11.4476, 3.43103, -3.27431),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 5
+point_count = 4
 
 [node name="World" type="Node3D"]
 
@@ -220,12 +220,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.443143, -0.301488, 0.147428
 curve = SubResource("Curve3D_3420f")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Map/Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 22.6342, 5.95483, -10.5665)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 22.6342, 3.31951, -10.5665)
 rotation_mode = 0
 loop = false
 script = ExtResource("10_m2fqn")
-_speed = 10.0
-_pauseTimeAtWaypoints = 1.0
+_speed = 3.0
+_pauseTimeAtWaypoints = 2.0
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Map/Path3D/PathFollow3D"]
 remote_path = NodePath("../../../../Platform")
@@ -235,4 +235,4 @@ update_scale = false
 [node name="Player" parent="." instance=ExtResource("5_lbcqo")]
 
 [node name="Platform" parent="." instance=ExtResource("10_ko5c1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 23.0774, 5.65335, -10.4191)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 23.0773, 3.01803, -10.4191)

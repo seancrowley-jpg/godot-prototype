@@ -33,6 +33,7 @@ extends CharacterBody3D
 @export var default_cam_pos = Node3D
 @export var ray_casts = Node3D
 
+
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals
 @onready var camera_mount = $camera_mount
@@ -40,7 +41,6 @@ extends CharacterBody3D
 @onready var spring_arm_3d = $camera_mount/SpringArm3D
 @onready var state_machine = $state_machine
 @onready var remote_transform_3d = $RemoteTransform3D
-
 
 var cam_switched = false
 var ADS_LERP = 20
@@ -76,6 +76,16 @@ func _physics_process(delta: float) -> void:
 		remote_transform_3d.update_rotation = true
 	else:
 		remote_transform_3d.update_rotation = false
+		
+	#if on_ledge:
+		#var obj = ledge_raycast_1.get_collider()
+		#if obj is AnimatableBody3D:
+			#print("Ledge",ledge_raycast_1.get_collision_point())
+			#print("Player",position)
+			#stick_point_holder.global_transform.origin = ledge_raycast_1.get_collision_point()
+			#self.global_transform.origin.x = stick_point.global_transform.origin.x
+			#self.global_transform.origin.z = stick_point.global_transform.origin.z
+			
 
 
 
