@@ -77,14 +77,17 @@ func _physics_process(delta: float) -> void:
 	else:
 		remote_transform_3d.update_rotation = false
 		
-	#if on_ledge:
-		#var obj = ledge_raycast_1.get_collider()
-		#if obj is AnimatableBody3D:
-			#print("Ledge",ledge_raycast_1.get_collision_point())
-			#print("Player",position)
-			#stick_point_holder.global_transform.origin = ledge_raycast_1.get_collision_point()
-			#self.global_transform.origin.x = stick_point.global_transform.origin.x
-			#self.global_transform.origin.z = stick_point.global_transform.origin.z
+	if on_ledge:
+		var obj = ledge_raycast_1.get_collider()
+		if obj is AnimatableBody3D:
+			#print("Ledge ",ledge_raycast_1.get_collision_point())
+			#print("Player ",position)
+			#print("Holder ",stick_point_holder.global_transform.origin)
+			#print("X ",stick_point.global_transform.origin.x)
+			#print("Z ",stick_point.global_transform.origin.z)
+			stick_point_holder.global_transform.origin = ledge_raycast_1.get_collision_point()
+			position.x = stick_point.global_transform.origin.x
+			position.z = stick_point.global_transform.origin.z
 			
 
 

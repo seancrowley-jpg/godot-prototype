@@ -216,13 +216,15 @@ radius = 0.1
 sides = 20
 
 [node name="Path3D" type="Path3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.443143, -0.301488, 0.147428)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7525, -0.301488, -4.64842)
 curve = SubResource("Curve3D_3420f")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Map/Path3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 22.6342, 3.31951, -10.5665)
 rotation_mode = 0
+cubic_interp = false
 loop = false
+tilt_enabled = false
 script = ExtResource("10_m2fqn")
 _speed = 3.0
 _pauseTimeAtWaypoints = 2.0
@@ -235,4 +237,4 @@ update_scale = false
 [node name="Player" parent="." instance=ExtResource("5_lbcqo")]
 
 [node name="Platform" parent="." instance=ExtResource("10_ko5c1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 23.0773, 3.01803, -10.4191)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 33.3867, 3.01802, -15.2149)

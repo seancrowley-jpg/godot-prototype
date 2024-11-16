@@ -28,6 +28,7 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	parent.pull_player_toward_obj(parent.ledge_raycast_1)
+	
 	if parent.ledge_raycast_1.is_colliding() and parent.ledge_raycast_2.is_colliding():
 		parent.disbable_ledge_raycasts()
 		parent.raycast_timer.start()
