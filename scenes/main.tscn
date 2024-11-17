@@ -222,9 +222,7 @@ curve = SubResource("Curve3D_3420f")
 [node name="PathFollow3D" type="PathFollow3D" parent="Map/Path3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 22.6342, 3.31951, -10.5665)
 rotation_mode = 0
-cubic_interp = false
 loop = false
-tilt_enabled = false
 script = ExtResource("10_m2fqn")
 _speed = 3.0
 _pauseTimeAtWaypoints = 2.0

@@ -38,8 +38,7 @@ func process_physics(delta: float) -> State:
 		parent.raycast_timer.start()
 		return fall_state
 	
-	parent.move_and_slide()
-	
+	#parent.move_and_slide()
 	
 	return null
 

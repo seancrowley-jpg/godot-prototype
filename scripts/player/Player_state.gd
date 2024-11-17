@@ -32,6 +32,7 @@ extends CharacterBody3D
 @export var alt_cam_pos = Node3D
 @export var default_cam_pos = Node3D
 @export var ray_casts = Node3D
+@export var hook_controller = Node3D
 
 
 @onready var playback  = animation_tree["parameters/playback"]
@@ -42,12 +43,19 @@ extends CharacterBody3D
 @onready var state_machine = $state_machine
 @onready var remote_transform_3d = $RemoteTransform3D
 
+#Grpple Hook
+@export var hook_raycast: RayCast3D
+@export var crosshair: TextureRect
+
 var cam_switched = false
 var ADS_LERP = 20
 var is_crouching = false
 var idle_animations = ["idle 1","idle 3","idle 2"]
 var left_right_lock := false
 var on_ledge := false
+
+const HOOK_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_availible.png")
+const HOOK_NOT_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_not_availible.png")
 
 
 func _ready() -> void:
@@ -77,21 +85,21 @@ func _physics_process(delta: float) -> void:
 	else:
 		remote_transform_3d.update_rotation = false
 		
-	if on_ledge:
-		var obj = ledge_raycast_1.get_collider()
-		if obj is AnimatableBody3D:
+		# UI
+	crosshair.texture = HOOK_AVAILIBLE_TEXTURE if hook_raycast.is_colliding() and not hook_controller.is_hook_launched else HOOK_NOT_AVAILIBLE_TEXTURE
+		
+	#if on_ledge:
+		#var obj = ledge_raycast_1.get_collider()
+		#if obj is AnimatableBody3D:
 			#print("Ledge ",ledge_raycast_1.get_collision_point())
 			#print("Player ",position)
 			#print("Holder ",stick_point_holder.global_transform.origin)
 			#print("X ",stick_point.global_transform.origin.x)
 			#print("Z ",stick_point.global_transform.origin.z)
-			stick_point_holder.global_transform.origin = ledge_raycast_1.get_collision_point()
-			position.x = stick_point.global_transform.origin.x
-			position.z = stick_point.global_transform.origin.z
+			#stick_point_holder.global_transform.origin = ledge_raycast_1.get_collision_point()
+			#self.global_transform.origin.x = stick_point.global_transform.origin.x
+			#self.global_transform.origin.z = stick_point.global_transform.origin.z
 			
-
-
-
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -180,6 +188,7 @@ func pull_player_toward_obj(raycast: Node3D):
 	if!cover_shapecast.is_colliding():
 		var obj = raycast.get_collision_point()
 		velocity = Vector3((position.x - obj.x) * -1, 0, (position.z - obj.z) * -1)
+		move_and_slide()
 	else:
 		velocity = Vector3.ZERO
 	
