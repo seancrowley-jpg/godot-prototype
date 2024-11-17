@@ -6,6 +6,9 @@ var fall_state: State
 var idle_state: State
 @export
 var ledge_idle_state: State
+@export
+var jump_state: State
+
 func enter() -> void:
 	super()
 	parent.stand_collision()
@@ -13,6 +16,8 @@ func enter() -> void:
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_pressed("Hook"):
 			return fall_state
+	elif Input.is_action_pressed("jump"):
+			return jump_state
 	return
 
 func process_physics(delta: float) -> State:

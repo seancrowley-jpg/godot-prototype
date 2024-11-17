@@ -44,6 +44,8 @@ func _physics_process(delta: float) -> void:
 	
 	if is_hook_launched:
 		_handle_hook(delta)
+		if Input.is_action_just_pressed("jump"):
+			_retract_hook()
 		if !allowed_states.has(statemachine.current_state):
 			_retract_hook()
 	
