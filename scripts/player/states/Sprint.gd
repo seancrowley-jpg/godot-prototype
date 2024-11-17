@@ -10,6 +10,8 @@ var run_state: State
 var jump_state: State
 @export
 var roll_state: State
+@export
+var grapple_state: State
 
 func enter() -> void:
 	super()

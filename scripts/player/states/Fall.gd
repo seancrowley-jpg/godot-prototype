@@ -8,11 +8,17 @@ var run_state: State
 var sprint_state: State
 @export
 var ledge_idle_state: State
+@export
+var grapple_state: State
 
 func enter() -> void:
 	super()
-
 	
+func process_input(event: InputEvent) -> State:
+	if Input.is_action_pressed("Hook") and parent.hook_raycast.is_colliding():
+			return grapple_state
+	return
+
 func process_physics(delta: float) -> State:
 	parent.movement(5, delta)
 	if !parent.on_ledge:

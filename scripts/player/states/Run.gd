@@ -12,6 +12,8 @@ var sprint_state : State
 var crouch_walk : State
 @export
 var cover_state: State
+@export
+var grapple_state: State
 
 func enter() -> void:
 	super()
@@ -26,6 +28,8 @@ func process_input(event: InputEvent) -> State:
 			return crouch_walk
 		elif Input.is_action_pressed("cover") and parent.cover_raycast_middle.is_colliding():
 			return cover_state
+		elif Input.is_action_pressed("Hook") and parent.hook_raycast.is_colliding():
+			return grapple_state
 	return null
 
 func process_physics(delta: float) -> State:

@@ -19,6 +19,10 @@ extends Node
 @export_group("Advanced Settings")
 @export var hook_scene: PackedScene = preload("res://addons/grappling_hook_3d/src/hook.tscn")
 
+#Player State
+@export var statemachine: Node
+@export var allowed_states: Array[State] = []
+
 var is_hook_launched: bool = false
 var _hook_model: Node3D = null
 var hook_target_normal: Vector3 = Vector3.ZERO
@@ -31,14 +35,18 @@ signal hook_detached()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed(launch_action_name):
-		hook_launched.emit()
-		
-		match is_hook_launched:
-			false: _launch_hook()
-			true: _retract_hook()
+		if allowed_states.has(statemachine.current_state):
+			hook_launched.emit()
+			
+			match is_hook_launched:
+				false: _launch_hook()
+				true: _retract_hook()
 	
 	if is_hook_launched:
 		_handle_hook(delta)
+		if !allowed_states.has(statemachine.current_state):
+			_retract_hook()
+	
 
 
 ## Attaches a Marker3D to the body that is in the way of the raycast.
