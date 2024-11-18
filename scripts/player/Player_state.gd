@@ -86,7 +86,11 @@ func _physics_process(delta: float) -> void:
 		remote_transform_3d.update_rotation = false
 		
 	# UI
-	crosshair.texture = HOOK_AVAILIBLE_TEXTURE if hook_raycast.is_colliding() and not hook_controller.is_hook_launched else HOOK_NOT_AVAILIBLE_TEXTURE
+	if hook_controller.allowed_states.has(state_machine.current_state) and hook_raycast.is_colliding():
+		crosshair.texture = HOOK_AVAILIBLE_TEXTURE
+	else:
+		crosshair.texture = HOOK_NOT_AVAILIBLE_TEXTURE
+	
 		
 	#if on_ledge:
 		#var obj = ledge_raycast_1.get_collider()
