@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		_handle_hook(delta)
 		if Input.is_action_just_pressed("jump"):
 			_retract_hook()
-		if !allowed_states.has(statemachine.current_state):
+		elif !allowed_states.has(statemachine.current_state):
 			_retract_hook()
 	
 
@@ -67,7 +67,6 @@ func _launch_hook() -> void:
 	
 	hook_target_node.position = hook_raycast.get_collision_point() - body.global_position
 	hook_target_normal = hook_raycast.get_collision_normal()
-	
 	_hook_model = hook_scene.instantiate()
 	add_child(_hook_model)
 

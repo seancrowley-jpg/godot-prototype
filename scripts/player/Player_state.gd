@@ -58,6 +58,7 @@ const HOOK_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/h
 const HOOK_NOT_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_not_availible.png")
 
 
+
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
@@ -100,10 +101,9 @@ func _physics_process(delta: float) -> void:
 			#print("Holder ",stick_point_holder.global_transform.origin)
 			#print("X ",stick_point.global_transform.origin.x)
 			#print("Z ",stick_point.global_transform.origin.z)
-			#stick_point_holder.global_transform.origin = ledge_raycast_1.get_collision_point()
-			#self.global_transform.origin.x = stick_point.global_transform.origin.x
-			#self.global_transform.origin.z = stick_point.global_transform.origin.z
 			
+			
+
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
