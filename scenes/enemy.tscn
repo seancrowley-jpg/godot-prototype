@@ -1,6 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://oap43kpecvwf"]
+[gd_scene load_steps=20 format=4 uid="uid://oap43kpecvwf"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7yi6i"]
+[ext_resource type="Script" path="res://scripts/enemy/states/enemy.gd" id="1_7yi6i"]
+[ext_resource type="Script" path="res://scripts/enemy/state_machine/enemy_state_machine.gd" id="2_sbp2r"]
+[ext_resource type="Script" path="res://scripts/enemy/states/enemy_idle.gd" id="3_gwur5"]
+[ext_resource type="Script" path="res://scripts/enemy/states/enemy_run.gd" id="4_40c73"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpcsj"]
 radius = 0.376
@@ -3449,8 +3452,12 @@ _data = {
 "walking": SubResource("Animation_8oo1u")
 }
 
-[node name="Enemy" type="CharacterBody3D" groups=["Enemies"]]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_efj4f"]
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("animation_tree", "state_label") groups=["Enemies"]]
 script = ExtResource("1_7yi6i")
+animation_tree = NodePath("AnimationTree")
+state_label = NodePath("StateText")
 
 [node name="PlayerCollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 0, 0.84, 0)
@@ -3939,5 +3946,25 @@ libraries = {
 }
 autoplay = "walking"
 playback_default_blend_time = 0.2
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("2_sbp2r")
+starting_state = NodePath("Alert")
+
+[node name="Idle" type="Node" parent="state_machine"]
+script = ExtResource("3_gwur5")
+state_name = "IDLE"
+
+[node name="Alert" type="Node" parent="state_machine"]
+script = ExtResource("4_40c73")
+state_name = "ALERT"
+
+[node name="StateText" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95807, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../visuals/mixamo_base")
+tree_root = SubResource("AnimationNodeStateMachine_efj4f")
+anim_player = NodePath("../visuals/mixamo_base/AnimationPlayer")
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
