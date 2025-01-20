@@ -251,4 +251,4 @@ update_scale = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 33.3867, 3.01802, -15.2149)
 
 [node name="Enemy" parent="." instance=ExtResource("14_addh4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.65269, 0, -41.9528)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.65269, 0, -41.9528)

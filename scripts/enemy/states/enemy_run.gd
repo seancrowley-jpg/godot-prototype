@@ -1,5 +1,6 @@
 extends State
-
+@export
+var idle_state: State
 
 func process_physics(delta: float) -> State:
 	var destination  = parent.navigation_agent_3d.get_next_path_position()
