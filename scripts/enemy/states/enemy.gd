@@ -22,15 +22,3 @@ func _physics_process(delta) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-
-func update_target_location(target_location):
-	navigation_agent_3d.target_position = target_location
-
-func _on_navigation_agent_3d_target_reached():
-	print("HIT")
-
-
-func _on_detection_body_entered(body):
-	if body.name == "Player":
-		print("Enter")
-		alert = true
