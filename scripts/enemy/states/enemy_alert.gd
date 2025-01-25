@@ -3,15 +3,9 @@ extends State
 var idle_state: State
 
 func process_physics(delta: float) -> State:
-	var destination  = parent.navigation_agent_3d.get_next_path_position()
-	var local_destination = destination - parent.global_position
-	var direction = local_destination.normalized()
+	parent.move_toward_target_location()
 	
-	look_at_player(0.2, direction + destination)
-
-	parent.velocity  = direction * parent.SPEED
-	
-	if parent.alert == false:
+	if parent.navigation_agent_3d.is_target_reached():
 		return idle_state
 	
 	return null
@@ -22,7 +16,8 @@ func update_target_location(target_location):
 
 
 func _on_navigation_agent_3d_target_reached():
-	print("HIT")
+	pass
+	#print("HIT")
 	
 func look_at_player(weight,target):
 	var xform := parent.transform
