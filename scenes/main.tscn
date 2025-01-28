@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://v4grtipktv4t"]
+[gd_scene load_steps=25 format=3 uid="uid://v4grtipktv4t"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1_2nix4"]
 [ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://env.tres" id="1_axcsu"]
@@ -55,6 +55,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_kswkb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -32.3748, 0, -41.9635, 0, 0, 0, 0, 0, 0, 16.393, 0, -42.0742),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_2nix4")
@@ -230,11 +237,13 @@ use_collision = true
 radius = 0.1
 sides = 20
 
-[node name="Path3D" type="Path3D" parent="NavigationRegion3D/Map"]
+[node name="Platform" type="Node3D" parent="NavigationRegion3D/Map"]
+
+[node name="Path3D" type="Path3D" parent="NavigationRegion3D/Map/Platform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7525, -0.301488, -4.64842)
 curve = SubResource("Curve3D_3420f")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="NavigationRegion3D/Map/Path3D"]
+[node name="PathFollow3D" type="PathFollow3D" parent="NavigationRegion3D/Map/Platform/Path3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 22.6342, 3.31951, -10.5665)
 rotation_mode = 0
 loop = false
@@ -242,13 +251,22 @@ script = ExtResource("10_m2fqn")
 _speed = 3.0
 _pauseTimeAtWaypoints = 2.0
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="NavigationRegion3D/Map/Path3D/PathFollow3D"]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="NavigationRegion3D/Map/Platform/Path3D/PathFollow3D"]
 remote_path = NodePath("../../../Platform")
 update_rotation = false
 update_scale = false
 
-[node name="Platform" parent="NavigationRegion3D/Map" instance=ExtResource("10_ko5c1")]
+[node name="Platform" parent="NavigationRegion3D/Map/Platform" instance=ExtResource("10_ko5c1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 33.3867, 3.01802, -15.2149)
 
 [node name="Enemy" parent="." instance=ExtResource("14_addh4")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.65269, 0, -41.9528)
+transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698, -32.3748, 0, -41.9635)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_kswkb")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698, -32.3748, 0, -41.9635)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
+remote_path = NodePath("../../../Enemy")

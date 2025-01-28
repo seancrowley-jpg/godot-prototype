@@ -7,6 +7,9 @@ func process_physics(delta: float) -> State:
 	
 	if parent.navigation_agent_3d.is_target_reached():
 		return idle_state
+		
+	if !parent.navigation_agent_3d.is_target_reachable():
+		return idle_state
 	
 	return null
 

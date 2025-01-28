@@ -5,7 +5,6 @@ extends CharacterBody3D
 @onready var navigation_agent_3d = $NavigationAgent3D
 @export var animation_tree = Node3D
 @export var state_label = Node3D
-@export var vision = Node3D
 @onready var detection_area = $Detection
 @onready var detection_ray_cast = $DetectionRayCast
 @onready var vision_timer = $VisionTimer
