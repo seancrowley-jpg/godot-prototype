@@ -7,6 +7,7 @@ var alert_state: State
 var patrol_state: State
 
 func enter() -> void:
+	super()
 	parent.go_patrol = false
 	parent.patrol_timer.start()
 	#parent.playback.start("idle")
