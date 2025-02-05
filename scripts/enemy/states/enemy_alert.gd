@@ -22,11 +22,6 @@ func _on_navigation_agent_3d_target_reached():
 	pass
 	#print("HIT")
 	
-func look_at_player(weight,target):
-	var xform := parent.transform
-	xform = xform.looking_at(target,Vector3.UP)
-	parent.transform = parent.transform.interpolate_with(xform,weight)
-	
 func exit() -> void:
 	parent.navigation_agent_3d.target_position = Vector3.ZERO
 	parent.velocity = Vector3.ZERO

@@ -9,12 +9,15 @@ extends CharacterBody3D
 @onready var detection_ray_cast = $DetectionRayCast
 @onready var vision_timer = $VisionTimer
 @onready var alert_timer = $AlertTimer
+@onready var randPos : Vector3
+@export var patrol_timer : Timer
 
 @onready var playback  = animation_tree["parameters/playback"]
 
 var SPEED = 5
 var alert = false
 var alert_countdown: bool
+var go_patrol: bool = false
 
 
 func _ready() -> void:
@@ -25,6 +28,7 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	state_machine.process_physics(delta)
 	move_and_slide()
+	#print(state_machine.current_state)
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -60,7 +64,6 @@ func move_toward_target_location():
 	look_at_player(0.2, direction + destination)
 	velocity  = direction * SPEED
 
-
 func _on_alert_timer_timeout():
 	#print("count started")
 	alert = false
@@ -70,3 +73,10 @@ func _on_detection_body_exited(body):
 	if body is Player:
 		#print("body exited")
 		alert_timer.start()
+
+
+func _on_patrol_timer_timeout():
+	#print("patrol Timer out")
+	#print(go_patrol)
+	randPos = Vector3(randf_range(-35, 30), position.y, randf_range(-48,-20))
+	go_patrol = true
