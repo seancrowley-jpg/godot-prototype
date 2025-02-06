@@ -2,37 +2,38 @@ class_name Player
 extends CharacterBody3D
 
 @export_group("Player Stats")
-@export var sens_horizontal = 0.5
-@export var sens_vertical = 0.5
+@export var sens_horizontal: float = 0.5
+@export var sens_vertical: float = 0.5
 @export var fall_acceleration: float = 50
-@export var f_view = {"Default": 75.0, "Zoom": 50.0}
+@export var f_view: Dictionary = {"Default": 75.0, "Zoom": 50.0}
 @export var jump_force: float = 20
 @export var acceleration: float = 30.0
 @export var sprint_speed: float = 10
 @export var roll_speed: float = 12
 
 @export_group("Nodes")
-@export var crouch_shapecast: Node3D
-@export var cover_raycast_left: Node3D
-@export var cover_raycast_middle: Node3D
-@export var cover_raycast_right: Node3D
-@export var crouch_cover_raycast_left: Node3D
-@export var crouch_cover_raycast_middle: Node3D
-@export var crouch_cover_raycast_right: Node3D
-@export var cover_shapecast: Node3D
-@export var ledge_raycast_1: Node3D
-@export var ledge_raycast_2: Node3D
-@export var raycast_timer: Node
-@export var stick_point_holder: Node3D
-@export var stick_point: Node3D
-@export var wall_check_ray: Node3D
-@export var animation_tree = Node3D
-@export var state_label = Node3D
-@export var player_collision = Node3D
-@export var alt_cam_pos = Node3D
-@export var default_cam_pos = Node3D
-@export var ray_casts = Node3D
-@export var hook_controller = Node3D
+@export var crouch_shapecast: ShapeCast3D
+@export var cover_raycast_left: RayCast3D
+@export var cover_raycast_middle: RayCast3D
+@export var cover_raycast_right: RayCast3D
+@export var crouch_cover_raycast_left: RayCast3D
+@export var crouch_cover_raycast_middle: RayCast3D
+@export var crouch_cover_raycast_right: RayCast3D
+@export var cover_shapecast: ShapeCast3D
+@export var ledge_raycast_1: RayCast3D
+@export var ledge_raycast_2: RayCast3D
+@export var raycast_timer: Timer
+@export var stick_point_holder: Marker3D
+@export var stick_point: Marker3D
+@export var wall_check_ray: RayCast3D
+@export var animation_tree: AnimationTree
+@export var state_label: Label3D
+@export var player_collision: CollisionShape3D
+@export var alt_cam_pos: Marker3D
+@export var default_cam_pos: Marker3D
+@export var ray_casts: Node3D
+@export var hook_controller: Node
+@export var fps_hud: Label
 
 
 @onready var playback  = animation_tree["parameters/playback"]
@@ -47,12 +48,12 @@ extends CharacterBody3D
 @export var hook_raycast: RayCast3D
 @export var crosshair: TextureRect
 
-var cam_switched = false
-var ADS_LERP = 20
-var is_crouching = false
-var idle_animations = ["idle 1","idle 3","idle 2"]
-var left_right_lock := false
-var on_ledge := false
+var cam_switched: bool = false
+var ADS_LERP: float = 20
+var is_crouching: bool = false
+var idle_animations: Array = ["idle 1","idle 3","idle 2"]
+var left_right_lock: bool = false
+var on_ledge: bool = false
 
 const HOOK_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_availible.png")
 const HOOK_NOT_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_not_availible.png")
@@ -81,6 +82,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	ray_casts.global_basis = visuals.global_basis
+	fps_hud.text = "FPS: %s" % [Engine.get_frames_per_second()]
 	if !left_right_lock:
 		remote_transform_3d.update_rotation = true
 	else:
