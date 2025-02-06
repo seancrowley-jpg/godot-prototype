@@ -1,23 +1,32 @@
 class_name Enemy
 extends CharacterBody3D
 
-@onready var state_machine = $state_machine
-@onready var navigation_agent_3d = $NavigationAgent3D
-@export var animation_tree = Node3D
-@export var state_label = Node3D
-@onready var detection_area = $Detection
-@onready var detection_ray_cast = $DetectionRayCast
-@onready var vision_timer = $VisionTimer
-@onready var alert_timer = $AlertTimer
-@onready var randPos : Vector3
+@export_group("Nodes")
+@export var state_machine : Node
+@export var navigation_agent_3d : NavigationAgent3D
+@export var animation_tree : AnimationTree
+@export var state_label : Label3D
+@export var detection_area : Area3D
+@export var detection_ray_cast : RayCast3D
+@export var vision_timer : Timer
+@export var alert_timer : Timer
 @export var patrol_timer : Timer
 
+@onready var randPos : Vector3
 @onready var playback  = animation_tree["parameters/playback"]
 
-var SPEED = 5
-var alert = false
-var alert_countdown: bool
-var go_patrol: bool = false
+@export_group("Enemy Stats")
+@export var SPEED : float = 5
+@export var WALK_SPEED: float = 3
+
+@export_group("Enemy Patrol Range")
+@export var randXPosRange : Array = [-35 ,30]
+@export var randZPosRange : Array = [-48 ,20]
+
+@export_group("Booleans")
+@export var alert : bool = false
+@export var alert_countdown: bool
+@export var go_patrol: bool = false
 
 
 func _ready() -> void:
@@ -28,7 +37,7 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	state_machine.process_physics(delta)
 	move_and_slide()
-	#print(state_machine.current_state)
+	
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -62,21 +71,19 @@ func move_toward_target_location():
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()
 	look_at_player(0.2, direction + destination)
-	velocity  = direction * SPEED
+	if go_patrol:
+		velocity  = direction * WALK_SPEED
+	else:
+		velocity  = direction * SPEED
 
 func _on_alert_timer_timeout():
-	#print("count started")
 	alert = false
-	return
 
 func _on_detection_body_exited(body):
 	if body is Player:
-		#print("body exited")
 		alert_timer.start()
 
 
 func _on_patrol_timer_timeout():
-	#print("patrol Timer out")
-	#print(go_patrol)
-	randPos = Vector3(randf_range(-35, 30), position.y, randf_range(-48,-20))
+	randPos = Vector3(randf_range(randXPosRange[0],randXPosRange[1]), position.y, randf_range(randZPosRange[0],randZPosRange[1]))
 	go_patrol = true

@@ -2,6 +2,10 @@ extends State
 @export
 var idle_state: State
 
+func enter() -> void:
+	super()
+	parent.go_patrol = false
+
 func process_physics(delta: float) -> State:
 	parent.move_toward_target_location()
 	

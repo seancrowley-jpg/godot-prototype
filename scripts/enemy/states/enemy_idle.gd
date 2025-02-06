@@ -15,6 +15,7 @@ func enter() -> void:
 
 func process_physics(delta: float) -> State:
 	if parent.alert:
+		parent.patrol_timer.stop()
 		return alert_state
 		
 	if parent.go_patrol:
