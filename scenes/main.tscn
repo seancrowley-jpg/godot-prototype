@@ -252,8 +252,10 @@ update_scale = false
 [node name="Platform" parent="NavigationRegion3D/Map/Platform" instance=ExtResource("10_ko5c1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 33.3867, 3.01802, -15.2149)
 
-[node name="Enemy" parent="." instance=ExtResource("14_addh4")]
+[node name="Enemies" type="Node3D" parent="." groups=["Enemies"]]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("14_addh4")]
 transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698, -32.6746, 0, -40.07)
 
-[node name="Enemy2" parent="." instance=ExtResource("14_addh4")]
-transform = Transform3D(-0.999991, 0, -0.00226976, 0, 1, 0, 0.00226976, 0, -0.999991, 2.60392, 0, -40.07)
+[node name="Enemy2" parent="Enemies" instance=ExtResource("14_addh4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.48454, 0, -44.1711)

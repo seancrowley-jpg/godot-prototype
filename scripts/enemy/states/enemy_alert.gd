@@ -17,15 +17,9 @@ func process_physics(delta: float) -> State:
 	
 	return null
 
-func update_target_location(target_location):
-	parent.navigation_agent_3d.target_position = target_location
-
-
-
 func _on_navigation_agent_3d_target_reached():
 	pass
 	#print("HIT")
 	
 func exit() -> void:
-	parent.navigation_agent_3d.target_position = Vector3.ZERO
 	parent.velocity = Vector3.ZERO

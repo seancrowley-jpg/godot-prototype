@@ -60,6 +60,10 @@ func _on_vision_timer_timeout():
 						detection_ray_cast.debug_shape_custom_color = Color(0,0,0)
 						alert_timer.start()
 
+#Sends player position to nav agent / Called in World script
+func update_target_location(target_location):
+	if alert:
+		navigation_agent_3d.target_position = target_location
 
 func look_at_player(weight,target):
 	var xform := transform
