@@ -9,7 +9,6 @@ var rotation_speed = .2
 
 func _physics_process(delta) -> void:
 	rotate_spotlight(delta)
-	print(GlobalVariables.spotlight_spotted_player)
 	
 func rotate_spotlight(delta):
 	light.rotation.y += rotation_speed * delta
@@ -35,5 +34,8 @@ func _on_vision_timer_timeout():
 						GlobalVariables.spotlight_spotted_player = true
 					else:
 						detection_ray_cast.debug_shape_custom_color = Color(0,0,0)
-			else:
-				GlobalVariables.spotlight_spotted_player = false
+						GlobalVariables.spotlight_spotted_player = false
+
+#When players leaves detection area / Light
+func _on_detection_body_exited(body):
+	GlobalVariables.spotlight_spotted_player = false

@@ -260,5 +260,13 @@ transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698
 [node name="Enemy2" parent="Enemies" instance=ExtResource("14_addh4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.48454, 0, -44.1711)
 
-[node name="SpotLight" parent="." instance=ExtResource("15_3kns2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6864, 0, 45.1478)
+[node name="SpotLights" type="Node3D" parent="." groups=["Spotlights"]]
+
+[node name="SpotLight" parent="SpotLights" instance=ExtResource("15_3kns2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44643, 0, 40.2352)
+
+[node name="SpotLight2" parent="SpotLights" instance=ExtResource("15_3kns2")]
+transform = Transform3D(0.855726, 0, -0.51743, 0, 1, 0, 0.51743, 0, 0.855726, -27.5427, 0, 30.8966)
+
+[node name="SpotLight3" parent="SpotLights" instance=ExtResource("15_3kns2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 48.7722, 0, 11.375)
