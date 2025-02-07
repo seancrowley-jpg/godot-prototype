@@ -18,6 +18,7 @@ extends CharacterBody3D
 @export_group("Enemy Stats")
 @export var SPEED : float = 5
 @export var WALK_SPEED: float = 3
+@export var fall_acceleration: float = 50
 
 @export_group("Enemy Patrol Range")
 @export var randXPosRange : Array = [-35 ,30]
@@ -33,9 +34,14 @@ func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
 	state_machine.init(self)
+	animation_tree.active = true
 
 func _physics_process(delta) -> void:
 	state_machine.process_physics(delta)
+	
+	if not is_on_floor():
+		velocity.y -= fall_acceleration * delta
+	
 	move_and_slide()
 	
 
