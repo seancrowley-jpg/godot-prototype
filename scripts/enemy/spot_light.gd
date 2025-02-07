@@ -2,11 +2,14 @@ extends CharacterBody3D
 
 @export var detection_area : Area3D
 @export var detection_ray_cast : RayCast3D
+
 @onready var light = $Light
+
 var rotation_speed = .2
 
 func _physics_process(delta) -> void:
 	rotate_spotlight(delta)
+	print(GlobalVariables.spotlight_spotted_player)
 	
 func rotate_spotlight(delta):
 	light.rotation.y += rotation_speed * delta
@@ -29,4 +32,8 @@ func _on_vision_timer_timeout():
 				if detection_ray_cast.is_colliding():
 					if collider.name == "Player":
 						detection_ray_cast.debug_shape_custom_color = Color(174,0,0)
-						
+						GlobalVariables.spotlight_spotted_player = true
+					else:
+						detection_ray_cast.debug_shape_custom_color = Color(0,0,0)
+			else:
+				GlobalVariables.spotlight_spotted_player = false

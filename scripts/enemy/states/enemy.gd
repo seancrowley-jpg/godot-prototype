@@ -42,6 +42,11 @@ func _physics_process(delta) -> void:
 	if not is_on_floor():
 		velocity.y -= fall_acceleration * delta
 	
+	if GlobalVariables.spotlight_spotted_player:
+		alert = true
+	else:
+		alert = false
+	
 	move_and_slide()
 	
 
