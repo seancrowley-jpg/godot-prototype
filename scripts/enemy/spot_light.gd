@@ -1,14 +1,20 @@
 extends CharacterBody3D
 
+@export_group("Nodes")
 @export var detection_area : Area3D
 @export var detection_ray_cast : RayCast3D
+@export var light : CollisionShape3D
 
 
-@onready var light = $Light
-@onready var marker_3d = $Marker3D
+@export_group("Spotlight Stats")
+@export var rotation_speed = .5
+@export var clamp_light_angle: bool = true
+@export var max_angle: float = 75
+@export var min_angle: float = -75
+
+
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-var rotation_speed = .5
 var spotted: bool
 
 func _physics_process(delta) -> void:
@@ -17,6 +23,14 @@ func _physics_process(delta) -> void:
 func rotate_spotlight(delta):
 	light.rotation.y += rotation_speed * delta
 	
+	#Code that clamps the spotlight between two points
+	if clamp_light_angle:
+		light.rotation.y = clamp(light.rotation.y, deg_to_rad(min_angle), deg_to_rad(max_angle))
+		if light.rotation_degrees.y >= max_angle:
+			rotation_speed *= -1 
+		elif light.rotation_degrees.y <= min_angle:
+			rotation_speed *= -1 
+		
 	if spotted:
 		light.look_at(player.target.global_position, Vector3.UP)
 	else:
