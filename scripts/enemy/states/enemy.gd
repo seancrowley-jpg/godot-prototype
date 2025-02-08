@@ -42,10 +42,9 @@ func _physics_process(delta) -> void:
 	if not is_on_floor():
 		velocity.y -= fall_acceleration * delta
 	
-	if GlobalVariables.spotlight_spotted_player:
+	if GlobalVariables.spotlight_spotted_player and alert_timer.is_stopped():
 		alert = true
-	else:
-		alert = false
+		alert_timer.start()
 	
 	move_and_slide()
 	
@@ -93,6 +92,7 @@ func move_toward_target_location():
 
 func _on_alert_timer_timeout():
 	alert = false
+	alert_countdown = false
 
 func _on_detection_body_exited(body):
 	if body is Player:

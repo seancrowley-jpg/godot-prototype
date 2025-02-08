@@ -87,8 +87,12 @@ transform = Transform3D(1, 0, 0, 0, 0.972614, 0.232427, 0, -0.232427, 0.972614, 
 target_position = Vector3(0, 0, -100)
 
 [node name="VisionTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.15
 autostart = true
 
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5578, -0.219063)
+
+[connection signal="body_entered" from="Light/Detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_exited" from="Light/Detection" to="." method="_on_detection_body_exited"]
 [connection signal="timeout" from="VisionTimer" to="." method="_on_vision_timer_timeout"]

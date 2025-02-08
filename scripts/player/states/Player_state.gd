@@ -34,7 +34,7 @@ extends CharacterBody3D
 @export var ray_casts: Node3D
 @export var hook_controller: Node
 @export var fps_hud: Label
-
+@export var target: Marker3D
 
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals
