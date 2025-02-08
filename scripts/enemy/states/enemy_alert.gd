@@ -7,7 +7,7 @@ func enter() -> void:
 	parent.go_patrol = false
 
 func process_physics(delta: float) -> State:
-	parent.move_toward_target_location()
+	parent.move_toward_target_location(delta)
 	
 	if parent.navigation_agent_3d.is_target_reached():
 		return idle_state

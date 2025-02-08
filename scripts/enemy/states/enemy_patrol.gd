@@ -10,7 +10,7 @@ func process_physics(delta: float) -> State:
 	if parent.alert:
 		return alert_state
 	parent.navigation_agent_3d.target_position = parent.randPos
-	parent.move_toward_target_location()
+	parent.move_toward_target_location(delta)
 	if parent.navigation_agent_3d.is_target_reached():
 		return idle_state
 	return null

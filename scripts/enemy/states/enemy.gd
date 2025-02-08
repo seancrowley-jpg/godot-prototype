@@ -19,6 +19,7 @@ extends CharacterBody3D
 @export var SPEED : float = 5
 @export var WALK_SPEED: float = 3
 @export var fall_acceleration: float = 50
+@export var acceleration: float = 30.0
 
 @export_group("Enemy Patrol Range")
 @export var randXPosRange : Array = [-35 ,30]
@@ -80,15 +81,15 @@ func look_at_player(weight,target):
 	xform = xform.looking_at(target,Vector3.UP)
 	transform = transform.interpolate_with(xform,weight)
 	
-func move_toward_target_location():
+func move_toward_target_location(delta):
 	var destination  = navigation_agent_3d.get_next_path_position()
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()
 	look_at_player(0.2, direction + destination)
 	if go_patrol:
-		velocity  = direction * WALK_SPEED
+		velocity  = velocity.move_toward(direction* WALK_SPEED, acceleration * delta)
 	else:
-		velocity  = direction * SPEED
+		velocity  = velocity.move_toward(direction* SPEED, acceleration * delta)
 
 func _on_alert_timer_timeout():
 	alert = false
