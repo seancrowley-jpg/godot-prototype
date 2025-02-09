@@ -39,6 +39,7 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	state_machine.process_physics(delta)
+	#rotation.x = 0 // Stop enemies from bobing up and down when moving
 	
 	if not is_on_floor():
 		velocity.y -= fall_acceleration * delta
@@ -46,7 +47,6 @@ func _physics_process(delta) -> void:
 	if GlobalVariables.spotlight_spotted_player and alert_timer.is_stopped():
 		alert = true
 		alert_timer.start()
-	
 	move_and_slide()
 	
 

@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi8cvwjgsp55f"]
+
+[ext_resource type="Shader" path="res://shaders/goal_shader.gdshader" id="1_ihqpb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2w17"]
+render_priority = 0
+shader = ExtResource("1_ihqpb")
+shader_parameter/shininess = 200.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x1v1b"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.5
+radial_segments = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rncyu"]
+top_radius = 0.2
+bottom_radius = 0.0
+radial_segments = 4
+
+[node name="Goal" type="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("ShaderMaterial_q2w17")
+gi_mode = 2
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24997, 0)
+mesh = SubResource("CylinderMesh_x1v1b")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="."]
+mesh = SubResource("CylinderMesh_rncyu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.389657, 0)
+light_color = Color(0.516463, 0.816851, 0.384281, 1)
+light_energy = 2.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 10.0
+light_size = 1.0
+light_negative = true
+light_specular = 1.0
+shadow_enabled = true
+shadow_bias = 2.0
+shadow_blur = 5.0
+omni_range = 1.784
+omni_attenuation = 2.5
