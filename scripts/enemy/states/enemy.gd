@@ -22,8 +22,8 @@ extends CharacterBody3D
 @export var acceleration: float = 30.0
 
 @export_group("Enemy Patrol Range")
-@export var randXPosRange : Array = [-35 ,30]
-@export var randZPosRange : Array = [-48 ,20]
+@export var randXPosRange : Array = [0,0]
+@export var randZPosRange : Array = [0,0]
 
 @export_group("Booleans")
 @export var alert : bool = false

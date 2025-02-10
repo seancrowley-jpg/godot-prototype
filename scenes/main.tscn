@@ -59,9 +59,28 @@ point_count = 4
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_2nix4")
+day_time = 14.0
+moon_orbital_inclination = -132.15
+moon_orbital_period = 34.47
+time_scale = 0.0
+sun_base_enegry = 0.6
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+visible = false
+light_energy = 0.775
+shadow_enabled = true
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.827116, 0, -0.562031, 0.289131, -0.857527, 0.425501, -0.481957, -0.51444, -0.709274, 0, 0, 0)
+rotation_order = 4
+light_energy = 0.6
+shadow_enabled = true
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.416929, 0, -0.908939, -0.614509, 0.736835, 0.281875, 0.669738, 0.676073, -0.307208, 0, 0, 0)
+rotation_order = 4
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -253,10 +272,13 @@ update_scale = false
 [node name="Platform" parent="NavigationRegion3D/Map/Platform" instance=ExtResource("10_ko5c1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 33.3867, 3.01802, -15.2149)
 
+[node name="SpotLight4" parent="NavigationRegion3D/Map/Platform/Platform" instance=ExtResource("15_3kns2")]
+transform = Transform3D(-4.17185e-08, -0.298508, 0.954407, -1.30482e-08, 0.954407, 0.298508, -1, 0, -4.37115e-08, -1.83977, 1.29707, 0.32109)
+
 [node name="Enemies" type="Node3D" parent="." groups=["Enemies"]]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("14_addh4")]
-transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698, -32.6746, 1.86785, -40.07)
+transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698, -32.6746, 1.86785, -40.6464)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("14_addh4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.48454, 0, -44.1711)
