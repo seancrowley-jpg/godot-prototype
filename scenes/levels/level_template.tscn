@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8m5wfntg8b28"]
+
+[ext_resource type="Script" path="res://scripts/World.gd" id="1_68bc8"]
+[ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://env.tres" id="2_5jn8j"]
+[ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="3_sqyi0"]
+[ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="4_csthc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvnin"]
+albedo_texture = ExtResource("3_sqyi0")
+uv1_triplanar = true
+
+[node name="Level_template" type="Node3D"]
+script = ExtResource("1_68bc8")
+day_time = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_5jn8j")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.827116, 0, -0.562031, 0.289131, -0.857527, 0.425501, -0.481957, -0.51444, -0.709274, 0, 0, 0)
+rotation_order = 4
+light_energy = 0.6
+shadow_enabled = true
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.416929, 0, -0.908939, -0.614509, 0.736835, 0.281875, 0.669738, 0.676073, -0.307208, 0, 0, 0)
+rotation_order = 4
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 23.6771)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(20, 1, 52.6458)
+
+[node name="Walls" type="Node3D" parent="Map"]
+
+[node name="Wall" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52808, 0.509498, 49.9308)
+size = Vector3(20, 1, 0.25)
+
+[node name="Wall2" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.33672, 0.509498, 39.8027)
+size = Vector3(20, 1, 0.25)
+
+[node name="Wall3" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.4034, 0.509498, 39.8027)
+size = Vector3(20, 1, 0.25)
+
+[node name="Player" parent="." instance=ExtResource("4_csthc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.5022)
