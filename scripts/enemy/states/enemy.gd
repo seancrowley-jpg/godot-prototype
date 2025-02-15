@@ -25,10 +25,15 @@ extends CharacterBody3D
 @export var randXPosRange : Array = [0,0]
 @export var randZPosRange : Array = [0,0]
 
+@export_group("Enemy Patrol Destinations")
+@export var enemeyDestinations : Array[Vector3] = [Vector3.ZERO]
+@export var currentDestination: int = 0
+
 @export_group("Booleans")
 @export var alert : bool = false
 @export var alert_countdown: bool
 @export var go_patrol: bool = false
+@export var use_random_patrol_path: bool = true
 
 
 func _ready() -> void:
@@ -101,5 +106,12 @@ func _on_detection_body_exited(body):
 
 
 func _on_patrol_timer_timeout():
-	randPos = Vector3(randf_range(randXPosRange[0],randXPosRange[1]), position.y, randf_range(randZPosRange[0],randZPosRange[1]))
+	if use_random_patrol_path:
+		randPos = Vector3(randf_range(randXPosRange[0],randXPosRange[1]), position.y, randf_range(randZPosRange[0],randZPosRange[1]))
+
+	if currentDestination < enemeyDestinations.size() -1:
+		currentDestination += 1
+	else:
+		currentDestination = 0
+		
 	go_patrol = true

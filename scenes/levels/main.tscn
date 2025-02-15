@@ -283,6 +283,11 @@ transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698
 [node name="Enemy2" parent="Enemies" instance=ExtResource("15_vtjth")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.48454, 0, -44.1711)
 
+[node name="Enemy3" parent="Enemies" instance=ExtResource("15_vtjth")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.8303, 0, -44.1711)
+enemeyDestinations = Array[Vector3]([Vector3(37.8303, 0, -44.1711), Vector3(37.8303, 0, -24.1205), Vector3(28.4039, 0, -31.4381)])
+use_random_patrol_path = false
+
 [node name="SpotLights" type="Node3D" parent="." groups=["Spotlights"]]
 
 [node name="SpotLight" parent="SpotLights" instance=ExtResource("14_xlmyg")]
