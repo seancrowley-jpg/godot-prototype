@@ -141,7 +141,7 @@ use_collision = true
 size = Vector3(0.146149, 4.62665, 6.0462)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/Map/Walls"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.39551, 2.31332, 14.6787)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.39551, 2.31332, 14.7318)
 material_override = SubResource("StandardMaterial3D_ltuyc")
 use_collision = true
 size = Vector3(0.146149, 4.62665, 6.9111)
@@ -175,5 +175,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39078, 1, 17.0227)
 
 [node name="Enemy" parent="." instance=ExtResource("7_0cnsr")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -13.5482, 0, 24.2024)
+alert_timer_count = 0.2
 enemeyDestinations = Array[Vector3]([Vector3(-13.5482, 0, 24.2024), Vector3(5.386, 1, 24.202), Vector3(6.47222, 1, 31.4944)])
 use_random_patrol_path = false

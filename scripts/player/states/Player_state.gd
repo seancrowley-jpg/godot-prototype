@@ -35,6 +35,7 @@ extends CharacterBody3D
 @export var hook_controller: Node
 @export var fps_hud: Label
 @export var target: Marker3D
+@export var sprint_sound_area: Area3D
 
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals
@@ -94,7 +95,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		crosshair.texture = HOOK_NOT_AVAILIBLE_TEXTURE
 	
+	#Prevents Sprint Sound Detection Area from staying monitorable
+	if playback.get_current_node() != "sprint":
+		sprint_sound_area.monitorable = false
 		
+
 	#if on_ledge:
 		#var obj = ledge_raycast_1.get_collider()
 		#if obj is AnimatableBody3D:
@@ -198,3 +203,10 @@ func pull_player_toward_obj(raycast: Node3D):
 	else:
 		velocity = Vector3.ZERO
 	
+
+#Functions called in Sprint Animation Tracks
+func foot_step_sound_start():
+	sprint_sound_area.monitorable = true
+
+func foot_step_sound_stop():
+	sprint_sound_area.monitorable = false

@@ -11,6 +11,7 @@ extends CharacterBody3D
 @export var vision_timer : Timer
 @export var alert_timer : Timer
 @export var patrol_timer : Timer
+@export var sprint_sound_area: Area3D
 
 @onready var randPos : Vector3
 @onready var playback  = animation_tree["parameters/playback"]
@@ -20,6 +21,7 @@ extends CharacterBody3D
 @export var WALK_SPEED: float = 3
 @export var fall_acceleration: float = 50
 @export var acceleration: float = 30.0
+@export var alert_timer_count: float = 2.0
 
 @export_group("Enemy Patrol Range")
 @export var randXPosRange : Array = [0,0]
@@ -44,7 +46,7 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	state_machine.process_physics(delta)
-	#rotation.x = 0 // Stop enemies from bobing up and down when moving
+	rotation.x = 0  #Stop enemies from bobing up and down when moving
 	
 	if not is_on_floor():
 		velocity.y -= fall_acceleration * delta
@@ -74,7 +76,7 @@ func _on_vision_timer_timeout():
 						alert = true
 					else:
 						detection_ray_cast.debug_shape_custom_color = Color(0,0,0)
-						alert_timer.start()
+						alert_timer.start(alert_timer_count)
 
 #Sends player position to nav agent / Called in World script
 func update_target_location(target_location):
@@ -102,7 +104,7 @@ func _on_alert_timer_timeout():
 
 func _on_detection_body_exited(body):
 	if body is Player:
-		alert_timer.start()
+		alert_timer.start(alert_timer_count)
 
 
 func _on_patrol_timer_timeout():
@@ -115,3 +117,8 @@ func _on_patrol_timer_timeout():
 		currentDestination = 0
 		
 	go_patrol = true
+
+
+func _on_sprint_sound_area_area_entered(area):
+	if area.name == "SprintSoundArea": 
+		alert = true

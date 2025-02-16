@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi8cvwjgsp55f"]
+[gd_scene load_steps=7 format=3 uid="uid://bi8cvwjgsp55f"]
 
 [ext_resource type="Shader" path="res://shaders/goal_shader.gdshader" id="1_ihqpb"]
+[ext_resource type="Script" path="res://scripts/goal.gd" id="2_o3d4o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q2w17"]
 render_priority = 0
@@ -18,10 +19,15 @@ top_radius = 0.2
 bottom_radius = 0.0
 radial_segments = 4
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m6goc"]
+radius = 0.24
+height = 2.588
+
 [node name="Goal" type="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 material_override = SubResource("ShaderMaterial_q2w17")
 gi_mode = 2
+script = ExtResource("2_o3d4o")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24997, 0)
@@ -44,3 +50,11 @@ shadow_bias = 2.0
 shadow_blur = 5.0
 omni_range = 1.784
 omni_attenuation = 2.5
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.304552, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_m6goc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
