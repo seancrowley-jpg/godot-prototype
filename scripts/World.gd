@@ -1,10 +1,12 @@
 extends Node3D
 
 @onready var player = $Player
+@export var goal = Node3D
 
 func _physics_process(delta):
 	get_tree().call_group("Enemies", "update_target_location", player.position)
-	
+	if goal.goal_reached:
+		get_tree().quit()
 	
 # https://github.com/krzmig/godot-simple-sky-project
 ## This is not a simulation of the actual model but only a extremely simplified version.

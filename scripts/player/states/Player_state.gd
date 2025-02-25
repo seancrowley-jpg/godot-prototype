@@ -36,6 +36,7 @@ extends CharacterBody3D
 @export var fps_hud: Label
 @export var target: Marker3D
 @export var sprint_sound_area: Area3D
+@export var pause_menu: Control
 
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals
@@ -117,12 +118,6 @@ func _process(delta: float) -> void:
 	zoom(delta)
 	cam_switch(delta)
 	#print("FPS " , (Engine.get_frames_per_second()))
-
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	elif event.is_action_pressed("left click"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func movement(speed, delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
