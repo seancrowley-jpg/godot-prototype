@@ -304,5 +304,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 48.772
 [node name="Goal" parent="." instance=ExtResource("16_6k05c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.118, 1, 6.02092)
 
-[node name="security_camera" parent="." instance=ExtResource("17_p7bbc")]
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="security_camera" parent="Cameras" instance=ExtResource("17_p7bbc")]
 transform = Transform3D(-4.35263e-08, 0.0919361, -0.995765, 4.01866e-09, 0.995765, 0.0919361, 1, 0, -4.37114e-08, 7.87565, 4.69682, -3.45126)
+
+[node name="security_camera2" parent="Cameras" instance=ExtResource("17_p7bbc")]
+transform = Transform3D(-4.35263e-08, 0.0919361, -0.995765, 4.01866e-09, 0.995765, 0.0919361, 1, 0, -4.37114e-08, 7.87565, 4.69682, -1.68058)
