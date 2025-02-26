@@ -20,7 +20,10 @@ uv1_triplanar = true
 [node name="level_2" type="Node3D" node_paths=PackedStringArray("goal")]
 script = ExtResource("1_xhvv7")
 goal = NodePath("Goal")
-day_time = 10.0
+day_time = 15.0
+clouds_cutoff = 0.48
+clouds_weight = 0.32
+time_scale = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_npvnt")
