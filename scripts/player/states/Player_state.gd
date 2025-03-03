@@ -40,6 +40,8 @@ extends CharacterBody3D
 @export var target: Marker3D
 @export var sprint_sound_area: Area3D
 @export var pause_menu: Control
+@export var game_over_menu: Control
+@export var results_menu: Control
 
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals
@@ -59,6 +61,7 @@ var is_crouching: bool = false
 var idle_animations: Array = ["idle 1","idle 3","idle 2"]
 var left_right_lock: bool = false
 var on_ledge: bool = false
+var is_game_over : bool
 
 const HOOK_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_availible.png")
 const HOOK_NOT_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_not_availible.png")
@@ -103,7 +106,9 @@ func _physics_process(delta: float) -> void:
 	if playback.get_current_node() != "sprint":
 		sprint_sound_area.monitorable = false
 		
-
+	if position.y < -50:
+		is_game_over = true
+		
 	#if on_ledge:
 		#var obj = ledge_raycast_1.get_collider()
 		#if obj is AnimatableBody3D:
@@ -112,15 +117,16 @@ func _physics_process(delta: float) -> void:
 			#print("Holder ",stick_point_holder.global_transform.origin)
 			#print("X ",stick_point.global_transform.origin.x)
 			#print("Z ",stick_point.global_transform.origin.z)
-			
-			
 
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	zoom(delta)
 	cam_switch(delta)
-	#print("FPS " , (Engine.get_frames_per_second()))
+	if is_game_over:
+		game_over_menu.show_screen()
+	if GlobalVariables.goal_reached:
+		results_menu.show_screen()
 
 func movement(speed, delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
@@ -208,3 +214,4 @@ func foot_step_sound_start():
 
 func foot_step_sound_stop():
 	sprint_sound_area.monitorable = false
+	

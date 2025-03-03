@@ -58,9 +58,8 @@ _data = {
 }
 point_count = 4
 
-[node name="World" type="Node3D" node_paths=PackedStringArray("goal")]
+[node name="World" type="Node3D"]
 script = ExtResource("1_quwq4")
-goal = NodePath("Goal")
 day_time = 10.752
 moon_orbital_inclination = -132.15
 moon_orbital_period = 34.47

@@ -11,9 +11,8 @@
 albedo_texture = ExtResource("3_rb7ly")
 uv1_triplanar = true
 
-[node name="level_3" type="Node3D" node_paths=PackedStringArray("goal")]
+[node name="level_3" type="Node3D"]
 script = ExtResource("1_lrr0r")
-goal = NodePath("Goal")
 day_time = 16.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

@@ -22,9 +22,8 @@ uv1_triplanar = true
 albedo_texture = ExtResource("4_bmt7u")
 uv1_triplanar = true
 
-[node name="level_2" type="Node3D" node_paths=PackedStringArray("goal")]
+[node name="level_2" type="Node3D"]
 script = ExtResource("1_xhvv7")
-goal = NodePath("Goal")
 day_time = 15.0
 clouds_cutoff = 0.48
 clouds_weight = 0.32

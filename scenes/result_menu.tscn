@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/result_menu.gd" id="1_tkml0"]
 
 [node name="result_menu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,3 +75,5 @@ text = "Restart"
 layout_mode = 2
 text = "Main Menu
 "
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonHBoxContainer3/RestartButton" to="." method="_on_restart_button_pressed"]
