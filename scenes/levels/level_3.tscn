@@ -69,11 +69,11 @@ use_collision = true
 size = Vector3(7.30603, 5.50073, 4.24646)
 
 [node name="Wall9" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.15691, 5.45462, 15.0198)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.112, 5.45462, 15.0198)
 use_collision = true
 collision_layer = 6
 collision_mask = 6
-size = Vector3(7.6741, 0.111205, 0.224411)
+size = Vector3(7.6741, 0.111205, 0.314232)
 
 [node name="Wall5" type="CSGBox3D" parent="Map/Walls"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.4054, 1.52476, 24.3232)
