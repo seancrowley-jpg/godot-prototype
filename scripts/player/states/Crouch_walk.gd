@@ -30,7 +30,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.movement(2, delta)
+	parent.movement(parent.crouch_move_speed, delta)
 	if parent.velocity == Vector3.ZERO:
 		return crouch_idle_state
 	

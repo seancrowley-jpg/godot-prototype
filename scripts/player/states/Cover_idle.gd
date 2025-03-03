@@ -21,6 +21,8 @@ func enter() -> void:
 		parent.playback.travel("crouch cover idle")
 	else:
 		parent.playback.travel("cover idle")
+	parent.set_collision_layer_value(2,true)
+	parent.set_collision_mask_value(2,true)
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("cover"):
@@ -70,3 +72,5 @@ func process_frame(delta: float) -> State:
 func exit() -> void:
 	super()
 	parent.left_right_lock = false
+	parent.set_collision_layer_value(2,false)
+	parent.set_collision_mask_value(2,false)

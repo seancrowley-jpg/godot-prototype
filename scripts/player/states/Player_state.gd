@@ -10,6 +10,9 @@ extends CharacterBody3D
 @export var acceleration: float = 30.0
 @export var sprint_speed: float = 10
 @export var roll_speed: float = 12
+@export var cover_move_speed: float = 1.5
+@export var ledge_move_speed: float = 2
+@export var crouch_move_speed: float = 2
 
 @export_group("Nodes")
 @export var crouch_shapecast: ShapeCast3D
@@ -133,12 +136,12 @@ func movement(speed, delta):
 	
 	move_and_slide()
 
-func move_left_right(raycast: Node3D):
+func move_left_right(raycast: Node3D ,speed, delta):
 	#Enables movement of character to the left or right of the object its facing
 	move_and_slide()
 	var rot = -(atan2(raycast.get_collision_normal().z, raycast.get_collision_normal().x) - PI/2)
 	var h_input = Input.get_action_strength("right") - Input.get_action_strength("left")
-	velocity = Vector3(h_input,0,0).rotated(Vector3.UP,rot).normalized()
+	velocity = velocity.move_toward(Vector3(h_input,0,0).rotated(Vector3.UP,rot).normalized() * speed , delta * acceleration)
 
 func zoom(delta):
 	if Input.is_action_pressed("zoom"):

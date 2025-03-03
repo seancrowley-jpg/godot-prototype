@@ -36,7 +36,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.move_left_right(parent.ledge_raycast_1)
+	parent.move_left_right(parent.ledge_raycast_1, parent.ledge_move_speed, delta)
 	if !parent.ledge_raycast_1.is_colliding():
 		parent.raycast_timer.start()
 		return fall_state

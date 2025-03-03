@@ -29,6 +29,8 @@ func enter() -> void:
 		else:
 			parent.playback.travel("left cover sneak")
 	parent.left_right_lock = true
+	parent.set_collision_layer_value(2,true)
+	parent.set_collision_mask_value(2,true)
 
 
 func process_input(event: InputEvent) -> State:
@@ -70,9 +72,9 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	if parent.crouch_cover_raycast_middle.is_colliding() and !parent.cover_raycast_middle.is_colliding():
-		parent.move_left_right(parent.crouch_cover_raycast_middle)
+		parent.move_left_right(parent.crouch_cover_raycast_middle , parent.cover_move_speed, delta)
 	else:
-		parent.move_left_right(parent.cover_raycast_middle)
+		parent.move_left_right(parent.cover_raycast_middle, parent.cover_move_speed, delta)
 	
 	if !parent.cover_shapecast.is_colliding():
 		if parent.is_crouching:
@@ -93,3 +95,5 @@ func process_physics(delta: float) -> State:
 func exit() -> void:
 	super()
 	parent.left_right_lock = false
+	parent.set_collision_layer_value(2,false)
+	parent.set_collision_mask_value(2,false)
