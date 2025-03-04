@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://micgwbpw0qyy"]
 
-[ext_resource type="Script" path="res://addons/grappling_hook_3d/example/player.gd" id="1_5t7oi"]
-[ext_resource type="Script" path="res://addons/grappling_hook_3d/src/hook_controller.gd" id="2_yq2dk"]
+[ext_resource type="Script" uid="uid://dtybbf7vv2ldx" path="res://addons/grappling_hook_3d/example/player.gd" id="1_5t7oi"]
+[ext_resource type="Script" uid="uid://drkrhyai2354q" path="res://addons/grappling_hook_3d/src/hook_controller.gd" id="2_yq2dk"]
 [ext_resource type="Texture2D" uid="uid://cskw882fffi36" path="res://addons/grappling_hook_3d/example/hook_availible.png" id="3_k3ota"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iop0k"]

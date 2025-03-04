@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://djc5ewwio6mns"]
 
-[ext_resource type="Script" path="res://scripts/World.gd" id="1_lrr0r"]
+[ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_lrr0r"]
 [ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://env.tres" id="2_eh8ap"]
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="3_rb7ly"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="4_oq3xu"]
@@ -13,7 +13,7 @@ uv1_triplanar = true
 
 [node name="level_3" type="Node3D"]
 script = ExtResource("1_lrr0r")
-day_time = 16.0
+day_time = 18.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_eh8ap")

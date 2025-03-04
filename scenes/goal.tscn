@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bi8cvwjgsp55f"]
 
-[ext_resource type="Shader" path="res://shaders/goal_shader.gdshader" id="1_ihqpb"]
-[ext_resource type="Script" path="res://scripts/goal.gd" id="2_o3d4o"]
+[ext_resource type="Shader" uid="uid://c51n1ioqlcdga" path="res://shaders/goal_shader.gdshader" id="1_ihqpb"]
+[ext_resource type="Script" uid="uid://cmw54rqheilxr" path="res://scripts/goal.gd" id="2_o3d4o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q2w17"]
 render_priority = 0

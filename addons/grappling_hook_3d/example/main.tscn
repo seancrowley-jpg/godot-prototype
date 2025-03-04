@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2ns0ejqc0dlq"]
 
 [ext_resource type="PackedScene" uid="uid://micgwbpw0qyy" path="res://addons/grappling_hook_3d/example/player.tscn" id="1_eecwy"]
-[ext_resource type="Script" path="res://addons/grappling_hook_3d/example/moving_box.gd" id="2_1k06k"]
+[ext_resource type="Script" uid="uid://hivy02h6cpfw" path="res://addons/grappling_hook_3d/example/moving_box.gd" id="2_1k06k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2ip0h"]
 sky_top_color = Color(0, 0.482353, 0.992157, 1)

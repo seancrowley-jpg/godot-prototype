@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c8rt74yp8hx2m"]
 
-[ext_resource type="Script" path="res://scripts/enemy/spot_light.gd" id="1_6ta7i"]
+[ext_resource type="Script" uid="uid://jhmfg8s0xa30" path="res://scripts/enemy/spot_light.gd" id="1_6ta7i"]
 [ext_resource type="Texture2D" uid="uid://dko2pc0uq6pwf" path="res://assests/textures/grids/Green/texture_01.png" id="2_qiq6x"]
 [ext_resource type="Texture2D" uid="uid://bdw2j5kejiegc" path="res://assests/textures/grids/Dark/texture_01.png" id="3_umjpj"]
 

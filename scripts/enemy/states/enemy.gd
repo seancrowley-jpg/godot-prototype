@@ -37,7 +37,6 @@ extends CharacterBody3D
 @export var go_patrol: bool = false
 @export var use_random_patrol_path: bool = true
 
-
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
@@ -55,11 +54,9 @@ func _physics_process(delta) -> void:
 		alert = true
 		alert_timer.start()
 	move_and_slide()
-	
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
-	
 
 func _on_vision_timer_timeout():
 	var overlaps = detection_area.get_overlapping_bodies()
@@ -106,7 +103,6 @@ func _on_detection_body_exited(body):
 	if body is Player:
 		alert_timer.start(alert_timer_count)
 
-
 func _on_patrol_timer_timeout():
 	if use_random_patrol_path:
 		randPos = Vector3(randf_range(randXPosRange[0],randXPosRange[1]), position.y, randf_range(randZPosRange[0],randZPosRange[1]))
@@ -117,7 +113,6 @@ func _on_patrol_timer_timeout():
 		currentDestination = 0
 		
 	go_patrol = true
-
 
 func _on_sprint_sound_area_area_entered(area):
 	if area.name == "SprintSoundArea": 

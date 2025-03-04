@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cqhtliaqear0m"]
 
-[ext_resource type="Script" path="res://scripts/result_menu.gd" id="1_tkml0"]
+[ext_resource type="Script" uid="uid://dkuysoqw7ir71" path="res://scripts/result_menu.gd" id="1_tkml0"]
 
 [node name="result_menu" type="Control"]
 process_mode = 3
@@ -54,10 +54,9 @@ alignment = 1
 layout_mode = 2
 text = "Alerts:"
 
-[node name="AlertResultLabel" type="Label" parent="PanelContainer/VBoxContainer/AlertsHBoxContainer2"]
+[node name="AlertsResultLabel" type="Label" parent="PanelContainer/VBoxContainer/AlertsHBoxContainer2"]
 layout_mode = 2
-text = "0
-"
+text = "0"
 
 [node name="ButtonHBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

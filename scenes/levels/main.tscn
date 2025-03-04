@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://v4grtipktv4t"]
 
-[ext_resource type="Script" path="res://scripts/World.gd" id="1_quwq4"]
+[ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_quwq4"]
 [ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://env.tres" id="2_xwbyw"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="3_i6s4t"]
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="4_7nyyx"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d38xa30ruie15" path="res://assests/textures/grids/Dark/texture_12.png" id="9_er1el"]
 [ext_resource type="Texture2D" uid="uid://d2m8qf54p78pp" path="res://assests/textures/grids/Orange/texture_03.png" id="10_oi4eq"]
 [ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://assests/textures/grids/Orange/texture_01.png" id="11_tac1i"]
-[ext_resource type="Script" path="res://scripts/MovingPlatform.gd" id="12_w0kud"]
+[ext_resource type="Script" uid="uid://is53do7faoao" path="res://scripts/MovingPlatform.gd" id="12_w0kud"]
 [ext_resource type="PackedScene" uid="uid://payov3gcgm3b" path="res://scenes/platform.tscn" id="13_1e0ng"]
 [ext_resource type="PackedScene" uid="uid://cf42e2xkqcbew" path="res://scenes/spot_light.tscn" id="14_xlmyg"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemy.tscn" id="15_vtjth"]

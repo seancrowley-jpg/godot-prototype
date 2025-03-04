@@ -22,6 +22,5 @@ func show_screen():
 func load_next_level():
 	pass
 
-
 func _on_restart_button_pressed():
 	restart()

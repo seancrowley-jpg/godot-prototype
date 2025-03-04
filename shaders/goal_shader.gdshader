@@ -16,7 +16,7 @@ vec2 rotate(vec2 uv, vec2 pivot, float angle)
 {
 	mat2 rotation = mat2(vec2(sin(angle), -cos(angle)),
 						vec2(cos(angle), sin(angle)));
-	
+
 	uv -= pivot;
 	uv = uv * rotation;
 	uv += pivot;
@@ -36,7 +36,7 @@ void fragment() {
 		ROUGHNESS = 1.0;
 		RIM = 0.5;
 	}
-	
+
 	vec3 color;
 	color.r = sin(TIME * 2.0 + VERTEX.x);
 	color.g = sin(TIME * 4.0 + VERTEX.y);
