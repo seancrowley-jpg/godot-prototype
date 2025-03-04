@@ -280,9 +280,11 @@ transform = Transform3D(-4.17185e-08, -0.298508, 0.954407, -1.30482e-08, 0.95440
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("15_vtjth")]
 transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698, -32.6746, 1.86785, -40.6464)
+patrol_idle_timer_count = 5.0
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("15_vtjth")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.48454, 0, -44.1711)
+patrol_idle_timer_count = 3.0
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("15_vtjth")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.8303, 0, -44.1711)

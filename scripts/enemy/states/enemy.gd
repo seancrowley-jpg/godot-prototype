@@ -22,6 +22,7 @@ extends CharacterBody3D
 @export var fall_acceleration: float = 50
 @export var acceleration: float = 30.0
 @export var alert_timer_count: float = 2.0
+@export var patrol_idle_timer_count: float = 2.0
 
 @export_group("Enemy Patrol Range")
 @export var randXPosRange : Array = [0,0]
@@ -34,6 +35,7 @@ extends CharacterBody3D
 @export_group("Booleans")
 @export var alert : bool = false
 @export var alert_countdown: bool
+@export var enemey_can_patrol: bool = true
 @export var go_patrol: bool = false
 @export var use_random_patrol_path: bool = true
 
@@ -106,13 +108,14 @@ func _on_detection_body_exited(body):
 func _on_patrol_timer_timeout():
 	if use_random_patrol_path:
 		randPos = Vector3(randf_range(randXPosRange[0],randXPosRange[1]), position.y, randf_range(randZPosRange[0],randZPosRange[1]))
-
-	if currentDestination < enemeyDestinations.size() -1:
-		currentDestination += 1
-	else:
-		currentDestination = 0
 		
-	go_patrol = true
+	if enemeyDestinations:
+		if currentDestination < enemeyDestinations.size() -1:
+			currentDestination += 1
+		else:
+			currentDestination = 0
+	if enemey_can_patrol:
+		go_patrol = true
 
 func _on_sprint_sound_area_area_entered(area):
 	if area.name == "SprintSoundArea": 
