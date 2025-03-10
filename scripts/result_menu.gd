@@ -4,6 +4,7 @@ extends Control
 @onready var restart_button = $PanelContainer/VBoxContainer/ButtonHBoxContainer3/RestartButton
 @onready var main_menu_button = $PanelContainer/VBoxContainer/ButtonHBoxContainer3/MainMenuButton
 @onready var time_result_label = $PanelContainer/VBoxContainer/TimeHBoxContainer/TimeResultLabel
+@onready var alerts_result_label = $PanelContainer/VBoxContainer/AlertsHBoxContainer2/AlertsResultLabel
 
 func _ready() -> void:
 	next_button.pressed.connect(load_next_level)
@@ -14,13 +15,15 @@ func restart():
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	visible = false
+	GlobalVariables.level_alerts = 0
 
 func show_screen():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	visible = true
 	time_result_label.set_text(GlobalVariables.level_complete_time)
-
+	alerts_result_label.set_text(str(GlobalVariables.level_alerts))
+	GlobalVariables.total_alerts + GlobalVariables.level_alerts
 
 func load_next_level():
 	pass

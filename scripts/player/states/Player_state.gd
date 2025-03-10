@@ -109,7 +109,7 @@ func _physics_process(delta: float) -> void:
 		
 	if position.y < -50:
 		is_game_over = true
-		
+
 	#if on_ledge:
 		#var obj = ledge_raycast_1.get_collider()
 		#if obj is AnimatableBody3D:

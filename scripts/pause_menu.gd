@@ -28,3 +28,4 @@ func _unhandled_input(event):
 
 func _on_restart_pressed():
 	resume()
+	GlobalVariables.level_alerts = 0

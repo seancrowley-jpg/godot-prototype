@@ -11,6 +11,7 @@ func restart():
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	visible = false
+	GlobalVariables.level_alerts = 0
 	
 func show_screen():
 	get_tree().paused = true

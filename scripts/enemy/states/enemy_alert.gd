@@ -5,6 +5,7 @@ var idle_state: State
 func enter() -> void:
 	super()
 	parent.go_patrol = false
+	GlobalVariables.level_alerts += 1
 
 func process_physics(delta: float) -> State:
 	parent.move_toward_target_location(delta)
