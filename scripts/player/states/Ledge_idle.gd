@@ -22,7 +22,7 @@ func process_input(event: InputEvent) -> State:
 		parent.disbable_ledge_raycasts()
 		parent.raycast_timer.start()
 		return fall_state
-	elif Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
+	elif Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		return ledge_move
 	return null
 

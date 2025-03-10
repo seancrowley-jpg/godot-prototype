@@ -51,6 +51,20 @@ func process_physics(delta: float) -> State:
 	
 	return null
 
+func process_frame(delta: float) -> State:
+	parent.rotate_player_visuals(parent.wall_check_ray)
+	if !parent.wall_check_ray.is_colliding():
+		if Input.is_action_pressed("left"):
+			parent.playback.travel("y-bot free hang_Free hang left")
+		elif Input.is_action_pressed("right"):
+			parent.playback.travel("y-bot free hang_Free hang right")
+	else:
+		if Input.is_action_pressed("left"):
+			parent.playback.travel("hang shimmy animations_hang shimmy left")
+		elif Input.is_action_pressed("right"):
+			parent.playback.travel("hang shimmy animations_hang shimmy right")
+	return null
+
 func exit() -> void:
 	super()
 	parent.left_right_lock = false

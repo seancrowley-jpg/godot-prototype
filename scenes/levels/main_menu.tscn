@@ -4,9 +4,9 @@
 [ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://env.tres" id="2_fkd6t"]
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="3_keln3"]
 [ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/goal.tscn" id="4_crctu"]
-[ext_resource type="PackedScene" uid="uid://bxrq8de6yw7p8" path="res://scenes/main_menu_ui.tscn" id="5_fkd6t"]
-[ext_resource type="PackedScene" uid="uid://cf42e2xkqcbew" path="res://scenes/spot_light.tscn" id="6_crctu"]
-[ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemy.tscn" id="7_sn5u3"]
+[ext_resource type="PackedScene" uid="uid://bxrq8de6yw7p8" path="res://scenes/UI/main_menu_ui.tscn" id="5_fkd6t"]
+[ext_resource type="PackedScene" uid="uid://cf42e2xkqcbew" path="res://scenes/enemies/spot_light.tscn" id="6_crctu"]
+[ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="7_sn5u3"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_crctu"]
 vertices = PackedVector3Array(-6.65986, 0.5, -16.0986, -6.65986, 0.5, 1.90135, 9.59015, 0.5, 1.90135, 9.59015, 0.5, -16.0986)

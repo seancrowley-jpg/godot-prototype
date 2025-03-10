@@ -31,16 +31,13 @@ shadow_enabled = true
 [node name="Map" type="Node3D" parent="."]
 
 [node name="Floor" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 23.6771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6284, -0.5, 24.1291)
 material_override = SubResource("StandardMaterial3D_uvnin")
 use_collision = true
-size = Vector3(20, 1, 52.6458)
+size = Vector3(46.2568, 1, 51.7418)
 
 [node name="Walls" type="Node3D" parent="Map"]
-
-[node name="Wall" type="CSGBox3D" parent="Map/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52808, 0.509498, 49.9308)
-size = Vector3(20, 1, 0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0784, 0, 0)
 
 [node name="Wall2" type="CSGBox3D" parent="Map/Walls"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.33672, 0.509498, 39.8027)
@@ -50,5 +47,11 @@ size = Vector3(20, 1, 0.25)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.4034, 0.509498, 39.8027)
 size = Vector3(20, 1, 0.25)
 
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map/Walls"]
+
+[node name="Wall" type="CSGBox3D" parent="Map/Walls/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3599, 4.2953, 40.2796)
+size = Vector3(17.4771, 8.57159, 4.54565)
+
 [node name="Player" parent="." instance=ExtResource("4_csthc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.5022)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.72285, 0, 45.5022)

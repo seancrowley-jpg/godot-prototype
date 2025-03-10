@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://cf42e2xkqcbew"]
+
+[ext_resource type="Texture2D" uid="uid://djkmrtl2nfm3s" path="res://assests/textures/grids/Light/texture_13.png" id="1_jrcl7"]
+[ext_resource type="Script" uid="uid://jhmfg8s0xa30" path="res://scripts/enemy/spot_light.gd" id="1_l0r2i"]
+[ext_resource type="Texture2D" uid="uid://c3tsgpq3k48ho" path="res://assests/textures/grids/Dark/texture_02.png" id="2_ot7k8"]
+[ext_resource type="Texture2D" uid="uid://dko2pc0uq6pwf" path="res://assests/textures/grids/Green/texture_01.png" id="3_72b58"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n444p"]
+radius = 0.1
+height = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y176j"]
+albedo_color = Color(0.97315, 0.890989, 0.24152, 1)
+albedo_texture = ExtResource("1_jrcl7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3si3c"]
+albedo_texture = ExtResource("2_ot7k8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyl1k"]
+size = Vector3(0.14, 0.075, 0.375)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wi5ey"]
+albedo_texture = ExtResource("3_72b58")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dfcky"]
+top_radius = 5.0
+bottom_radius = 0.01
+height = 17.0
+radial_segments = 30
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n6csv"]
+points = PackedVector3Array(0, 8.5, 5, 0.831364, 5.09867, 3.91445, 1.03872, 8.5, 4.89037, -1.03969, 8.5, 4.89037, -0.832338, 5.09867, 3.91445, 0, -8.5, 0.00978851, 2.03363, 8.5, 4.56735, 0.209301, -5.10033, 0.985709, 0.815788, -1.70067, 1.83242, -2.0346, 8.5, 4.56735, -0.816762, -1.70067, 1.83242, -0.210275, -5.10033, 0.985709, -0.00486755, -8.5, 0.00880957, 0.00389385, -8.5, 0.00880957, 2.35196, 5.09867, 3.23708, 2.93801, 8.5, 4.04464, 0.00584078, -8.5, 0.0078311, -2.93898, 8.5, 4.04464, -2.35294, 5.09867, 3.23708, -0.00681448, -8.5, 0.0078311, 2.97403, 5.09867, 2.67717, 3.71486, 8.5, 3.34475, 0.00778818, -8.5, 0.00489426, 3.46564, 5.09867, 2.00078, 0.748617, -5.10033, 0.674432, -3.71583, 8.5, 3.34475, -2.975, 5.09867, 2.67717, -0.00876141, -8.5, 0.00489426, -0.749591, -5.10033, 0.674432, -3.46661, 5.09867, 2.00078, 4.3301, 8.5, 2.5, 0.00973511, -8.5, 0.000978947, 3.80539, 5.09867, 1.2363, -4.33108, 8.5, 2.49902, -0.0107083, -8.5, 0.000978947, -4.75552, 8.5, 1.54464, -3.80636, 5.09867, 1.2363, 4.75455, 8.5, 1.54464, 0.00973511, -8.5, -0.00195789, 4.97261, 8.5, 0.52173, 3.97965, 5.09867, 0.417972, -0.0107083, -8.5, -0.00195789, -3.98062, 5.09867, 0.417972, -4.97261, 8.5, 0.52173, 0.00778818, -8.5, -0.0058732, 3.46564, 5.09867, -2.00176, 3.80539, 5.09867, -1.23727, 3.97965, 5.09867, -0.418951, 4.97261, 8.5, -0.522709, -0.00876141, -8.5, -0.0058732, -3.98062, 5.09867, -0.418951, -3.80636, 5.09867, -1.23727, -3.46661, 5.09867, -2.00176, -4.97261, 8.5, -0.522709, 0.00584078, -8.5, -0.00880957, 2.97403, 5.09867, -2.67815, 4.3301, 8.5, -2.50098, 0.748617, -5.10033, -0.675411, 4.75455, 8.5, -1.54561, -0.00681448, -8.5, -0.00880957, -4.75552, 8.5, -1.54561, -4.33108, 8.5, -2.5, -2.975, 5.09867, -2.67815, -0.749591, -5.10033, -0.675411, 0.00389385, -8.5, -0.00978851, 0.815788, -1.70067, -1.8334, 2.35196, 5.09867, -3.23806, 2.93801, 8.5, -4.04561, 3.71486, 8.5, -3.34573, -0.816762, -1.70067, -1.8334, -0.00486755, -8.5, -0.00978851, -2.35294, 5.09867, -3.23806, -3.71583, 8.5, -3.34573, -2.93898, 8.5, -4.04561, 0, -8.5, -0.0107675, 0.209301, -5.10033, -0.986688, 0.831364, 5.09867, -3.91543, 2.03363, 8.5, -4.56832, -0.210275, -5.10033, -0.986688, -2.0346, 8.5, -4.56832, -0.832338, 5.09867, -3.91543, 0, 5.09867, -4.00254, 1.03872, 8.5, -4.89135, -1.03969, 8.5, -4.89135, 0, 8.5, -5)
+
+[node name="SpotLight" type="CharacterBody3D" node_paths=PackedStringArray("detection_area", "detection_ray_cast", "light") groups=["Spotlights"]]
+script = ExtResource("1_l0r2i")
+detection_area = NodePath("Light/Detection")
+detection_ray_cast = NodePath("Light/DetectionRayCast")
+light = NodePath("Light")
+
+[node name="Pole" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_n444p")
+
+[node name="CSGBox3D" type="CSGCylinder3D" parent="Pole"]
+radius = 0.1
+height = 5.0
+sides = 10
+material = SubResource("StandardMaterial3D_y176j")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Pole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5059, 0)
+radius = 0.1
+material = SubResource("StandardMaterial3D_3si3c")
+
+[node name="Light" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978293, 0.207229, 0, -0.207229, 0.978293, 0, 3.61385, -0.00713648)
+shape = SubResource("BoxShape3D_yyl1k")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, 0.961836, 0.273623, 0, -0.273623, 0.961836, 0, -0.00564313, -0.186177)
+light_color = Color(1, 0.923145, 0.614473, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 10.0
+light_specular = 16.0
+shadow_enabled = true
+spot_range = 17.67
+spot_angle = 16.0
+spot_angle_attenuation = 0.00037005
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Light"]
+size = Vector3(0.14, 0.075, 0.375)
+material = SubResource("StandardMaterial3D_wi5ey")
+
+[node name="Detection" type="Area3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, 0.958681, 0.284484, 0, -0.284484, 0.958681, 0, 0.0564549, -0.162609)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Light/Detection"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, -0.0361643, -8.51667)
+visible = false
+mesh = SubResource("CylinderMesh_dfcky")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Light/Detection"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, -0.0361643, -8.51667)
+shape = SubResource("ConvexPolygonShape3D_n6csv")
+
+[node name="DetectionRayCast" type="RayCast3D" parent="Light"]
+transform = Transform3D(1, 0, 0, 0, 0.972614, 0.232427, 0, -0.232427, 0.972614, 0, 0.00147414, -0.178045)
+target_position = Vector3(0, 0, -100)
+
+[node name="VisionTimer" type="Timer" parent="."]
+wait_time = 0.15
+autostart = true
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5578, -0.219063)
+
+[connection signal="body_entered" from="Light/Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Light/Detection" to="." method="_on_detection_body_exited"]
+[connection signal="timeout" from="VisionTimer" to="." method="_on_vision_timer_timeout"]

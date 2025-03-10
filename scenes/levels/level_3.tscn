@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d223qxjvy58hj" path="res://assests/textures/grids/Dark/texture_09.png" id="4_pimnq"]
 [ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://assests/textures/grids/Orange/texture_01.png" id="5_2bnyt"]
 [ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/goal.tscn" id="5_nmstp"]
-[ext_resource type="PackedScene" uid="uid://c8rt74yp8hx2m" path="res://scenes/security_camera.tscn" id="6_cyegc"]
-[ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemy.tscn" id="6_pimnq"]
+[ext_resource type="PackedScene" uid="uid://c8rt74yp8hx2m" path="res://scenes/enemies/security_camera.tscn" id="6_cyegc"]
+[ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="6_pimnq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2bnyt"]
 vertices = PackedVector3Array(-0.0128804, 14.75, 1.40743, -0.0128804, 14.75, 3.65743, 1.48712, 14.75, 3.65743, 1.48712, 14.75, 1.40743, -1.01288, 6, 4.40743, -1.01288, 6, 6.15743, -0.51288, 6, 6.40743, 2.48712, 6, 4.40743, -0.51288, 6, 10.9074, 2.48712, 6, 10.9074, -0.51288, 6, 19.1574, -0.51288, 6, 29.4074, 16.9871, 6, 29.4074, 16.9871, 6, 19.1574, 17.9871, 3.5, 19.1574, 17.9871, 3.5, 29.4074, 25.2371, 3.5, 29.4074, 25.2371, 3.5, 19.1574, -0.51288, 0.5, 42.6574, 5.48712, 0.5, 42.6574, 5.73712, 0.5, 40.4074, -0.51288, 0.5, 30.4074, 24.9871, 0.5, 40.4074, 24.9871, 0.5, 30.4074, 6.48712, 6.5, 41.4074, 6.48712, 6.5, 49.4074, 25.2371, 6.5, 49.4074, 25.2371, 6.5, 41.4074, 6.73712, 0.5, 41.6574, 6.73712, 0.5, 49.1574, 24.9871, 0.5, 49.1574, 24.9871, 0.5, 41.6574, -0.51288, 0.5, 49.1574, 5.48712, 0.5, 49.1574)
