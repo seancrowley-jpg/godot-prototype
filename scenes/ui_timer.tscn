@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://mjs85adnb416"]
+
+[ext_resource type="Script" uid="uid://cqc47a3xtkuw7" path="res://scripts/ui_timer.gd" id="1_ba358"]
+
+[node name="ui_timer" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+script = ExtResource("1_ba358")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 86.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 8.0
+offset_right = 84.0
+offset_bottom = 31.0
+text = "00 : 00 : 00"
+horizontal_alignment = 1

@@ -36,7 +36,7 @@ func process_input(event: InputEvent) -> State:
 		if parent.is_crouching:
 			return crouch_walk_state
 		else:
-			run_state
+			return run_state
 	elif Input.is_action_just_pressed("crouch"):
 		if parent.is_crouching:
 			parent.playback.travel("cover idle")

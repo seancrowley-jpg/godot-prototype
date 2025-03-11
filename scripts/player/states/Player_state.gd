@@ -42,6 +42,7 @@ extends CharacterBody3D
 @export var pause_menu: Control
 @export var game_over_menu: Control
 @export var results_menu: Control
+@export var ui_timer: Control
 
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals
@@ -197,16 +198,15 @@ func _enable_raycast_timer_timeout():
 func rotate_player_visuals(raycast: Node3D):
 	var rot = -(atan2(raycast.get_collision_normal().z, raycast.get_collision_normal().x) - PI/2)
 	visuals.rotation.y = lerp_angle(rotation.y, rot, 1)
-	pass
 
 func pull_player_toward_obj(raycast: Node3D):
 	if!cover_shapecast.is_colliding():
 		var obj = raycast.get_collision_point()
 		velocity = Vector3((position.x - obj.x) * -1, 0, (position.z - obj.z) * -1)
 		move_and_slide()
+		
 	else:
 		velocity = Vector3.ZERO
-	
 
 #Functions called in Sprint Animation Tracks
 func foot_step_sound_start():

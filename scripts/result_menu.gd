@@ -3,6 +3,7 @@ extends Control
 @onready var next_button = $PanelContainer/VBoxContainer/ButtonHBoxContainer3/NextButton
 @onready var restart_button = $PanelContainer/VBoxContainer/ButtonHBoxContainer3/RestartButton
 @onready var main_menu_button = $PanelContainer/VBoxContainer/ButtonHBoxContainer3/MainMenuButton
+@onready var time_result_label = $PanelContainer/VBoxContainer/TimeHBoxContainer/TimeResultLabel
 
 func _ready() -> void:
 	next_button.pressed.connect(load_next_level)
@@ -18,6 +19,8 @@ func show_screen():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	visible = true
+	time_result_label.set_text(GlobalVariables.level_complete_time)
+
 
 func load_next_level():
 	pass
