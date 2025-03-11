@@ -51,6 +51,7 @@ extends CharacterBody3D
 @onready var spring_arm_3d = $camera_mount/SpringArm3D
 @onready var state_machine = $state_machine
 @onready var remote_transform_3d = $RemoteTransform3D
+@onready var first_person_camera_3d = $FisrtPersonCamera/Camera3D
 
 #Grpple Hook
 @export var hook_raycast: RayCast3D
@@ -109,6 +110,15 @@ func _physics_process(delta: float) -> void:
 		
 	if position.y < -50:
 		is_game_over = true
+		
+	print(GlobalVariables.vent_entered)
+		
+	if GlobalVariables.vent_entered:
+		first_person_camera_3d.current = true
+		visuals.visible = false
+	else:
+		first_person_camera_3d.current = false
+		visuals.visible = true
 
 	#if on_ledge:
 		#var obj = ledge_raycast_1.get_collider()
