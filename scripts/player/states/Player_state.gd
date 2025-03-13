@@ -110,9 +110,7 @@ func _physics_process(delta: float) -> void:
 		
 	if position.y < -50:
 		is_game_over = true
-		
-	print(GlobalVariables.vent_entered)
-		
+
 	if GlobalVariables.vent_entered:
 		first_person_camera_3d.current = true
 		visuals.visible = false
