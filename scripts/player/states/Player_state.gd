@@ -117,6 +117,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		first_person_camera_3d.current = false
 		visuals.visible = true
+		
+
 
 	#if on_ledge:
 		#var obj = ledge_raycast_1.get_collider()
