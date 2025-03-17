@@ -12,6 +12,7 @@ extends CharacterBody3D
 @export var alert_timer : Timer
 @export var patrol_timer : Timer
 @export var sprint_sound_area: Area3D
+@export var catch_player_area: Area3D
 
 @onready var randPos : Vector3
 @onready var playback  = animation_tree["parameters/playback"]

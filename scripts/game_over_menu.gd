@@ -12,6 +12,7 @@ func restart():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	visible = false
 	GlobalVariables.level_alerts = 0
+	GlobalVariables.is_game_over = false
 	
 func show_screen():
 	get_tree().paused = true
@@ -20,3 +21,7 @@ func show_screen():
 
 func _on_restart_pressed():
 	restart()
+
+
+func _on_main_menu_button_pressed():
+	GlobalVariables.is_game_over = false

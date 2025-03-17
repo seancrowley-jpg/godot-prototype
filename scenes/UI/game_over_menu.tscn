@@ -49,3 +49,4 @@ text = "Main Menu
 "
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonHBoxContainer3/RestartButton" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonHBoxContainer3/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

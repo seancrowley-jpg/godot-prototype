@@ -24,3 +24,8 @@ func _on_navigation_agent_3d_target_reached():
 	
 func exit() -> void:
 	parent.velocity = Vector3.ZERO
+
+
+func _on_catch_player_area_3d_body_entered(body):
+	if body.name == "Player" and parent.alert:
+		GlobalVariables.is_game_over = true

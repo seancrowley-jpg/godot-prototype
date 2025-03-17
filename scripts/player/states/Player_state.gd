@@ -63,7 +63,6 @@ var is_crouching: bool = false
 var idle_animations: Array = ["idle 1","idle 3","idle 2"]
 var left_right_lock: bool = false
 var on_ledge: bool = false
-var is_game_over : bool
 
 const HOOK_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_availible.png")
 const HOOK_NOT_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_not_availible.png")
@@ -109,7 +108,7 @@ func _physics_process(delta: float) -> void:
 		sprint_sound_area.monitorable = false
 		
 	if position.y < -50:
-		is_game_over = true
+		GlobalVariables.is_game_over = true
 
 	if GlobalVariables.vent_entered:
 		first_person_camera_3d.current = true
@@ -134,7 +133,7 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	zoom(delta)
 	cam_switch(delta)
-	if is_game_over:
+	if GlobalVariables.is_game_over:
 		game_over_menu.show_screen()
 	if GlobalVariables.goal_reached:
 		results_menu.show_screen()
