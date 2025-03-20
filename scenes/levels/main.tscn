@@ -1,13 +1,13 @@
 [gd_scene load_steps=27 format=3 uid="uid://v4grtipktv4t"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_quwq4"]
-[ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://env.tres" id="2_xwbyw"]
+[ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://resources/level_envs/env.tres" id="2_xwbyw"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="3_i6s4t"]
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="4_7nyyx"]
 [ext_resource type="Texture2D" uid="uid://b58xv1joypxo5" path="res://assests/textures/grids/Orange/texture_09.png" id="5_56icl"]
 [ext_resource type="Texture2D" uid="uid://cm5m7nr7dugjd" path="res://assests/textures/grids/Purple/texture_09.png" id="6_rgeeh"]
 [ext_resource type="Texture2D" uid="uid://djg8y25y06h5n" path="res://assests/textures/grids/Green/texture_09.png" id="7_404df"]
-[ext_resource type="Material" uid="uid://ds1j28u417n1v" path="res://arch_grid.tres" id="8_rpr8s"]
+[ext_resource type="Material" uid="uid://ds1j28u417n1v" path="res://resources/arch_grid.tres" id="8_rpr8s"]
 [ext_resource type="Texture2D" uid="uid://d38xa30ruie15" path="res://assests/textures/grids/Dark/texture_12.png" id="9_er1el"]
 [ext_resource type="Texture2D" uid="uid://d2m8qf54p78pp" path="res://assests/textures/grids/Orange/texture_03.png" id="10_oi4eq"]
 [ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://assests/textures/grids/Orange/texture_01.png" id="11_tac1i"]
@@ -284,7 +284,7 @@ affect_navigation_mesh = true
 [node name="Enemies" type="Node3D" parent="." groups=["Enemies"]]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("15_vtjth")]
-transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698, -32.6746, 1.86785, -40.6464)
+transform = Transform3D(0.0022698, 0, -0.999991, 0, 1, 0, 0.999991, 0, 0.0022698, -32.6746, -0.00194252, -40.6464)
 patrol_idle_timer_count = 5.0
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("15_vtjth")]

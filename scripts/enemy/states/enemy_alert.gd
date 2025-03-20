@@ -8,12 +8,14 @@ func enter() -> void:
 	GlobalVariables.level_alerts += 1
 
 func process_physics(delta: float) -> State:
-	parent.move_toward_target_location(delta)
+	#parent.move_toward_target_location(delta)
 	
 	if parent.navigation_agent_3d.is_target_reached():
 		return idle_state
 		
-	if !parent.navigation_agent_3d.is_target_reachable():
+	if parent.navigation_agent_3d.is_target_reachable():
+		parent.move_toward_target_location(delta)
+	else:
 		return idle_state
 	
 	return null

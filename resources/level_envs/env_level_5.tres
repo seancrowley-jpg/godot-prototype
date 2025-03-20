@@ -1,0 +1,59 @@
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://d152ct1qrocc"]
+
+[ext_resource type="Shader" uid="uid://duihtxppe2r0d" path="res://shaders/sky_shader.gdshader" id="1_87v15"]
+[ext_resource type="Texture2D" uid="uid://bt3cevpsfc4e0" path="res://assests/stars.png" id="2_4q6g6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cusq"]
+shader = ExtResource("1_87v15")
+shader_parameter/day_top_color = Color(0.1, 0.6, 1, 1)
+shader_parameter/day_bottom_color = Color(0, 0, 0, 1)
+shader_parameter/sunset_top_color = Color(0, 0, 0, 1)
+shader_parameter/sunset_bottom_color = Color(0, 0, 0, 1)
+shader_parameter/night_top_color = Color(0, 0, 0, 1)
+shader_parameter/night_bottom_color = Color(0, 0, 0, 1)
+shader_parameter/horizon_color = Color(0, 0, 0, 1)
+shader_parameter/horizon_blur = 0.05
+shader_parameter/sun_color = Color(0, 0.537255, 0.705882, 1)
+shader_parameter/sun_sunset_color = Color(0.12549, 0.537255, 0.729412, 1)
+shader_parameter/sun_size = 0.2
+shader_parameter/sun_blur = 17.786
+shader_parameter/moon_color = Color(0.863316, 0.964717, 1, 1)
+shader_parameter/moon_size = 0.06
+shader_parameter/moon_blur = 0.1
+shader_parameter/clouds_edge_color = Color(2.59906e-06, 0.563392, 0.67925, 1)
+shader_parameter/clouds_top_color = Color(3.85046e-07, 0.720374, 0.891059, 1)
+shader_parameter/clouds_middle_color = Color(4.81308e-06, 0.724598, 0.925181, 1)
+shader_parameter/clouds_bottom_color = Color(1.92523e-07, 0.416257, 0.519996, 1)
+shader_parameter/clouds_speed = 0.42
+shader_parameter/clouds_direction = 0.2
+shader_parameter/clouds_scale = 3.02
+shader_parameter/clouds_cutoff = 0.34
+shader_parameter/clouds_fuzziness = 0.0
+shader_parameter/clouds_weight = 0.0
+shader_parameter/clouds_blur = 1.0
+shader_parameter/stars_texture = ExtResource("2_4q6g6")
+shader_parameter/stars_speed = 2.0
+shader_parameter/overwritten_time = 0.0
+
+[sub_resource type="Sky" id="Sky_ja6a7"]
+sky_material = SubResource("ShaderMaterial_7cusq")
+
+[resource]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_ja6a7")
+ambient_light_source = 3
+ambient_light_color = Color(0.767215, 0.483939, 0.140222, 1)
+reflected_light_source = 2
+tonemap_mode = 3
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_energy = 0.7
+fog_mode = 1
+fog_density = 0.2661
+volumetric_fog_detail_spread = 1.6245
+volumetric_fog_ambient_inject = 1.58
+volumetric_fog_sky_affect = 0.633
+adjustment_enabled = true
+adjustment_contrast = 1.1
+adjustment_saturation = 1.3
