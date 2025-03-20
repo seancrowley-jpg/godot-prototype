@@ -13,9 +13,10 @@ func process_physics(delta: float) -> State:
 		parent.navigation_agent_3d.target_position = parent.randPos
 	else:
 		parent.navigation_agent_3d.target_position = parent.enemeyDestinations[parent.currentDestination]
-	parent.move_toward_target_location(delta)
-	if parent.navigation_agent_3d.is_target_reached():
+	if parent.navigation_agent_3d.is_navigation_finished():
 		return idle_state
+	else:
+		parent.move_toward_target_location(delta)
 	return null
 
 

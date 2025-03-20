@@ -94,9 +94,14 @@ func move_toward_target_location(delta):
 	var direction = local_destination.normalized()
 	look_at_player(0.2, direction + destination)
 	if go_patrol:
-		velocity  = velocity.move_toward(direction* WALK_SPEED, acceleration * delta)
+		#velocity  = velocity.move_toward(direction* WALK_SPEED, acceleration * delta)
+		navigation_agent_3d.set_velocity(velocity.move_toward(direction* WALK_SPEED, acceleration * delta))
 	else:
-		velocity  = velocity.move_toward(direction* SPEED, acceleration * delta)
+		#velocity  = velocity.move_toward(direction* SPEED, acceleration * delta)
+		navigation_agent_3d.set_velocity(velocity.move_toward(direction* SPEED, acceleration * delta))
+		
+func _on_navigation_agent_3d_velocity_computed(safe_velocity):
+	velocity = safe_velocity
 
 func _on_alert_timer_timeout():
 	alert = false
