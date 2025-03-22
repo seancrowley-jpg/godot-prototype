@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://gqdulcr23l81" path="res://scripts/vent_camera_switch.gd" id="5_hldbq"]
 [ext_resource type="PackedScene" uid="uid://cf42e2xkqcbew" path="res://scenes/enemies/spot_light.tscn" id="6_vvoq0"]
 [ext_resource type="PackedScene" uid="uid://c8rt74yp8hx2m" path="res://scenes/enemies/security_camera.tscn" id="8_mxx4w"]
-[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="10_tqnj0"]
+[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/goal.tscn" id="10_tqnj0"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="11_dwyms"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_6xwso"]
@@ -50,7 +50,6 @@ size = Vector3(14.3297, 2.03442, 12.1509)
 script = ExtResource("1_laj7o")
 day_time = 15.3415
 clouds_weight = 0.25
-time_scale = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_dwyms")
@@ -58,7 +57,6 @@ environment = ExtResource("2_dwyms")
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.827116, 0, -0.562031, 0.289131, -0.857527, 0.425501, -0.481957, -0.51444, -0.709274, 0, 0, 0)
 rotation_order = 4
-light_color = Color(0, 0.537255, 0.705882, 1)
 light_energy = 0.6
 shadow_enabled = true
 
@@ -531,8 +529,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0989, -0.254401, -0.711595
 clamp_light_angle = false
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="spotlights/SpotLight2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059, 0.014, -0.102)
-radius = 0.8
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587769, 1.1237, -0.10177)
+radius = 1.15
 
 [node name="CSGBox3D" type="CSGBox3D" parent="spotlights/SpotLight2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587769, 1.1237, -0.10177)

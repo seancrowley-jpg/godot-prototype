@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://dqxobkx2xtnmf"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_ogj6a"]
-[ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://resources/level_envs/env.tres" id="2_anwe6"]
+[ext_resource type="Environment" uid="uid://bfl7mj71xuirw" path="res://resources/level_envs/env_level_4.tres" id="2_4wsov"]
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="3_rej77"]
 [ext_resource type="Texture2D" uid="uid://bdw2j5kejiegc" path="res://assests/textures/grids/Dark/texture_01.png" id="4_4wsov"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="4_5vn0v"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://hu5rfl6qr2nv" path="res://assests/textures/grids/Red/texture_09.png" id="5_qvnao"]
 [ext_resource type="Material" uid="uid://ds1j28u417n1v" path="res://resources/arch_grid.tres" id="6_rej77"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="7_5vn0v"]
-[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/goal.tscn" id="8_ts8eg"]
+[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="8_ts8eg"]
 [ext_resource type="PackedScene" uid="uid://c8rt74yp8hx2m" path="res://scenes/enemies/security_camera.tscn" id="9_um320"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ts8eg"]
@@ -54,14 +54,18 @@ size = Vector3(5, 2, 4.01)
 
 [node name="level_4" type="Node3D"]
 script = ExtResource("1_ogj6a")
-day_time = 18.0
+day_time = 5.8992
+clouds_cutoff = 0.25
+clouds_weight = 1.0
+time_scale = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_anwe6")
+environment = ExtResource("2_4wsov")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.827116, 0, -0.562031, 0.289131, -0.857527, 0.425501, -0.481957, -0.51444, -0.709274, 0, 0, 0)
 rotation_order = 4
+light_color = Color(0.984314, 0.27451, 0.517647, 1)
 light_energy = 0.6
 shadow_enabled = true
 
@@ -257,9 +261,10 @@ mesh = SubResource("PrismMesh_rej77")
 skeleton = NodePath("../../..")
 
 [node name="NavigationLink3D" type="NavigationLink3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.96046e-08, 0)
 bidirectional = false
-start_position = Vector3(-7.915, 5.282, -0.512)
-end_position = Vector3(-7.91509, 0.0175632, -1.56593)
+start_position = Vector3(-7.79167, 5.4816, -1.54846)
+end_position = Vector3(-7.899, 0.001, -1.401)
 
 [node name="Player" parent="." instance=ExtResource("4_5vn0v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.74315, 0, 45.5022)

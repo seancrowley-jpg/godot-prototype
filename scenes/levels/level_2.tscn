@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://ric3ywkdk6pd"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_xhvv7"]
-[ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://resources/level_envs/env.tres" id="2_npvnt"]
+[ext_resource type="Environment" uid="uid://7v16cwaoe7cb" path="res://resources/level_envs/env_level_2.tres" id="2_8qukl"]
 [ext_resource type="Texture2D" uid="uid://hy5dnopmobtg" path="res://assests/textures/grids/Red/texture_01.png" id="3_qkpwe"]
 [ext_resource type="Texture2D" uid="uid://dwucoebdqsmqd" path="res://assests/textures/grids/Dark/texture_10.png" id="4_bmt7u"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="4_r4f6y"]
-[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/goal.tscn" id="5_g02vv"]
+[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="5_g02vv"]
 [ext_resource type="PackedScene" uid="uid://cf42e2xkqcbew" path="res://scenes/enemies/spot_light.tscn" id="6_mri78"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="7_wg8ob"]
 
@@ -25,16 +25,17 @@ uv1_triplanar = true
 [node name="level_2" type="Node3D"]
 script = ExtResource("1_xhvv7")
 day_time = 15.0
-clouds_cutoff = 0.48
-clouds_weight = 0.32
+clouds_cutoff = 0.45
+clouds_weight = 0.22
 time_scale = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_npvnt")
+environment = ExtResource("2_8qukl")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.827116, 0, -0.562031, 0.289131, -0.857527, 0.425501, -0.481957, -0.51444, -0.709274, 0, 0, 0)
 rotation_order = 4
+light_color = Color(0.996078, 0.811765, 0.290196, 1)
 light_energy = 0.6
 shadow_enabled = true
 

@@ -3,6 +3,7 @@ extends Control
 @onready var resume_button = $PanelContainer/VBoxContainer/Resume
 @onready var restart_button = $PanelContainer/VBoxContainer/Restart
 @onready var quit_button = $PanelContainer/VBoxContainer/Quit
+@onready var main_menu = $PanelContainer/VBoxContainer/MainMenu
 
 func _ready() -> void:
 	resume_button.pressed.connect(resume)
@@ -25,7 +26,10 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("ui_cancel") and get_tree().paused:
 		resume()
 
-
 func _on_restart_pressed():
 	resume()
 	GlobalVariables.level_alerts = 0
+
+func _on_main_menu_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")

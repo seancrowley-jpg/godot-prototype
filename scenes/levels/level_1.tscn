@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c8upf6osvdwx5" path="res://assests/textures/grids/Orange/texture_05.png" id="3_i856m"]
 [ext_resource type="Texture2D" uid="uid://iutfrfog8qoe" path="res://assests/textures/grids/Light/texture_02.png" id="4_ljrle"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="4_y3ib5"]
-[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/goal.tscn" id="5_idppr"]
+[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="5_idppr"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="7_0cnsr"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_m543g"]

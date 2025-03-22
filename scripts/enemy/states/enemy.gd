@@ -49,6 +49,8 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	state_machine.process_physics(delta)
 	rotation.x = 0  #Stop enemies from bobing up and down when moving
+	if !is_on_floor():
+		velocity.y -= fall_acceleration * delta
 	
 	if not is_on_floor():
 		velocity.y -= fall_acceleration * delta

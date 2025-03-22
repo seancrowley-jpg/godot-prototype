@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://djc5ewwio6mns"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_lrr0r"]
-[ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://resources/level_envs/env.tres" id="2_eh8ap"]
+[ext_resource type="Environment" uid="uid://bpbm2tlyiky6m" path="res://resources/level_envs/env_level_3.tres" id="2_pimnq"]
 [ext_resource type="Texture2D" uid="uid://djkmrtl2nfm3s" path="res://assests/textures/grids/Light/texture_13.png" id="3_ugcn1"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="4_oq3xu"]
 [ext_resource type="Texture2D" uid="uid://d223qxjvy58hj" path="res://assests/textures/grids/Dark/texture_09.png" id="4_pimnq"]
 [ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://assests/textures/grids/Orange/texture_01.png" id="5_2bnyt"]
-[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/goal.tscn" id="5_nmstp"]
+[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="5_nmstp"]
 [ext_resource type="PackedScene" uid="uid://c8rt74yp8hx2m" path="res://scenes/enemies/security_camera.tscn" id="6_cyegc"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="6_pimnq"]
 
@@ -29,14 +29,15 @@ uv1_triplanar = true
 
 [node name="level_3" type="Node3D"]
 script = ExtResource("1_lrr0r")
-day_time = 16.5
+day_time = 15.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_eh8ap")
+environment = ExtResource("2_pimnq")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.827116, 0, -0.562031, 0.289131, -0.857527, 0.425501, -0.481957, -0.51444, -0.709274, 0, 0, 0)
 rotation_order = 4
+light_color = Color(0.972549, 0.596078, 0.380392, 1)
 light_energy = 0.6
 shadow_enabled = true
 

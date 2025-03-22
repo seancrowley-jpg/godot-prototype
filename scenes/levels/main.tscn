@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://payov3gcgm3b" path="res://scenes/platform.tscn" id="13_1e0ng"]
 [ext_resource type="PackedScene" uid="uid://cf42e2xkqcbew" path="res://scenes/enemies/spot_light.tscn" id="14_xlmyg"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="15_vtjth"]
-[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/goal.tscn" id="16_6k05c"]
+[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="16_6k05c"]
 [ext_resource type="PackedScene" uid="uid://c8rt74yp8hx2m" path="res://scenes/enemies/security_camera.tscn" id="17_p7bbc"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_na0ea"]

@@ -5,7 +5,6 @@ extends Control
 
 func _ready() -> void:
 	restart_button.pressed.connect(get_tree().reload_current_scene)
-	main_menu_button.pressed.connect(get_tree().quit)
 
 func restart():
 	get_tree().paused = false
@@ -22,6 +21,7 @@ func show_screen():
 func _on_restart_pressed():
 	restart()
 
-
 func _on_main_menu_button_pressed():
 	GlobalVariables.is_game_over = false
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
