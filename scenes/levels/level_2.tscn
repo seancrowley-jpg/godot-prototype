@@ -91,12 +91,12 @@ use_collision = true
 size = Vector3(7.30603, 5.50073, 4.24646)
 
 [node name="Wall9" type="CSGBox3D" parent="NavigationRegion3D/Map/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.112, 5.45462, 15.0198)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.10658, 5.45462, 15.0573)
 material_overlay = SubResource("StandardMaterial3D_n6eey")
 use_collision = true
 collision_layer = 6
 collision_mask = 6
-size = Vector3(7.6741, 0.111205, 0.314232)
+size = Vector3(7.5506, 0.111205, 0.313935)
 
 [node name="Wall5" type="CSGBox3D" parent="NavigationRegion3D/Map/Walls"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.4054, 1.52476, 24.3232)
@@ -111,7 +111,7 @@ use_collision = true
 size = Vector3(8.64563, 6.19641, 19.4011)
 
 [node name="Wall8" type="CSGBox3D" parent="NavigationRegion3D/Map/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.3303, 7.6687, 18.3732)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.33, 7.649, 18.373)
 material_override = SubResource("StandardMaterial3D_2bnyt")
 use_collision = true
 size = Vector3(22.9462, 4.25169, 0.236079)

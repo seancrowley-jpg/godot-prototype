@@ -13,7 +13,7 @@ var grapple_state: State
 
 func enter() -> void:
 	super()
-	
+
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_pressed("Hook") and parent.hook_raycast.is_colliding():
 			return grapple_state

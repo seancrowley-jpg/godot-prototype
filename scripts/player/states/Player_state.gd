@@ -104,7 +104,7 @@ func _physics_process(delta: float) -> void:
 		crosshair.texture = HOOK_NOT_AVAILIBLE_TEXTURE
 	
 	#Prevents Sprint Sound Detection Area from staying monitorable
-	if playback.get_current_node() != "sprint":
+	if playback.get_current_node() != "sprint" and playback.get_current_node() != "running":
 		sprint_sound_area.monitorable = false
 		
 	if position.y < -50:
@@ -117,6 +117,7 @@ func _physics_process(delta: float) -> void:
 		first_person_camera_3d.current = false
 		visuals.visible = true
 		
+	print(sprint_sound_area.monitorable)
 
 
 	#if on_ledge:
