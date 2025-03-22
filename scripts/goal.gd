@@ -5,5 +5,4 @@ func _ready():
 #When player reaches Goal
 func _on_area_3d_body_entered(body):
 	if body is Player:
-		print("Goal Reached")
 		GlobalVariables.goal_reached = true

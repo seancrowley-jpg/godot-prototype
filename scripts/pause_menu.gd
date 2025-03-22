@@ -21,10 +21,11 @@ func pause():
 	visible = true
 	
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_cancel") and !get_tree().paused:
-		pause()
-	elif event.is_action_pressed("ui_cancel") and get_tree().paused:
-		resume()
+	if not GlobalVariables.is_game_over and not GlobalVariables.goal_reached:
+		if event.is_action_pressed("ui_cancel") and not get_tree().paused:
+			pause()
+		elif event.is_action_pressed("ui_cancel") and get_tree().paused:
+			resume()
 
 func _on_restart_pressed():
 	resume()
