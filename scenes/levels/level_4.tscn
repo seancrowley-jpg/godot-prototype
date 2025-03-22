@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dqxobkx2xtnmf"]
+[gd_scene load_steps=23 format=3 uid="uid://dqxobkx2xtnmf"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_ogj6a"]
 [ext_resource type="Environment" uid="uid://bfl7mj71xuirw" path="res://resources/level_envs/env_level_4.tres" id="2_4wsov"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://hu5rfl6qr2nv" path="res://assests/textures/grids/Red/texture_09.png" id="5_qvnao"]
 [ext_resource type="Material" uid="uid://ds1j28u417n1v" path="res://resources/arch_grid.tres" id="6_rej77"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="7_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://cqwrlky66rtvd" path="res://scenes/motion_floor_light.tscn" id="7_qvnao"]
 [ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="8_ts8eg"]
 [ext_resource type="PackedScene" uid="uid://c8rt74yp8hx2m" path="res://scenes/enemies/security_camera.tscn" id="9_um320"]
 
@@ -224,13 +225,54 @@ radius = 1.0
 height = 11.6232
 sides = 32
 
-[node name="SpotLight3D" type="SpotLight3D" parent="NavigationRegion3D/Map/Walls/Arch"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.22898, 4.23599, -0.436674)
-shadow_enabled = true
-distance_fade_enabled = true
-spot_range = 10.133
-spot_angle = 73.91
-spot_angle_attenuation = 0.25
+[node name="floor_lights" type="Node3D" parent="NavigationRegion3D/Map/Walls/Arch"]
+
+[node name="left_lights" type="Node3D" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights"]
+
+[node name="motion_floor_light" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/left_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, 2.76759)
+
+[node name="motion_floor_light2" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/left_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, 4.94006)
+
+[node name="motion_floor_light3" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/left_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, 0.619339)
+
+[node name="motion_floor_light4" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/left_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, -1.54913)
+
+[node name="motion_floor_light5" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/left_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, -3.70833)
+
+[node name="motion_floor_light6" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/left_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, -5.83948)
+
+[node name="motion_floor_light7" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/left_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, -7.99821)
+
+[node name="right_lights" type="Node3D" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.309, 0, -3.074)
+
+[node name="motion_floor_light8" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/right_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, 2.76759)
+
+[node name="motion_floor_light9" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/right_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, 4.94006)
+
+[node name="motion_floor_light10" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/right_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, 0.619339)
+
+[node name="motion_floor_light11" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/right_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, -1.54913)
+
+[node name="motion_floor_light12" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/right_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, -3.70833)
+
+[node name="motion_floor_light13" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/right_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, -5.83948)
+
+[node name="motion_floor_light14" parent="NavigationRegion3D/Map/Walls/Arch/floor_lights/right_lights" instance=ExtResource("7_qvnao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.69492, 0.0606227, -7.99821)
 
 [node name="Stairs" type="Node3D" parent="NavigationRegion3D/Map"]
 
@@ -263,8 +305,8 @@ skeleton = NodePath("../../..")
 [node name="NavigationLink3D" type="NavigationLink3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.96046e-08, 0)
 bidirectional = false
-start_position = Vector3(-7.79167, 5.4816, -1.54846)
-end_position = Vector3(-7.899, 0.001, -1.401)
+start_position = Vector3(-7.751, 5.24, -1.516)
+end_position = Vector3(-7.712, 0.013, -1.463)
 
 [node name="Player" parent="." instance=ExtResource("4_5vn0v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.74315, 0, 45.5022)

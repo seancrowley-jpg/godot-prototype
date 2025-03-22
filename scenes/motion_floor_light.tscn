@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqwrlky66rtvd"]
+
+[ext_resource type="Script" uid="uid://cb0iq4j2njije" path="res://scenes/motion_floor_light.gd" id="1_87wli"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_deu58"]
+size = Vector3(3, 0.0553894, 2.11911)
+
+[node name="motion_floor_light" type="Node3D"]
+script = ExtResource("1_87wli")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.0452423, 0.0536499, 2.11496)
+
+[node name="Lights" type="Node3D" parent="."]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0357463, 0.00899931, 0)
+light_volumetric_fog_energy = 1.991
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 1.879
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030314, 0.0382166, 0)
+light_volumetric_fog_energy = 1.991
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 1.879
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0357463, 0.00899931, -1)
+light_volumetric_fog_energy = 1.991
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 1.879
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030314, 0.0382166, -1)
+light_volumetric_fog_energy = 1.991
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 1.879
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0357463, 0.00899931, 1)
+light_volumetric_fog_energy = 1.991
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 1.879
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030314, 0.0382166, 1)
+light_volumetric_fog_energy = 1.991
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 1.879
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.003, -0.001)
+shape = SubResource("BoxShape3D_deu58")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
