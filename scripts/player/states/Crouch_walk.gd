@@ -19,13 +19,13 @@ func enter() -> void:
 
 func process_input(event: InputEvent) -> State:
 	
-	if Input.is_action_just_pressed("crouch") and !parent.crouch_shapecast.is_colliding():
+	if event.is_action_pressed("crouch") and !parent.crouch_shapecast.is_colliding():
 		return run_state
-	elif Input.is_action_just_pressed('jump') and parent.is_on_floor() and !parent.crouch_shapecast.is_colliding():
+	elif event.is_action_pressed('jump') and parent.is_on_floor() and !parent.crouch_shapecast.is_colliding():
 		return jump_state
 	elif Input.get_vector("left", "right", "forward", "back") and Input.is_action_pressed("sprint") and !parent.crouch_shapecast.is_colliding():
 		return sprint_state
-	elif Input.is_action_just_pressed("cover") and parent.crouch_cover_raycast_middle.is_colliding():
+	elif event.is_action_pressed("cover") and parent.crouch_cover_raycast_middle.is_colliding():
 		return cover_idle_state
 	return null
 

@@ -20,15 +20,15 @@ func enter() -> void:
 
 func process_input(event: InputEvent) -> State:
 	if parent.is_on_floor():
-		if Input.is_action_just_pressed('jump'):
+		if event.is_action_pressed('jump'):
 			return jump_state
-		elif Input.is_action_just_pressed('sprint'):
+		elif event.is_action_pressed('sprint'):
 			return sprint_state
-		elif Input.is_action_just_pressed('crouch'):
+		elif event.is_action_pressed('crouch'):
 			return crouch_walk
-		elif Input.is_action_pressed("cover") and parent.cover_raycast_middle.is_colliding():
+		elif event.is_action_pressed("cover") and parent.cover_raycast_middle.is_colliding():
 			return cover_state
-		elif Input.is_action_pressed("Hook") and parent.hook_raycast.is_colliding():
+		elif event.is_action_pressed("Hook") and parent.hook_raycast.is_colliding():
 			return grapple_state
 	return null
 

@@ -29,7 +29,7 @@ func process_input(event: InputEvent) -> State:
 		parent.disbable_ledge_raycasts()
 		parent.raycast_timer.start()
 		return jump_state
-	if Input.is_action_just_pressed("crouch"):
+	if event.is_action_pressed("crouch"):
 		parent.disbable_ledge_raycasts()
 		parent.raycast_timer.start()
 		return fall_state

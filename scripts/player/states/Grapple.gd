@@ -14,9 +14,9 @@ func enter() -> void:
 	parent.stand_collision()
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_pressed("Hook"):
+	if event.is_action_pressed("Hook"):
 			return fall_state
-	elif Input.is_action_pressed("jump"):
+	elif event.is_action_pressed("jump"):
 			return jump_state
 	return
 

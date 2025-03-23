@@ -14,11 +14,11 @@ func enter() -> void:
 	parent.on_ledge = true
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed("jump"):
+	if event.is_action_pressed("jump"):
 		parent.disbable_ledge_raycasts()
 		parent.raycast_timer.start()
 		return jump_state
-	elif Input.is_action_just_pressed("crouch"):
+	elif event.is_action_pressed("crouch"):
 		parent.disbable_ledge_raycasts()
 		parent.raycast_timer.start()
 		return fall_state

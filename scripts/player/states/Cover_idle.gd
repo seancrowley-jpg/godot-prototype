@@ -25,19 +25,19 @@ func enter() -> void:
 	parent.set_collision_mask_value(2,true)
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed("cover"):
+	if event.is_action_pressed("cover"):
 		if parent.is_crouching:
 			return crouch_idle_state
 		else:
 			return idle_state
-	elif Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
+	elif event.is_action_pressed("left") or event.is_action_pressed("right"):
 		return cover_move_state
-	elif Input.is_action_just_pressed("back"):
+	elif event.is_action_pressed("back"):
 		if parent.is_crouching:
 			return crouch_walk_state
 		else:
 			return run_state
-	elif Input.is_action_just_pressed("crouch"):
+	elif event.is_action_pressed("crouch"):
 		if parent.is_crouching:
 			parent.playback.travel("cover idle")
 			parent.stand_collision()

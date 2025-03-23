@@ -18,9 +18,9 @@ func enter() -> void:
 	parent.stand_collision()
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed('jump') and parent.is_on_floor():
+	if event.is_action_pressed('jump') and parent.is_on_floor():
 		return jump_state
-	elif Input.is_action_pressed('crouch') and parent.is_on_floor():
+	elif event.is_action_pressed('crouch') and parent.is_on_floor():
 		return roll_state
 	return null
 

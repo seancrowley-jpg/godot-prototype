@@ -22,18 +22,18 @@ func enter() -> void:
 	parent.velocity = Vector3.ZERO
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed("crouch"):
+	if event.is_action_pressed("crouch"):
 			return crouch_state
-	elif Input.is_action_pressed("jump") and parent.is_on_floor():
+	elif event.is_action_pressed("jump") and parent.is_on_floor():
 			return jump_state
 	elif Input.get_vector("left", "right", "forward", "back") && !Input.is_action_pressed("sprint"):
 		return run_state
 	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint"):
 		return sprint_state
-	elif Input.is_action_just_pressed("cover"):
+	elif event.is_action_pressed("cover"):
 		if parent.cover_raycast_middle.is_colliding() or parent.crouch_cover_raycast_middle.is_colliding():
 			return cover_state
-	elif Input.is_action_pressed("Hook") and parent.hook_raycast.is_colliding():
+	elif event.is_action_pressed("Hook") and parent.hook_raycast.is_colliding():
 			return grapple_state
 	return null
 

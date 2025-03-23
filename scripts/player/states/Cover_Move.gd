@@ -34,24 +34,24 @@ func enter() -> void:
 
 
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed("cover"):
+	if event.is_action_pressed("cover"):
 		if parent.is_crouching:
 			return crouch_idle_state
 		else:
 			return idle_state
 			
-	elif Input.get_vector("left", "right", "forward", "back") && Input.is_action_pressed("sprint"):
+	elif Input.get_vector("left", "right", "forward", "back") && event.is_action_pressed("sprint"):
 		parent.playback.start("sprint")
 		return sprint_state
 		
-	elif Input.is_action_just_pressed("back"):
+	elif event.is_action_pressed("back"):
 		if parent.is_crouching:
 			return crouch_walk_state
 		else:
 			parent.playback.start("running")
 			return run_state
 			
-	elif Input.is_action_just_pressed("crouch"):
+	elif event.is_action_pressed("crouch"):
 		if parent.is_crouching:
 			parent.stand_collision()
 		else:
