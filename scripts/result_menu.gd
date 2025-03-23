@@ -24,7 +24,8 @@ func show_screen():
 	visible = true
 	time_result_label.set_text(GlobalVariables.level_complete_time)
 	alerts_result_label.set_text(str(GlobalVariables.level_alerts))
-	GlobalVariables.total_alerts + GlobalVariables.level_alerts
+	#GlobalVariables.total_alerts + GlobalVariables.level_alerts
+	next_button.grab_focus()
 
 func load_next_level():
 	var current_scene_file = get_tree().current_scene.scene_file_path

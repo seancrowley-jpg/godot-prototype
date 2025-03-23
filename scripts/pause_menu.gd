@@ -4,6 +4,7 @@ extends Control
 @onready var restart_button = $PanelContainer/VBoxContainer/Restart
 @onready var quit_button = $PanelContainer/VBoxContainer/Quit
 @onready var main_menu = $PanelContainer/VBoxContainer/MainMenu
+@onready var resume_btn = $PanelContainer/VBoxContainer/Resume
 
 func _ready() -> void:
 	resume_button.pressed.connect(resume)
@@ -19,12 +20,14 @@ func pause():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	visible = true
+	resume_btn.grab_focus()
+	
 	
 func _unhandled_input(event):
 	if not GlobalVariables.is_game_over and not GlobalVariables.goal_reached:
-		if event.is_action_pressed("ui_cancel") and not get_tree().paused:
+		if event.is_action_pressed("pause") and not get_tree().paused:
 			pause()
-		elif event.is_action_pressed("ui_cancel") and get_tree().paused:
+		elif event.is_action_pressed("pause") and get_tree().paused:
 			resume()
 
 func _on_restart_pressed():

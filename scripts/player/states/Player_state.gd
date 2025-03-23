@@ -13,6 +13,9 @@ extends CharacterBody3D
 @export var cover_move_speed: float = 1.5
 @export var ledge_move_speed: float = 2
 @export var crouch_move_speed: float = 2
+@export var joy_stick_dead_zone: float = 0.1
+@export var joy_stick_sens_horizontal: float = 2
+@export var joy_stick_sens_vertical: float = 2
 
 @export_group("Nodes")
 @export var crouch_shapecast: ShapeCast3D
@@ -116,8 +119,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		first_person_camera_3d.current = false
 		visuals.visible = true
-		
-	print(sprint_sound_area.monitorable)
 
 
 	#if on_ledge:
@@ -129,15 +130,12 @@ func _physics_process(delta: float) -> void:
 			#print("X ",stick_point.global_transform.origin.x)
 			#print("Z ",stick_point.global_transform.origin.z)
 
-
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	zoom(delta)
 	cam_switch(delta)
-	if GlobalVariables.is_game_over:
-		game_over_menu.show_screen()
-	if GlobalVariables.goal_reached:
-		results_menu.show_screen()
+	show_gmae_menus()
+	gamepad_camera_movenemt()
 
 func movement(speed, delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
@@ -225,3 +223,19 @@ func foot_step_sound_start():
 func foot_step_sound_stop():
 	sprint_sound_area.monitorable = false
 	
+func gamepad_camera_movenemt():
+	var axis_vector = Vector2.ZERO
+	axis_vector.x = Input.get_action_strength("gamepad_look_right") - Input.get_action_strength("gamepad_look_left")
+	axis_vector.y = Input.get_action_strength("gamepad_look_down") - Input.get_action_strength("gamepad_look_up") 
+	#var axis_vector = Input.get_vector("gamepad_look_left","gamepad_look_right","gamepad_look_up","gamepad_look_down")
+	if (axis_vector.length()):
+		camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+		camera_mount.rotate_x(deg_to_rad(-axis_vector.y * joy_stick_sens_vertical))
+		rotate_y(deg_to_rad(-axis_vector.x * joy_stick_sens_horizontal))
+		remote_transform_3d.rotate_y(deg_to_rad(axis_vector.x * joy_stick_sens_horizontal))
+
+func show_gmae_menus():
+	if GlobalVariables.is_game_over:
+		game_over_menu.show_screen()
+	if GlobalVariables.goal_reached:
+		results_menu.show_screen()

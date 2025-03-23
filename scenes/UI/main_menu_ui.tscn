@@ -32,11 +32,15 @@ horizontal_alignment = 1
 
 [node name="LevelSelectButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
 text = "Level Select
 "
 
 [node name="ExitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../LevelSelectButton")
+focus_neighbor_bottom = NodePath("../LevelSelectButton")
 text = "Exit
 "
 

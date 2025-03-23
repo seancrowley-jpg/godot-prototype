@@ -63,15 +63,21 @@ layout_mode = 2
 
 [node name="NextButton" type="Button" parent="PanelContainer/VBoxContainer/ButtonHBoxContainer3"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../MainMenuButton")
+focus_neighbor_right = NodePath("../RestartButton")
 text = "Next
 "
 
 [node name="RestartButton" type="Button" parent="PanelContainer/VBoxContainer/ButtonHBoxContainer3"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../NextButton")
+focus_neighbor_right = NodePath("../MainMenuButton")
 text = "Restart"
 
 [node name="MainMenuButton" type="Button" parent="PanelContainer/VBoxContainer/ButtonHBoxContainer3"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../RestartButton")
+focus_neighbor_right = NodePath("../NextButton")
 text = "Main Menu
 "
 
