@@ -1,8 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://cha44rxlktbnn"]
+[gd_scene load_steps=4 format=3 uid="uid://b2spq3qpnegs5"]
 
 [ext_resource type="Texture2D" uid="uid://b3p7uwr23vwnn" path="res://icon.svg" id="1_2uapv"]
-[ext_resource type="Script" uid="uid://dfulghoqka61f" path="res://scripts/level_select_menu.gd" id="1_is42l"]
 [ext_resource type="Texture2D" uid="uid://bt3cevpsfc4e0" path="res://assests/stars.png" id="3_206ef"]
+
+[sub_resource type="GDScript" id="GDScript_is42l"]
+script/source = "extends Control
+
+@onready var texture_button_lvl_1 = $PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl1/TextureButton_lvl_1
+@onready var texture_button_lvl_2 = $PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_2/TextureButton_lvl_2
+@onready var texture_button_lvl_3 = $PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_3/TextureButton_lvl_3
+@onready var texture_button_lvl_4 = $PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_4/TextureButton_lvl_4
+@onready var texture_button_lvl_5 = $PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_5/TextureButton_lvl_5
+@onready var back_button = $PanelContainer/VBoxContainer/BackButton
+@onready var main_menu = $\"../main_menu\"
+
+func _ready():
+	texture_button_lvl_1.grab_focus()
+
+func _on_texture_button_lvl_1_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/levels/level_1.tscn\")
+
+func _on_texture_button_lvl_2_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/levels/level_2.tscn\")
+
+func _on_texture_button_lvl_3_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/levels/level_3.tscn\")
+
+func _on_texture_button_lvl_4_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/levels/level_4.tscn\")
+
+func _on_texture_button_lvl_5_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/levels/level_5.tscn\")
+	
+func _on_texture_button_lvl_test_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/levels/main.tscn\")
+
+func _on_back_button_pressed():
+	visible = false
+	main_menu.visible = true
+"
 
 [node name="level_select_menu" type="Control"]
 layout_mode = 3
@@ -11,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_is42l")
+script = SubResource("GDScript_is42l")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

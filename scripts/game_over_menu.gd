@@ -17,6 +17,7 @@ func show_screen():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	visible = true
+	restart_button.grab_focus()
 
 func _on_restart_pressed():
 	restart()
