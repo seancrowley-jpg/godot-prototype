@@ -33,7 +33,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.movement(5, delta)
+	parent.movement(parent.run_speed, delta)
 	if parent.velocity == Vector3.ZERO:
 		return idle_state
 	

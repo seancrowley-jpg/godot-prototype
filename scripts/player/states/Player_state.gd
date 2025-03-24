@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var f_view: Dictionary = {"Default": 75.0, "Zoom": 50.0}
 @export var jump_force: float = 20
 @export var acceleration: float = 30.0
+@export var run_speed: float = 5
 @export var sprint_speed: float = 10
 @export var roll_speed: float = 12
 @export var cover_move_speed: float = 1.5

@@ -211,9 +211,9 @@ height = 7.11963
 sides = 26
 
 [node name="Wall16" type="CSGBox3D" parent="NavigationRegion3D/Map/Walls/CSGCombiner3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.056, 9.42307, 1.61686, -8.47672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.056, 9.42307, 1.59453, -8.47672)
 operation = 2
-size = Vector3(6.384, 3.21148, 1.05573)
+size = Vector3(6.384, 3.25613, 1.05573)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NavigationRegion3D/Map/Walls/CSGCombiner3D2"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -17.0375, 2.96611, -19.4896)
@@ -247,9 +247,9 @@ height = 7.11963
 sides = 26
 
 [node name="Wall15" type="CSGBox3D" parent="NavigationRegion3D/Map/Walls/CSGCombiner3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.056, 8.54527, 1.61686, -19.4959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.056, 8.54527, 1.61236, -19.4959)
 operation = 2
-size = Vector3(6.384, 3.21148, 1.05573)
+size = Vector3(6.384, 3.22049, 1.05573)
 
 [node name="Wall10" type="CSGBox3D" parent="NavigationRegion3D/Map/Walls/CSGCombiner3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.056, -3.35407, 2.60323, 1.42189)
