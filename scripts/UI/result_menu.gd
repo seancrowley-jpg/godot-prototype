@@ -6,6 +6,7 @@ extends Control
 @onready var time_result_label = $PanelContainer/VBoxContainer/TimeHBoxContainer/TimeResultLabel
 @onready var alerts_result_label = $PanelContainer/VBoxContainer/AlertsHBoxContainer2/AlertsResultLabel
 const FILE_BEGIN = "res://scenes/levels/"
+@onready var audio_stream_player = $AudioStreamPlayer
 
 func _ready() -> void:
 	next_button.pressed.connect(load_next_level)
@@ -43,3 +44,27 @@ func _on_main_menu_button_pressed():
 	GlobalVariables.is_game_over = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
+
+#region
+## Signals for button sounds and focus
+func _on_next_button_focus_entered():
+	audio_stream_player.play()
+
+func _on_next_button_mouse_entered():
+	audio_stream_player.play()
+	next_button.grab_focus()
+
+func _on_restart_button_focus_entered():
+	audio_stream_player.play()
+
+func _on_restart_button_mouse_entered():
+	audio_stream_player.play()
+	restart_button.grab_focus()
+
+func _on_main_menu_button_focus_entered():
+	audio_stream_player.play()
+
+func _on_main_menu_button_mouse_entered():
+	audio_stream_player.play()
+	main_menu_button.grab_focus()
+#endregion

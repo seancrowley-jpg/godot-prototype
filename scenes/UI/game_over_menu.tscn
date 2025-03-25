@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b07q1380brcj7"]
+[gd_scene load_steps=4 format=3 uid="uid://b07q1380brcj7"]
 
-[ext_resource type="Script" uid="uid://dbo3jpx1bfq37" path="res://scripts/game_over_menu.gd" id="1_ru3ty"]
+[ext_resource type="Theme" uid="uid://qry22usrno8o" path="res://resources/menu_theme.tres" id="1_mf077"]
+[ext_resource type="Script" uid="uid://dbo3jpx1bfq37" path="res://scripts/UI/game_over_menu.gd" id="1_ru3ty"]
+[ext_resource type="AudioStream" uid="uid://b7ed7kntt84y0" path="res://resources/blipSelect.wav" id="3_q31e6"]
 
 [node name="game_over_menu" type="Control"]
 process_mode = 3
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_mf077")
 script = ExtResource("1_ru3ty")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -19,15 +22,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -38.5
-offset_right = 42.0
-offset_bottom = 38.5
+offset_left = -100.0
+offset_top = -31.5
+offset_right = 100.0
+offset_bottom = 31.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 alignment = 1
 
 [node name="GameOverHeaderLabel" type="Label" parent="PanelContainer/VBoxContainer"]
@@ -37,6 +42,8 @@ horizontal_alignment = 1
 
 [node name="ButtonHBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="RestartButton" type="Button" parent="PanelContainer/VBoxContainer/ButtonHBoxContainer3"]
 process_mode = 3
@@ -48,5 +55,13 @@ layout_mode = 2
 text = "Main Menu
 "
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q31e6")
+volume_db = -20.0
+
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/ButtonHBoxContainer3/RestartButton" to="." method="_on_restart_button_focus_entered"]
+[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/ButtonHBoxContainer3/RestartButton" to="." method="_on_restart_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonHBoxContainer3/RestartButton" to="." method="_on_restart_pressed"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/ButtonHBoxContainer3/MainMenuButton" to="." method="_on_main_menu_button_focus_entered"]
+[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/ButtonHBoxContainer3/MainMenuButton" to="." method="_on_main_menu_button_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonHBoxContainer3/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

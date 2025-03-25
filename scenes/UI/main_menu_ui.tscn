@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxrq8de6yw7p8"]
+[gd_scene load_steps=6 format=3 uid="uid://bxrq8de6yw7p8"]
 
-[ext_resource type="Script" uid="uid://mw3w7nouxnrv" path="res://scripts/main_menu_ui.gd" id="1_rayio"]
+[ext_resource type="Theme" uid="uid://qry22usrno8o" path="res://resources/menu_theme.tres" id="1_2ewkc"]
+[ext_resource type="Script" uid="uid://mw3w7nouxnrv" path="res://scripts/UI/main_menu_ui.gd" id="1_rayio"]
 [ext_resource type="Texture2D" uid="uid://b3p7uwr23vwnn" path="res://icon.svg" id="3_rvyux"]
 [ext_resource type="Texture2D" uid="uid://bt3cevpsfc4e0" path="res://assests/stars.png" id="4_d0jgb"]
+[ext_resource type="AudioStream" uid="uid://b7ed7kntt84y0" path="res://resources/blipSelect.wav" id="5_rvyux"]
 
 [node name="main_menu_ui" type="Control"]
 layout_mode = 3
@@ -11,40 +13,54 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_2ewkc")
 script = ExtResource("1_rayio")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rvyux")
+volume_db = -20.0
+
 [node name="main_menu" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="main_menu"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 25.0
-offset_top = 430.0
-offset_right = 212.0
-offset_bottom = 523.0
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.85
+anchor_right = 0.05
+anchor_bottom = 0.85
+offset_top = -49.5
+offset_right = 103.92
+offset_bottom = 57.24
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="main_menu/PanelContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="GameOverHeaderLabel" type="Label" parent="main_menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "--Main Menu--"
 horizontal_alignment = 1
 
-[node name="LevelSelectButton" type="Button" parent="main_menu/PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="main_menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelSelectButton" type="Button" parent="main_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../ExitButton")
 focus_neighbor_bottom = NodePath("../ExitButton")
 text = "Level Select
 "
 
-[node name="ExitButton" type="Button" parent="main_menu/PanelContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="main_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../LevelSelectButton")
 focus_neighbor_bottom = NodePath("../LevelSelectButton")
@@ -187,11 +203,29 @@ layout_mode = 2
 text = "Back
 "
 
-[connection signal="pressed" from="main_menu/PanelContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="focus_entered" from="main_menu/PanelContainer/VBoxContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_focus_entered"]
+[connection signal="mouse_entered" from="main_menu/PanelContainer/VBoxContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_mouse_entered"]
+[connection signal="pressed" from="main_menu/PanelContainer/VBoxContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="focus_entered" from="main_menu/PanelContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_focus_entered"]
+[connection signal="mouse_entered" from="main_menu/PanelContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl1/TextureButton_lvl_1" to="." method="_on_texture_button_lvl_1_focus_entered"]
+[connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl1/TextureButton_lvl_1" to="." method="_on_texture_button_lvl_1_mouse_entered"]
 [connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl1/TextureButton_lvl_1" to="." method="_on_texture_button_lvl_1_pressed"]
+[connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_2/TextureButton_lvl_2" to="." method="_on_texture_button_lvl_2_focus_entered"]
+[connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_2/TextureButton_lvl_2" to="." method="_on_texture_button_lvl_2_mouse_entered"]
 [connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_2/TextureButton_lvl_2" to="." method="_on_texture_button_lvl_2_pressed"]
+[connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_3/TextureButton_lvl_3" to="." method="_on_texture_button_lvl_3_focus_entered"]
+[connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_3/TextureButton_lvl_3" to="." method="_on_texture_button_lvl_3_mouse_entered"]
 [connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_3/TextureButton_lvl_3" to="." method="_on_texture_button_lvl_3_pressed"]
+[connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_4/TextureButton_lvl_4" to="." method="_on_texture_button_lvl_4_focus_entered"]
+[connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_4/TextureButton_lvl_4" to="." method="_on_texture_button_lvl_4_mouse_entered"]
 [connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_4/TextureButton_lvl_4" to="." method="_on_texture_button_lvl_4_pressed"]
+[connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_5/TextureButton_lvl_5" to="." method="_on_texture_button_lvl_5_focus_entered"]
+[connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_5/TextureButton_lvl_5" to="." method="_on_texture_button_lvl_5_mouse_entered"]
 [connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_5/TextureButton_lvl_5" to="." method="_on_texture_button_lvl_5_pressed"]
+[connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_test/TextureButton_lvl_test" to="." method="_on_texture_button_lvl_test_focus_entered"]
+[connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_test/TextureButton_lvl_test" to="." method="_on_texture_button_lvl_test_mouse_entered"]
 [connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_test/TextureButton_lvl_test" to="." method="_on_texture_button_lvl_test_pressed"]
+[connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_focus_entered"]
+[connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

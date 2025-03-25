@@ -4,7 +4,7 @@ extends Control
 @onready var restart_button = $PanelContainer/VBoxContainer/Restart
 @onready var quit_button = $PanelContainer/VBoxContainer/Quit
 @onready var main_menu = $PanelContainer/VBoxContainer/MainMenu
-@onready var resume_btn = $PanelContainer/VBoxContainer/Resume
+@onready var audio_stream_player = $AudioStreamPlayer
 
 func _ready() -> void:
 	resume_button.pressed.connect(resume)
@@ -20,7 +20,7 @@ func pause():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	visible = true
-	resume_btn.grab_focus()
+	resume_button.grab_focus()
 	
 	
 func _unhandled_input(event):
@@ -37,3 +37,33 @@ func _on_restart_pressed():
 func _on_main_menu_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
+
+#region
+## Signals for button sounds and focus
+func _on_resume_focus_entered():
+	audio_stream_player.play()
+
+func _on_resume_mouse_entered():
+	resume_button.grab_focus()
+	audio_stream_player.play()
+
+func _on_restart_focus_entered():
+	audio_stream_player.play()
+
+func _on_restart_mouse_entered():
+	restart_button.grab_focus()
+
+func _on_main_menu_focus_entered():
+	audio_stream_player.play()
+
+func _on_main_menu_mouse_entered():
+	main_menu.grab_focus()
+	audio_stream_player.play()
+
+func _on_quit_focus_entered():
+	audio_stream_player.play()
+
+func _on_quit_mouse_entered():
+	quit_button.grab_focus()
+	audio_stream_player.play()
+#endregion

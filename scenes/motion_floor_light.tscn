@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqwrlky66rtvd"]
 
-[ext_resource type="Script" uid="uid://cb0iq4j2njije" path="res://scenes/motion_floor_light.gd" id="1_87wli"]
+[ext_resource type="Script" uid="uid://cb0iq4j2njije" path="res://scripts/motion_floor_light.gd" id="1_87wli"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_deu58"]
 size = Vector3(3, 0.0553894, 2.11911)
