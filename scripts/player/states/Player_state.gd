@@ -56,6 +56,7 @@ extends CharacterBody3D
 @onready var state_machine = $state_machine
 @onready var remote_transform_3d = $RemoteTransform3D
 @onready var first_person_camera_3d = $FisrtPersonCamera/Camera3D
+@onready var alert_text = $HUD/alert_text
 
 #Grpple Hook
 @export var hook_raycast: RayCast3D
@@ -67,6 +68,7 @@ var is_crouching: bool = false
 var idle_animations: Array = ["idle 1","idle 3","idle 2"]
 var left_right_lock: bool = false
 var on_ledge: bool = false
+var spotted : bool = false
 
 const HOOK_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_availible.png")
 const HOOK_NOT_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_not_availible.png")
@@ -135,8 +137,9 @@ func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	zoom(delta)
 	cam_switch(delta)
-	show_gmae_menus()
+	show_game_menus()
 	gamepad_camera_movenemt()
+	
 
 func movement(speed, delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
@@ -235,8 +238,12 @@ func gamepad_camera_movenemt():
 		rotate_y(deg_to_rad(-axis_vector.x * joy_stick_sens_horizontal))
 		remote_transform_3d.rotate_y(deg_to_rad(axis_vector.x * joy_stick_sens_horizontal))
 
-func show_gmae_menus():
+func show_game_menus():
 	if GlobalVariables.is_game_over:
 		game_over_menu.show_screen()
 	if GlobalVariables.goal_reached:
 		results_menu.show_screen()
+	if spotted:
+		alert_text.visible = true
+	else:
+		alert_text.visible = false

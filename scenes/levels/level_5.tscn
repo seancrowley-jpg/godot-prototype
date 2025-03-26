@@ -46,8 +46,10 @@ size = Vector3(20.0331, 2.7286, 25.1484)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fsnos"]
 size = Vector3(14.3297, 2.03442, 12.1509)
 
-[node name="level_5" type="Node3D"]
+[node name="level_5" type="Node3D" node_paths=PackedStringArray("player", "enemies")]
 script = ExtResource("1_laj7o")
+player = NodePath("Player")
+enemies = [NodePath("enemies/Enemy"), NodePath("enemies/Enemy2"), NodePath("enemies/Enemy3"), NodePath("enemies/Enemy4"), NodePath("enemies/Enemy5"), NodePath("enemies/Enemy6")]
 day_time = 15.3415
 clouds_weight = 0.25
 time_scale = 0.0

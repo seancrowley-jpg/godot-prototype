@@ -1,11 +1,19 @@
 extends Node3D
 
-@onready var player = $Player
+@export var player : Player
+@export var enemies : Array[Enemy]
+
+func spotted_check(enemy):
+	return enemy.alert == true
 
 func _physics_process(delta):
 	if player:
 		get_tree().call_group("Enemies", "update_target_location", player.position)
-	
+		if enemies.any(spotted_check):
+			player.spotted = true
+		else:
+			player.spotted = false
+
 # https://github.com/krzmig/godot-simple-sky-project
 ## This is not a simulation of the actual model but only a extremely simplified version.
 ## I don't know if I made some mistakes in my assumptions. I haven't found a similar solution anywhere.

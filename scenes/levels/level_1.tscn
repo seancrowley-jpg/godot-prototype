@@ -21,8 +21,10 @@ uv1_triplanar = true
 albedo_texture = ExtResource("3_i856m")
 uv1_triplanar = true
 
-[node name="Level1" type="Node3D"]
+[node name="Level1" type="Node3D" node_paths=PackedStringArray("player", "enemies")]
 script = ExtResource("1_w8ip8")
+player = NodePath("Player")
+enemies = [NodePath("Enemy")]
 day_time = 10.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

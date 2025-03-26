@@ -53,8 +53,10 @@ uv1_triplanar = true
 left_to_right = 0.0
 size = Vector3(5, 2, 4.01)
 
-[node name="level_4" type="Node3D"]
+[node name="level_4" type="Node3D" node_paths=PackedStringArray("player", "enemies")]
 script = ExtResource("1_ogj6a")
+player = NodePath("Player")
+enemies = [NodePath("Enemies/Enemy"), NodePath("Enemies/Enemy2")]
 day_time = 5.8992
 clouds_cutoff = 0.25
 clouds_weight = 1.0

@@ -59,8 +59,10 @@ _data = {
 }
 point_count = 4
 
-[node name="World" type="Node3D"]
+[node name="World" type="Node3D" node_paths=PackedStringArray("player", "enemies")]
 script = ExtResource("1_quwq4")
+player = NodePath("Player")
+enemies = [NodePath("Enemies/Enemy"), NodePath("Enemies/Enemy2"), NodePath("Enemies/Enemy3")]
 day_time = 10.0
 moon_orbital_inclination = -132.15
 moon_orbital_period = 34.47
