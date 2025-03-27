@@ -6,13 +6,11 @@ extends CharacterBody3D
 @export var navigation_agent_3d : NavigationAgent3D
 @export var animation_tree : AnimationTree
 @export var state_label : Label3D
-@export var detection_area : Area3D
-@export var detection_ray_cast : RayCast3D
-@export var vision_timer : Timer
 @export var alert_timer : Timer
 @export var patrol_timer : Timer
 @export var sprint_sound_area: Area3D
 @export var catch_player_area: Area3D
+@export var vision: Area3D
 
 @onready var randPos : Vector3
 @onready var playback  = animation_tree["parameters/playback"]
@@ -63,23 +61,6 @@ func _physics_process(delta) -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 
-func _on_vision_timer_timeout():
-	var overlaps = detection_area.get_overlapping_bodies()
-	if overlaps.size() > 0:
-		for overlap in overlaps:
-			if overlap.name == "Player":
-				var player_position = overlap.position
-				detection_ray_cast.look_at(player_position, Vector3.UP)
-				detection_ray_cast.force_raycast_update()
-				var collider = detection_ray_cast.get_collider()
-				if detection_ray_cast.is_colliding():
-					if collider.name == "Player":
-						detection_ray_cast.debug_shape_custom_color = Color(174,0,0)
-						alert = true
-					else:
-						detection_ray_cast.debug_shape_custom_color = Color(0,0,0)
-						alert_timer.start(alert_timer_count)
-
 #Sends player position to nav agent / Called in World script
 func update_target_location(target_location):
 	if alert:
@@ -109,10 +90,6 @@ func _on_alert_timer_timeout():
 	alert = false
 	alert_countdown = false
 
-func _on_detection_body_exited(body):
-	if body is Player:
-		alert_timer.start(alert_timer_count)
-
 func _on_patrol_timer_timeout():
 	if use_random_patrol_path:
 		randPos = Vector3(randf_range(randXPosRange[0],randXPosRange[1]), position.y, randf_range(randZPosRange[0],randZPosRange[1]))
@@ -128,3 +105,14 @@ func _on_patrol_timer_timeout():
 func _on_sprint_sound_area_area_entered(area):
 	if area.name == "SprintSoundArea": 
 		alert = true
+
+
+func _on_vision_body_sighted(body):
+	if body.name == "Player":
+		alert_timer.stop()
+		alert = true
+
+
+func _on_vision_body_hidden(body):
+	if body.name == "Player":
+		alert_timer.start(alert_timer_count)
