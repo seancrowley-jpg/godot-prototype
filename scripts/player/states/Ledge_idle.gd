@@ -12,6 +12,10 @@ func enter() -> void:
 	parent.velocity = Vector3.ZERO
 	parent.left_right_lock = true
 	parent.on_ledge = true
+	parent.set_collision_layer_value(2,true)
+	parent.set_collision_mask_value(2,true)
+	parent.ledge_raycast_1.set_collision_mask_value(2,true)
+	parent.ledge_raycast_2.set_collision_mask_value(2,true)
 
 func process_input(event: InputEvent) -> State:
 	if event.is_action_pressed("jump"):
@@ -43,7 +47,7 @@ func process_physics(delta: float) -> State:
 	return null
 
 func process_frame(delta: float) -> State:
-	parent.rotate_player_visuals(parent.wall_check_ray)
+	parent.rotate_player_visuals(parent.ledge_raycast_1)
 	if !parent.wall_check_ray.is_colliding():
 		parent.playback.travel("y-bot free hang_Free hang idle")
 	return null
@@ -51,3 +55,7 @@ func process_frame(delta: float) -> State:
 func exit() -> void:
 	super()
 	parent.left_right_lock = false
+	parent.set_collision_layer_value(2,false)
+	parent.set_collision_mask_value(2,false)
+	parent.ledge_raycast_1.set_collision_mask_value(2,false)
+	parent.ledge_raycast_2.set_collision_mask_value(2,false)

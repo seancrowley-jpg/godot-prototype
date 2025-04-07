@@ -195,7 +195,8 @@ func stand_collision():
 	var t := create_tween()
 	t.tween_property(player_collision,"position:y",0.84,0)
 	t.tween_property(player_collision,"shape:height",2.191,0)
-	t.tween_property(cover_shapecast,"position:y",1.901,0)
+	#t.tween_property(cover_shapecast,"position:y",1.901,0)
+	t.tween_property(cover_shapecast,"position:y",2.285,0)
 
 func disbable_ledge_raycasts():
 	ledge_raycast_1.enabled = false

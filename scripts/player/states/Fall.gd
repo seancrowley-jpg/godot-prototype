@@ -13,6 +13,8 @@ var grapple_state: State
 
 func enter() -> void:
 	super()
+	parent.ledge_raycast_1.set_collision_mask_value(2,true)
+	parent.ledge_raycast_2.set_collision_mask_value(2,true)
 
 func process_input(event: InputEvent) -> State:
 	if event.is_action_pressed("Hook") and parent.hook_raycast.is_colliding():
@@ -35,3 +37,8 @@ func process_physics(delta: float) -> State:
 			return sprint_state
 		return idle_state
 	return null
+	
+func exit() -> void:
+	super()
+	parent.ledge_raycast_1.set_collision_mask_value(2,false)
+	parent.ledge_raycast_2.set_collision_mask_value(2,false)

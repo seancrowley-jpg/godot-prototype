@@ -51,13 +51,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.585, -0.169045, 43.457)
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map/Spawn_house/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.341309, 3.65827, 5.24751)
-size = Vector3(6, 7.064, 28.881)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.307923, 3.65827, 5.24751)
+size = Vector3(5.70935, 7.064, 28.881)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map/Spawn_house/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.337646, 3.43906, 5.17085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.272375, 3.43906, 5.17085)
 operation = 2
-size = Vector3(5.8, 6.626, 28.368)
+size = Vector3(5.34539, 6.626, 28.368)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map/Spawn_house/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.360537, 1.25019, 19.3405)
@@ -107,43 +107,140 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.282
 shape = SubResource("ConcavePolygonShape3D_741xk")
 
 [node name="Platforms" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27743)
 
-[node name="Wall2" type="CSGBox3D" parent="Map/Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.796, -22.5602, 91.9816)
+[node name="Platform" type="CSGBox3D" parent="Map/Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.796, -38.6493, 91.9816)
 use_collision = true
-size = Vector3(5.75355, 33.4609, 5.27198)
+size = Vector3(5.75355, 65.6392, 5.27198)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map/Platforms"]
+[node name="Platform2" type="CSGCombiner3D" parent="Map/Platforms"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 5.28879, -21.7973, 101.183)
 use_collision = true
 
-[node name="Wall3" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+[node name="Wall3" type="CSGBox3D" parent="Map/Platforms/Platform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20.6058, 0)
 use_collision = true
-size = Vector3(5.75355, 33.4609, 5.27198)
+size = Vector3(5.75355, 74.6726, 5.27198)
 
-[node name="ledge" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+[node name="ledge" type="CSGBox3D" parent="Map/Platforms/Platform2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00569153, 10.7005, -2.55618)
 operation = 2
 use_collision = true
 size = Vector3(3.86521, 0.629852, 0.661)
 
-[node name="ledge4" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+[node name="ledge4" type="CSGBox3D" parent="Map/Platforms/Platform2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00569153, 8.93383, -2.55618)
 operation = 2
 use_collision = true
 size = Vector3(3.86521, 0.629852, 0.661)
 
-[node name="ledge2" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+[node name="ledge2" type="CSGBox3D" parent="Map/Platforms/Platform2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.825027, 14.6666, -2.55618)
 operation = 2
 use_collision = true
 size = Vector3(1.85399, 0.377426, 0.661)
 
-[node name="ledge3" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+[node name="ledge3" type="CSGBox3D" parent="Map/Platforms/Platform2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00569153, 13.0769, -2.55618)
 operation = 2
 use_collision = true
 size = Vector3(1.85399, 0.377426, 0.661)
 
+[node name="Platform3" type="CSGBox3D" parent="Map/Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23746, -40.3231, 108.428)
+use_collision = true
+size = Vector3(5.75355, 62.2916, 5.27198)
+
+[node name="Platform4" type="CSGCombiner3D" parent="Map/Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.959894, -20.9042, 117.658)
+use_collision = true
+
+[node name="Wall3" type="CSGBox3D" parent="Map/Platforms/Platform4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2932, -17.086, 5.18752)
+use_collision = true
+size = Vector3(11.1023, 81.7124, 15.647)
+
+[node name="ledge" type="CSGBox3D" parent="Map/Platforms/Platform4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52017, 13.3515, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(3.86521, 0.629852, 0.661)
+
+[node name="ledge2" type="CSGBox3D" parent="Map/Platforms/Platform4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69733, 17.3176, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(1.85399, 0.377426, 0.661)
+
+[node name="ledge3" type="CSGBox3D" parent="Map/Platforms/Platform4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46161, 15.5243, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(1.85399, 0.377426, 0.661)
+
+[node name="ledge4" type="CSGBox3D" parent="Map/Platforms/Platform4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00569153, 11.5848, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(3.86521, 0.629852, 0.661)
+
+[node name="ledge5" type="CSGBox3D" parent="Map/Platforms/Platform4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42505, 18.9996, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(3.35546, 0.543564, 0.661)
+
+[node name="ledge6" type="CSGBox3D" parent="Map/Platforms/Platform4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67922, 20.7094, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(6.36767, 0.577133, 0.661)
+
+[node name="ledge7" type="CSGBox3D" parent="Map/Platforms/Platform4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.540018, 22.1654, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(2.99755, 0.483383, 0.661)
+
+[node name="Building" type="Node3D" parent="Map"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30938, 3.37066, 129.213)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Building/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0395641, 4.05136, 10.4171)
+size = Vector3(11.1234, 9.79596, 21.8342)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Building/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0752459, 3.88816, 10.7489)
+operation = 2
+size = Vector3(9.606, 8.784, 20.9638)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Building/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.236777, -1.60763, 11.3338)
+operation = 2
+size = Vector3(12.4706, 2.40794, 11.4364)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Building/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07587, 0.87838, -0.307602)
+operation = 2
+size = Vector3(1.35254, 2.76668, 1.14954)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Building/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.83903, 0.87838, 21.0571)
+operation = 2
+size = Vector3(1.35254, 2.76668, 1.14954)
+
+[node name="Bar" type="CSGCylinder3D" parent="Map/Building"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.33853, 6.63064, 139.956)
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+radius = 0.07
+height = 21.0013
+sides = 20
+
 [node name="Player" parent="." instance=ExtResource("3_i0fhw")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.89267, 10.5686, 37.6311)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.03351, 14.3917, 127.223)

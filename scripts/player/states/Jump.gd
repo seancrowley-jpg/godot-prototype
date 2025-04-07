@@ -17,6 +17,10 @@ func enter() -> void:
 	super()
 	parent.velocity.y += parent.jump_force
 	parent.stand_collision()
+	parent.set_collision_layer_value(2,true)
+	parent.set_collision_mask_value(2,true)
+	parent.ledge_raycast_1.set_collision_mask_value(2,true)
+	parent.ledge_raycast_2.set_collision_mask_value(2,true)
 
 func process_input(event: InputEvent) -> State:
 	if event.is_action_pressed("Hook") and parent.hook_raycast.is_colliding():
@@ -42,3 +46,10 @@ func process_physics(delta: float) -> State:
 			return sprint_state
 	
 	return null
+	
+func exit() -> void:
+	super()
+	parent.set_collision_layer_value(2,false)
+	parent.set_collision_mask_value(2,false)
+	parent.ledge_raycast_1.set_collision_mask_value(2,false)
+	parent.ledge_raycast_2.set_collision_mask_value(2,false)
