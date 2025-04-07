@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm14veph4n2xa"]
+
+[ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_g44gb"]
+[ext_resource type="Environment" uid="uid://ch4xbykeg3668" path="res://resources/level_envs/env_level_6.tres" id="2_i0fhw"]
+[ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="3_i0fhw"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_g44gb"]
+left_to_right = 0.0
+size = Vector3(13.445, 1, 5.754)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_741xk"]
+data = PackedVector3Array(-6.7225, 0.5, -2.877, -6.7225, -0.5, -2.877, 6.7225, -0.5, -2.877, -6.7225, 0.5, 2.877, -6.7225, -0.5, 2.877, -6.7225, -0.5, -2.877, -6.7225, -0.5, 2.877, 6.7225, -0.5, 2.877, -6.7225, -0.5, -2.877, -6.7225, 0.5, 2.877, 6.7225, -0.5, 2.877, -6.7225, -0.5, 2.877, -6.7225, 0.5, -2.877, -6.7225, 0.5, 2.877, -6.7225, -0.5, -2.877, -6.7225, 0.5, 2.877, -6.7225, 0.5, -2.877, 6.7225, -0.5, 2.877, 6.7225, -0.5, 2.877, 6.7225, -0.5, -2.877, -6.7225, -0.5, -2.877, -6.7225, 0.5, -2.877, 6.7225, -0.5, -2.877, 6.7225, -0.5, 2.877)
+
+[node name="level_6" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_g44gb")
+player = NodePath("Player")
+day_time = 15.5745
+clouds_cutoff = 0.1
+clouds_weight = 1.0
+time_scale = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_i0fhw")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.827116, 0, -0.562031, 0.289131, -0.857527, 0.425501, -0.481957, -0.51444, -0.709274, 0, 0, 0)
+rotation_order = 4
+light_color = Color(0.249184, 0.681735, 5.77569e-07, 1)
+light_energy = 0.6
+shadow_enabled = true
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.416929, 0, -0.908939, -0.614509, 0.736835, 0.281875, 0.669738, 0.676073, -0.307208, 0, 0, 0)
+rotation_order = 4
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="Map" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5686, 0)
+
+[node name="Spawn_house" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0784, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Spawn_house"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2824, -0.496292, 52.8869)
+use_collision = true
+size = Vector3(5.75355, 1, 36.9341)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map/Spawn_house"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.585, -0.169045, 43.457)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Spawn_house/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.341309, 3.65827, 5.24751)
+size = Vector3(6, 7.064, 28.881)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Spawn_house/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.337646, 3.43906, 5.17085)
+operation = 2
+size = Vector3(5.8, 6.626, 28.368)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Spawn_house/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.360537, 1.25019, 19.3405)
+operation = 2
+size = Vector3(2.13805, 1.43999, 1.57733)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/Spawn_house/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.360537, 2.32361, 19.7005)
+operation = 2
+radius = 0.655
+height = 0.845
+sides = 20
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Map/Spawn_house/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.342752, 3.59196, -5.70452)
+light_color = Color(0.966138, 0.669787, 0.459629, 1)
+light_energy = 2.989
+shadow_enabled = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Map/Spawn_house/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.342752, 3.59196, 0.341522)
+light_color = Color(0.966138, 0.669787, 0.459629, 1)
+light_energy = 2.989
+shadow_enabled = true
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Map/Spawn_house/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.342752, 3.59196, 7.25212)
+light_color = Color(0.966138, 0.669787, 0.459629, 1)
+light_energy = 2.989
+shadow_enabled = true
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Map/Spawn_house/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.342752, 3.59196, 13.2982)
+light_color = Color(0.966138, 0.669787, 0.459629, 1)
+light_energy = 2.989
+shadow_enabled = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Map/Spawn_house"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.282, -0.498, 78.0693)
+mesh = SubResource("PrismMesh_g44gb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map/Spawn_house/CSGMesh3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -78.0693, 0.498, 25.282)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Map/Spawn_house/CSGMesh3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.282, -0.498, 78.0693)
+shape = SubResource("ConcavePolygonShape3D_741xk")
+
+[node name="Platforms" type="Node3D" parent="Map"]
+
+[node name="Wall2" type="CSGBox3D" parent="Map/Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.796, -22.5602, 91.9816)
+use_collision = true
+size = Vector3(5.75355, 33.4609, 5.27198)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map/Platforms"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 5.28879, -21.7973, 101.183)
+use_collision = true
+
+[node name="Wall3" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+use_collision = true
+size = Vector3(5.75355, 33.4609, 5.27198)
+
+[node name="ledge" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00569153, 10.7005, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(3.86521, 0.629852, 0.661)
+
+[node name="ledge4" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00569153, 8.93383, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(3.86521, 0.629852, 0.661)
+
+[node name="ledge2" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.825027, 14.6666, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(1.85399, 0.377426, 0.661)
+
+[node name="ledge3" type="CSGBox3D" parent="Map/Platforms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00569153, 13.0769, -2.55618)
+operation = 2
+use_collision = true
+size = Vector3(1.85399, 0.377426, 0.661)
+
+[node name="Player" parent="." instance=ExtResource("3_i0fhw")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.89267, 10.5686, 37.6311)

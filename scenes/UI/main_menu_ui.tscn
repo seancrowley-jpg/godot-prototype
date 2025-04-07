@@ -114,7 +114,7 @@ horizontal_alignment = 1
 [node name="TextureButton_lvl_1" type="TextureButton" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl1"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../VBoxContainer_lvl_3/TextureButton_lvl_3")
-focus_neighbor_top = NodePath("../../VBoxContainer_lvl_4/TextureButton_lvl_4")
+focus_neighbor_top = NodePath("../../../BackButton")
 focus_neighbor_right = NodePath("../../VBoxContainer_lvl_2/TextureButton_lvl_2")
 focus_neighbor_bottom = NodePath("../../VBoxContainer_lvl_4/TextureButton_lvl_4")
 texture_normal = ExtResource("3_rvyux")
@@ -132,7 +132,7 @@ horizontal_alignment = 1
 [node name="TextureButton_lvl_2" type="TextureButton" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_2"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../VBoxContainer_lvl1/TextureButton_lvl_1")
-focus_neighbor_top = NodePath("../../VBoxContainer_lvl_5/TextureButton_lvl_5")
+focus_neighbor_top = NodePath("../../../BackButton")
 focus_neighbor_right = NodePath("../../VBoxContainer_lvl_3/TextureButton_lvl_3")
 focus_neighbor_bottom = NodePath("../../VBoxContainer_lvl_5/TextureButton_lvl_5")
 texture_normal = ExtResource("3_rvyux")
@@ -150,7 +150,7 @@ horizontal_alignment = 1
 [node name="TextureButton_lvl_3" type="TextureButton" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_3"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../VBoxContainer_lvl_2/TextureButton_lvl_2")
-focus_neighbor_top = NodePath("../../VBoxContainer_lvl_test/TextureButton_lvl_test")
+focus_neighbor_top = NodePath("../../../BackButton")
 focus_neighbor_right = NodePath("../../VBoxContainer_lvl1/TextureButton_lvl_1")
 focus_neighbor_bottom = NodePath("../../VBoxContainer_lvl_test/TextureButton_lvl_test")
 texture_normal = ExtResource("3_rvyux")
@@ -167,6 +167,10 @@ horizontal_alignment = 1
 
 [node name="TextureButton_lvl_4" type="TextureButton" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_4"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../VBoxContainer_lvl_test/TextureButton_lvl_test")
+focus_neighbor_top = NodePath("../../VBoxContainer_lvl1/TextureButton_lvl_1")
+focus_neighbor_right = NodePath("../../VBoxContainer_lvl_5/TextureButton_lvl_5")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 texture_normal = ExtResource("3_rvyux")
 texture_focused = ExtResource("4_d0jgb")
 
@@ -181,6 +185,10 @@ horizontal_alignment = 1
 
 [node name="TextureButton_lvl_5" type="TextureButton" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_5"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../VBoxContainer_lvl_4/TextureButton_lvl_4")
+focus_neighbor_top = NodePath("../../VBoxContainer_lvl_2/TextureButton_lvl_2")
+focus_neighbor_right = NodePath("../../VBoxContainer_lvl_test/TextureButton_lvl_test")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 texture_normal = ExtResource("3_rvyux")
 texture_focused = ExtResource("4_d0jgb")
 
@@ -195,11 +203,17 @@ horizontal_alignment = 1
 
 [node name="TextureButton_lvl_test" type="TextureButton" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_test"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../VBoxContainer_lvl_5/TextureButton_lvl_5")
+focus_neighbor_top = NodePath("../../VBoxContainer_lvl_3/TextureButton_lvl_3")
+focus_neighbor_right = NodePath("../../VBoxContainer_lvl_4/TextureButton_lvl_4")
+focus_neighbor_bottom = NodePath("../../../BackButton")
 texture_normal = ExtResource("3_rvyux")
 texture_focused = ExtResource("4_d0jgb")
 
 [node name="BackButton" type="Button" parent="level_select_menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../GridContainer/VBoxContainer_lvl_4/TextureButton_lvl_4")
+focus_neighbor_bottom = NodePath("../GridContainer/VBoxContainer_lvl1/TextureButton_lvl_1")
 text = "Back
 "
 
