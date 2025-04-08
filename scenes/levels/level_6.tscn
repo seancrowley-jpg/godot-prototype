@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm14veph4n2xa"]
+[gd_scene load_steps=14 format=3 uid="uid://cm14veph4n2xa"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_g44gb"]
 [ext_resource type="Environment" uid="uid://ch4xbykeg3668" path="res://resources/level_envs/env_level_6.tres" id="2_i0fhw"]
+[ext_resource type="Script" uid="uid://is53do7faoao" path="res://scripts/MovingPlatform.gd" id="3_5wshb"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="3_i0fhw"]
+[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="4_741xk"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_g44gb"]
 left_to_right = 0.0
@@ -10,6 +12,32 @@ size = Vector3(13.445, 1, 5.754)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_741xk"]
 data = PackedVector3Array(-6.7225, 0.5, -2.877, -6.7225, -0.5, -2.877, 6.7225, -0.5, -2.877, -6.7225, 0.5, 2.877, -6.7225, -0.5, 2.877, -6.7225, -0.5, -2.877, -6.7225, -0.5, 2.877, 6.7225, -0.5, 2.877, -6.7225, -0.5, -2.877, -6.7225, 0.5, 2.877, 6.7225, -0.5, 2.877, -6.7225, -0.5, 2.877, -6.7225, 0.5, -2.877, -6.7225, 0.5, 2.877, -6.7225, -0.5, -2.877, -6.7225, 0.5, 2.877, -6.7225, 0.5, -2.877, 6.7225, -0.5, 2.877, 6.7225, -0.5, 2.877, 6.7225, -0.5, -2.877, -6.7225, -0.5, -2.877, -6.7225, 0.5, -2.877, 6.7225, -0.5, -2.877, 6.7225, -0.5, 2.877)
+
+[sub_resource type="Curve3D" id="Curve3D_e18e5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 18.4104, -1.00366, -3.08012, 0, 0, 0, 0, 0, 0, 7.868, -1.007, -3.074, 0, 0, 0, 0, 0, 0, 18.413, -1.007, -3.074),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x7cx"]
+size = Vector3(2.18628, 2.10452, 4.55884)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b6i88"]
+size = Vector3(2.18628, 2.10452, 4.55884)
+
+[sub_resource type="Curve3D" id="Curve3D_i0fhw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.084, 0, -1.395, 0, 0, 0, 0, 0, 0, -5.591, 0, -1.395, 0, 0, 0, 0, 0, 0, 5.084, 0, -1.395),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wshb"]
+size = Vector3(1, 3.35533, 6.90784)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7x7cx"]
+size = Vector3(1, 3.35533, 6.90784)
 
 [node name="level_6" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_g44gb")
@@ -60,12 +88,12 @@ operation = 2
 size = Vector3(5.34539, 6.626, 28.368)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map/Spawn_house/CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.360537, 1.25019, 19.3405)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.324597, 1.25019, 19.3405)
 operation = 2
 size = Vector3(2.13805, 1.43999, 1.57733)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/Spawn_house/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.360537, 2.32361, 19.7005)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.324597, 2.32361, 19.7005)
 operation = 2
 radius = 0.655
 height = 0.845
@@ -110,18 +138,18 @@ shape = SubResource("ConcavePolygonShape3D_741xk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27743)
 
 [node name="Platform" type="CSGBox3D" parent="Map/Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.796, -38.6493, 91.9816)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.796, -164.425, 91.9816)
 use_collision = true
-size = Vector3(5.75355, 65.6392, 5.27198)
+size = Vector3(5.75355, 317.19, 5.27198)
 
 [node name="Platform2" type="CSGCombiner3D" parent="Map/Platforms"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 5.28879, -21.7973, 101.183)
 use_collision = true
 
 [node name="Wall3" type="CSGBox3D" parent="Map/Platforms/Platform2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20.6058, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -167.42, 0)
 use_collision = true
-size = Vector3(5.75355, 74.6726, 5.27198)
+size = Vector3(5.75355, 368.301, 5.27198)
 
 [node name="ledge" type="CSGBox3D" parent="Map/Platforms/Platform2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00569153, 10.7005, -2.55618)
@@ -148,18 +176,18 @@ use_collision = true
 size = Vector3(1.85399, 0.377426, 0.661)
 
 [node name="Platform3" type="CSGBox3D" parent="Map/Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23746, -40.3231, 108.428)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23746, -206.993, 108.428)
 use_collision = true
-size = Vector3(5.75355, 62.2916, 5.27198)
+size = Vector3(5.75355, 395.631, 5.27198)
 
 [node name="Platform4" type="CSGCombiner3D" parent="Map/Platforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.959894, -20.9042, 117.658)
 use_collision = true
 
 [node name="Wall3" type="CSGBox3D" parent="Map/Platforms/Platform4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2932, -17.086, 5.18752)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2932, -123.473, 5.18752)
 use_collision = true
-size = Vector3(11.1023, 81.7124, 15.647)
+size = Vector3(11.1023, 294.487, 15.647)
 
 [node name="ledge" type="CSGBox3D" parent="Map/Platforms/Platform4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52017, 13.3515, -2.55618)
@@ -242,5 +270,142 @@ radius = 0.07
 height = 21.0013
 sides = 20
 
+[node name="Ledge_Jump" type="Node3D" parent="Map"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Ledge_Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27, -171.619, 156.159)
+use_collision = true
+size = Vector3(11.1085, 348.965, 11.2643)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Ledge_Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26995, -175.502, 183.288)
+use_collision = true
+size = Vector3(11.1085, 341.879, 11.2643)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Ledge_Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.720498, 5.59718, 162.576)
+use_collision = true
+size = Vector3(1.12763, 6.45297, 24.0975)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Ledge_Jump"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0984653, 2.52492, 162.566)
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+size = Vector3(0.540903, 0.67131, 24.078)
+
+[node name="Moving_Platforms" type="Node3D" parent="Map"]
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26995, -7.09517, 211.96)
+use_collision = true
+size = Vector3(11.1085, 5.06563, 46.3545)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26995, 1.13708, 207.591)
+use_collision = true
+size = Vector3(11.1085, 4.63438, 22.5773)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2651, 0.14992, 224.171)
+use_collision = true
+size = Vector3(11.1182, 6.60869, 10.6951)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48204, -2.26238, 199.634)
+use_collision = true
+size = Vector3(0.677312, 4.63438, 6.66367)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48204, -2.26238, 209.63)
+use_collision = true
+size = Vector3(0.677312, 4.63438, 4.19231)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48516, -3.75667, 224.178)
+use_collision = true
+size = Vector3(0.677312, 1.6458, 10.693)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.936832, -3.81453, 224.178)
+use_collision = true
+size = Vector3(0.677312, 1.53008, 10.693)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946185, -2.26238, 209.63)
+use_collision = true
+size = Vector3(0.677312, 4.63438, 4.19231)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.952029, -2.26238, 199.662)
+use_collision = true
+size = Vector3(0.677312, 4.63438, 6.66367)
+
+[node name="Obstacle" type="Node3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78721, -1.44442, 204.341)
+
+[node name="Path3D" type="Path3D" parent="Map/Moving_Platforms/Obstacle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3394, 1.14293, 3.2229)
+curve = SubResource("Curve3D_e18e5")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Map/Moving_Platforms/Obstacle/Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 9.42666, -1.007, -3.074)
+progress = 12.1021
+rotation_mode = 0
+script = ExtResource("3_5wshb")
+_speed = 12.0
+_pauseTimeAtWaypoints = 0.2
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Map/Moving_Platforms/Obstacle/Path3D/PathFollow3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463266, -0.531754, 2.05531)
+remote_path = NodePath("../../../AnimatableBody3D")
+update_rotation = false
+update_scale = false
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Map/Moving_Platforms/Obstacle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37597, -0.395821, 2.20421)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Moving_Platforms/Obstacle/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59314, -0.387735, -1.287)
+shape = SubResource("BoxShape3D_7x7cx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Moving_Platforms/Obstacle/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59314, -0.387735, -1.287)
+mesh = SubResource("BoxMesh_b6i88")
+
+[node name="Obstacle2" type="Node3D" parent="Map/Moving_Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.13422, -1.41633, 214.762)
+
+[node name="Path3D2" type="Path3D" parent="Map/Moving_Platforms/Obstacle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.331251, 0.107131, 1.55986)
+curve = SubResource("Curve3D_i0fhw")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Map/Moving_Platforms/Obstacle2/Path3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -5.591, 0, -1.395)
+progress = 10.675
+rotation_mode = 0
+script = ExtResource("3_5wshb")
+_speed = 12.0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Map/Moving_Platforms/Obstacle2/Path3D2/PathFollow3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48931, -1.5896, 0.275803)
+remote_path = NodePath("../../../AnimatableBody3D2")
+update_rotation = false
+update_scale = false
+
+[node name="AnimatableBody3D2" type="AnimatableBody3D" parent="Map/Moving_Platforms/Obstacle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77044, -1.48247, 0.440659)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Moving_Platforms/Obstacle2/AnimatableBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98945, 0, 0)
+shape = SubResource("BoxShape3D_5wshb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Moving_Platforms/Obstacle2/AnimatableBody3D2/CollisionShape3D"]
+mesh = SubResource("BoxMesh_7x7cx")
+skeleton = NodePath("../..")
+
 [node name="Player" parent="." instance=ExtResource("3_i0fhw")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.03351, 14.3917, 127.223)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.89, 10.627, 37.8209)
+
+[node name="Goal" parent="." instance=ExtResource("4_741xk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.8781, 130.117)

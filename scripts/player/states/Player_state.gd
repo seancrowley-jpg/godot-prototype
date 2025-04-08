@@ -139,7 +139,6 @@ func _process(delta: float) -> void:
 	cam_switch(delta)
 	show_game_menus()
 	gamepad_camera_movenemt()
-	
 
 func movement(speed, delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
