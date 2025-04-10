@@ -241,8 +241,12 @@ func gamepad_camera_movenemt():
 func show_game_menus():
 	if GlobalVariables.is_game_over:
 		game_over_menu.show_screen()
+		crosshair.visible = false
+		
 	if GlobalVariables.goal_reached:
 		results_menu.show_screen()
+		crosshair.visible = false
+		
 	if spotted:
 		alert_text.visible = true
 	else:

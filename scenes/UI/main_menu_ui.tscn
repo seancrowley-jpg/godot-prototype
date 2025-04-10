@@ -152,7 +152,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../../VBoxContainer_lvl_2/TextureButton_lvl_2")
 focus_neighbor_top = NodePath("../../../BackButton")
 focus_neighbor_right = NodePath("../../VBoxContainer_lvl1/TextureButton_lvl_1")
-focus_neighbor_bottom = NodePath("../../VBoxContainer_lvl_test/TextureButton_lvl_test")
+focus_neighbor_bottom = NodePath("../../VBoxContainer_lvl_6/TextureButton_lvl_6")
 texture_normal = ExtResource("3_rvyux")
 texture_focused = ExtResource("4_d0jgb")
 
@@ -167,7 +167,7 @@ horizontal_alignment = 1
 
 [node name="TextureButton_lvl_4" type="TextureButton" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_4"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../VBoxContainer_lvl_test/TextureButton_lvl_test")
+focus_neighbor_left = NodePath("../../VBoxContainer_lvl_6/TextureButton_lvl_6")
 focus_neighbor_top = NodePath("../../VBoxContainer_lvl1/TextureButton_lvl_1")
 focus_neighbor_right = NodePath("../../VBoxContainer_lvl_5/TextureButton_lvl_5")
 focus_neighbor_bottom = NodePath("../../../BackButton")
@@ -187,21 +187,21 @@ horizontal_alignment = 1
 layout_mode = 2
 focus_neighbor_left = NodePath("../../VBoxContainer_lvl_4/TextureButton_lvl_4")
 focus_neighbor_top = NodePath("../../VBoxContainer_lvl_2/TextureButton_lvl_2")
-focus_neighbor_right = NodePath("../../VBoxContainer_lvl_test/TextureButton_lvl_test")
+focus_neighbor_right = NodePath("../../VBoxContainer_lvl_6/TextureButton_lvl_6")
 focus_neighbor_bottom = NodePath("../../../BackButton")
 texture_normal = ExtResource("3_rvyux")
 texture_focused = ExtResource("4_d0jgb")
 
-[node name="VBoxContainer_lvl_test" type="VBoxContainer" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer"]
+[node name="VBoxContainer_lvl_6" type="VBoxContainer" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label_lvl_test" type="Label" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_test"]
+[node name="Label_lvl_6" type="Label" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_6"]
 layout_mode = 2
-text = "Test Level"
+text = "Level 6"
 horizontal_alignment = 1
 
-[node name="TextureButton_lvl_test" type="TextureButton" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_test"]
+[node name="TextureButton_lvl_6" type="TextureButton" parent="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_6"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../VBoxContainer_lvl_5/TextureButton_lvl_5")
 focus_neighbor_top = NodePath("../../VBoxContainer_lvl_3/TextureButton_lvl_3")
@@ -237,9 +237,9 @@ text = "Back
 [connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_5/TextureButton_lvl_5" to="." method="_on_texture_button_lvl_5_focus_entered"]
 [connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_5/TextureButton_lvl_5" to="." method="_on_texture_button_lvl_5_mouse_entered"]
 [connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_5/TextureButton_lvl_5" to="." method="_on_texture_button_lvl_5_pressed"]
-[connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_test/TextureButton_lvl_test" to="." method="_on_texture_button_lvl_test_focus_entered"]
-[connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_test/TextureButton_lvl_test" to="." method="_on_texture_button_lvl_test_mouse_entered"]
-[connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_test/TextureButton_lvl_test" to="." method="_on_texture_button_lvl_test_pressed"]
+[connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_6/TextureButton_lvl_6" to="." method="_on_texture_button_lvl_6_focus_entered"]
+[connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_6/TextureButton_lvl_6" to="." method="_on_texture_button_lvl_6_mouse_entered"]
+[connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/GridContainer/VBoxContainer_lvl_6/TextureButton_lvl_6" to="." method="_on_texture_button_lvl_6_pressed"]
 [connection signal="focus_entered" from="level_select_menu/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_focus_entered"]
 [connection signal="mouse_entered" from="level_select_menu/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="level_select_menu/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

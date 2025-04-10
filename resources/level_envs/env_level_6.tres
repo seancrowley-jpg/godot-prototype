@@ -47,7 +47,6 @@ ambient_light_color = Color(3.85046e-07, 0.673488, 0.205321, 1)
 reflected_light_source = 2
 tonemap_mode = 3
 ssao_enabled = true
-ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_energy = 0.7
 fog_light_color = Color(0.0474237, 0.65171, 0.421451, 1)

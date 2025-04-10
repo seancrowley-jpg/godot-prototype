@@ -15,12 +15,14 @@ func resume():
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	visible = false
+	get_parent().get_child(0).visible = true
 	
 func pause():
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	visible = true
 	resume_button.grab_focus()
+	get_parent().get_child(0).visible = false
 	
 	
 func _unhandled_input(event):
