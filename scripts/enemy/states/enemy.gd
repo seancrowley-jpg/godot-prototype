@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export var sprint_sound_area: Area3D
 @export var catch_player_area: Area3D
 @export var vision: Area3D
-
+@export var vision_ignore_bodies: Array[PhysicsBody3D]
 @onready var randPos : Vector3
 @onready var playback  = animation_tree["parameters/playback"]
 
@@ -38,11 +38,13 @@ extends CharacterBody3D
 @export var go_patrol: bool = false
 @export var use_random_patrol_path: bool = true
 
+
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
 	state_machine.init(self)
 	animation_tree.active = true
+	vision.vision_test_ignore_bodies.append_array(vision_ignore_bodies)
 
 func _physics_process(delta) -> void:
 	state_machine.process_physics(delta)
