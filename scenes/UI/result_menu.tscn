@@ -39,29 +39,58 @@ layout_mode = 2
 text = "--Results--"
 horizontal_alignment = 1
 
-[node name="TimeHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TimeLabel" type="Label" parent="PanelContainer/VBoxContainer/TimeHBoxContainer"]
+[node name="TimeLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/TimeHBoxContainer"]
 layout_mode = 2
 text = "Time:"
 
-[node name="TimeResultLabel" type="Label" parent="PanelContainer/VBoxContainer/TimeHBoxContainer"]
+[node name="TimeResultLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/TimeHBoxContainer"]
 layout_mode = 2
 text = "0:0:0"
 
-[node name="AlertsHBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="AlertsHBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="AlertsLabel" type="Label" parent="PanelContainer/VBoxContainer/AlertsHBoxContainer2"]
+[node name="AlertsLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/AlertsHBoxContainer2"]
 layout_mode = 2
 text = "Alerts:"
 
-[node name="AlertsResultLabel" type="Label" parent="PanelContainer/VBoxContainer/AlertsHBoxContainer2"]
+[node name="AlertsResultLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/AlertsHBoxContainer2"]
 layout_mode = 2
 text = "0"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="GradeTitle" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Grade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="GradeResult" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "A"
 
 [node name="ButtonHBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

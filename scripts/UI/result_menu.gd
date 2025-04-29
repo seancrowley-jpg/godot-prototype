@@ -3,8 +3,8 @@ extends Control
 @onready var next_button = $PanelContainer/VBoxContainer/ButtonHBoxContainer3/NextButton
 @onready var restart_button = $PanelContainer/VBoxContainer/ButtonHBoxContainer3/RestartButton
 @onready var main_menu_button = $PanelContainer/VBoxContainer/ButtonHBoxContainer3/MainMenuButton
-@onready var time_result_label = $PanelContainer/VBoxContainer/TimeHBoxContainer/TimeResultLabel
-@onready var alerts_result_label = $PanelContainer/VBoxContainer/AlertsHBoxContainer2/AlertsResultLabel
+@onready var time_result_label = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/TimeHBoxContainer/TimeResultLabel
+@onready var alerts_result_label = $PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/AlertsHBoxContainer2/AlertsResultLabel
 const FILE_BEGIN = "res://scenes/levels/"
 @onready var audio_stream_player = $AudioStreamPlayer
 
