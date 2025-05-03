@@ -26,7 +26,7 @@ func pause():
 	
 	
 func _unhandled_input(event):
-	if not GlobalVariables.is_game_over and not GlobalVariables.goal_reached:
+	if not GlobalVariables.is_game_over and not GlobalVariables.goal_reached and not GlobalVariables.is_in_overview:
 		if event.is_action_pressed("pause") and not get_tree().paused:
 			pause()
 		elif event.is_action_pressed("pause") and get_tree().paused:

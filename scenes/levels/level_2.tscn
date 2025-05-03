@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://djc5ewwio6mns"]
+[gd_scene load_steps=15 format=3 uid="uid://djc5ewwio6mns"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_xhvv7"]
 [ext_resource type="Environment" uid="uid://bpbm2tlyiky6m" path="res://resources/level_envs/env_level_3.tres" id="2_3p04p"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="5_g02vv"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="7_wg8ob"]
 [ext_resource type="PackedScene" uid="uid://c8rt74yp8hx2m" path="res://scenes/enemies/security_camera.tscn" id="9_tv7cl"]
+[ext_resource type="Script" uid="uid://05s3yan724kc" path="res://scenes/levels/camera_overview.gd" id="10_qsp8v"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2bnyt"]
 vertices = PackedVector3Array(-0.0128804, 14.45, 1.40743, -0.0128804, 14.45, 3.65743, 1.48712, 14.45, 3.65743, 1.48712, 14.45, 1.40743, -1.01288, 5.6, 4.40743, -1.01288, 5.6, 6.15743, -0.51288, 5.6, 6.40743, 2.48712, 5.6, 4.40743, -0.51288, 5.6, 10.9074, 2.48712, 5.6, 10.9074, -0.51288, 5.6, 19.1574, -0.51288, 5.6, 29.4074, 16.9871, 5.6, 29.4074, 16.9871, 5.6, 19.1574, 17.9871, 3.1, 19.1574, 17.9871, 3.1, 29.4074, 25.2371, 3.1, 29.4074, 25.2371, 3.1, 19.1574, -0.51288, 0.1, 42.6574, 5.48712, 0.1, 42.6574, 5.73712, 0.1, 40.4074, -0.51288, 0.1, 30.4074, 24.9871, 0.1, 40.4074, 24.9871, 0.1, 30.4074, 6.48712, 6.3, 41.4074, 6.48712, 6.3, 49.4074, 25.2371, 6.3, 49.4074, 25.2371, 6.3, 41.4074, 6.73712, 0.1, 41.6574, 6.73712, 0.1, 49.1574, 24.9871, 0.1, 49.1574, 24.9871, 0.1, 41.6574, -0.51288, 0.1, 49.1574, 5.48712, 0.1, 49.1574)
@@ -174,3 +175,14 @@ rotation_speed = 0.25
 [node name="Enemy" parent="Enemies" instance=ExtResource("7_wg8ob")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 23.7937, -0.00194252, 35.4335)
 enemey_can_patrol = false
+
+[node name="Camera_overview_marker" type="Marker3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1374, 2.63698, 23.4121)
+script = ExtResource("10_qsp8v")
+
+[node name="pivot" type="Node3D" parent="Camera_overview_marker"]
+
+[node name="Camera3D" type="Camera3D" parent="Camera_overview_marker/pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.681998, 0.731354, 0, -0.731354, 0.681998, 0, 21.6806, 29.7988)
+current = true

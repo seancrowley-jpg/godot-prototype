@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cm14veph4n2xa"]
+[gd_scene load_steps=15 format=3 uid="uid://cm14veph4n2xa"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_g44gb"]
 [ext_resource type="Environment" uid="uid://ch4xbykeg3668" path="res://resources/level_envs/env_level_6.tres" id="2_i0fhw"]
 [ext_resource type="Script" uid="uid://is53do7faoao" path="res://scripts/MovingPlatform.gd" id="3_5wshb"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="3_i0fhw"]
 [ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="4_741xk"]
+[ext_resource type="Script" uid="uid://05s3yan724kc" path="res://scenes/levels/camera_overview.gd" id="6_5wshb"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_g44gb"]
 left_to_right = 0.0
@@ -568,3 +569,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61928, 14.2049, 252.695)
 
 [node name="Player" parent="." instance=ExtResource("3_i0fhw")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.79881, 10.582, 37.7815)
+
+[node name="Camera_overview_marker" type="Marker3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15794, 0, 158.901)
+script = ExtResource("6_5wshb")
+
+[node name="pivot" type="Node3D" parent="Camera_overview_marker"]
+
+[node name="Camera3D" type="Camera3D" parent="Camera_overview_marker/pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 54.4035, 122.221)
+current = true

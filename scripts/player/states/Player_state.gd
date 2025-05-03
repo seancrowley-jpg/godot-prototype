@@ -122,6 +122,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		first_person_camera_3d.current = false
 		visuals.visible = true
+	
+	if get_tree().paused:
+		crosshair.visible = false
+	else:
+		crosshair.visible = true
 
 
 	#if on_ledge:

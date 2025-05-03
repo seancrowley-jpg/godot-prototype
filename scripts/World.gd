@@ -105,6 +105,7 @@ func _ready() -> void :
 		if moon_base_enegry == 0.0 :
 			moon_base_enegry = moon.light_energy
 	_update()
+	GlobalVariables.level_alerts = 0
 
 func _process( delta: float ) -> void :
 	if not Engine.is_editor_hint() : # We don't want a time lapse in the editor

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://da8luttj4daet"]
+
+[ext_resource type="Script" uid="uid://05s3yan724kc" path="res://scenes/levels/camera_overview.gd" id="1_dt2pp"]
+
+[node name="Camera_overview_marker" type="Marker3D"]
+process_mode = 3
+script = ExtResource("1_dt2pp")
+
+[node name="pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 18, 20.835)
+current = true
