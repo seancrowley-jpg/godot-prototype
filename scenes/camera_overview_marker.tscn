@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://da8luttj4daet"]
+[gd_scene load_steps=3 format=3 uid="uid://da8luttj4daet"]
 
-[ext_resource type="Script" uid="uid://05s3yan724kc" path="res://scenes/levels/camera_overview.gd" id="1_dt2pp"]
+[ext_resource type="Script" uid="uid://05s3yan724kc" path="res://scripts/camera_overview.gd" id="1_dt2pp"]
+[ext_resource type="Theme" uid="uid://qry22usrno8o" path="res://resources/menu_theme.tres" id="2_qlcxu"]
 
 [node name="Camera_overview_marker" type="Marker3D"]
 process_mode = 3
@@ -11,3 +12,32 @@ script = ExtResource("1_dt2pp")
 [node name="Camera3D" type="Camera3D" parent="pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 18, 20.835)
 current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -102.0
+offset_right = 421.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme = ExtResource("2_qlcxu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="Level_title" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level_01"
+
+[node name="Level_decription" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level_description this is the description of the level"
+
+[node name="input_tool_tip" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Space to continue"
+horizontal_alignment = 1

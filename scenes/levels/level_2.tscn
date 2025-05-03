@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djc5ewwio6mns"]
+[gd_scene load_steps=16 format=3 uid="uid://djc5ewwio6mns"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_xhvv7"]
 [ext_resource type="Environment" uid="uid://bpbm2tlyiky6m" path="res://resources/level_envs/env_level_3.tres" id="2_3p04p"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="5_g02vv"]
 [ext_resource type="PackedScene" uid="uid://oap43kpecvwf" path="res://scenes/enemies/enemy.tscn" id="7_wg8ob"]
 [ext_resource type="PackedScene" uid="uid://c8rt74yp8hx2m" path="res://scenes/enemies/security_camera.tscn" id="9_tv7cl"]
-[ext_resource type="Script" uid="uid://05s3yan724kc" path="res://scenes/levels/camera_overview.gd" id="10_qsp8v"]
+[ext_resource type="Script" uid="uid://05s3yan724kc" path="res://scripts/camera_overview.gd" id="10_qsp8v"]
+[ext_resource type="Theme" uid="uid://qry22usrno8o" path="res://resources/menu_theme.tres" id="11_nt80m"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2bnyt"]
 vertices = PackedVector3Array(-0.0128804, 14.45, 1.40743, -0.0128804, 14.45, 3.65743, 1.48712, 14.45, 3.65743, 1.48712, 14.45, 1.40743, -1.01288, 5.6, 4.40743, -1.01288, 5.6, 6.15743, -0.51288, 5.6, 6.40743, 2.48712, 5.6, 4.40743, -0.51288, 5.6, 10.9074, 2.48712, 5.6, 10.9074, -0.51288, 5.6, 19.1574, -0.51288, 5.6, 29.4074, 16.9871, 5.6, 29.4074, 16.9871, 5.6, 19.1574, 17.9871, 3.1, 19.1574, 17.9871, 3.1, 29.4074, 25.2371, 3.1, 29.4074, 25.2371, 3.1, 19.1574, -0.51288, 0.1, 42.6574, 5.48712, 0.1, 42.6574, 5.73712, 0.1, 40.4074, -0.51288, 0.1, 30.4074, 24.9871, 0.1, 40.4074, 24.9871, 0.1, 30.4074, 6.48712, 6.3, 41.4074, 6.48712, 6.3, 49.4074, 25.2371, 6.3, 49.4074, 25.2371, 6.3, 41.4074, 6.73712, 0.1, 41.6574, 6.73712, 0.1, 49.1574, 24.9871, 0.1, 49.1574, 24.9871, 0.1, 41.6574, -0.51288, 0.1, 49.1574, 5.48712, 0.1, 49.1574)
@@ -28,7 +29,7 @@ uv1_triplanar = true
 albedo_texture = ExtResource("5_brxtv")
 uv1_triplanar = true
 
-[node name="level_3" type="Node3D" node_paths=PackedStringArray("player", "enemies")]
+[node name="level_2" type="Node3D" node_paths=PackedStringArray("player", "enemies")]
 script = ExtResource("1_xhvv7")
 player = NodePath("Player")
 enemies = [NodePath("Enemies/Enemy")]
@@ -178,11 +179,42 @@ enemey_can_patrol = false
 
 [node name="Camera_overview_marker" type="Marker3D" parent="."]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1374, 2.63698, 23.4121)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0211, 0, 24.7145)
 script = ExtResource("10_qsp8v")
 
 [node name="pivot" type="Node3D" parent="Camera_overview_marker"]
 
 [node name="Camera3D" type="Camera3D" parent="Camera_overview_marker/pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.681998, 0.731354, 0, -0.731354, 0.681998, 0, 21.6806, 29.7988)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 25.2096, 29.4523)
 current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera_overview_marker"]
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera_overview_marker/CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -102.0
+offset_right = 421.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme = ExtResource("11_nt80m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera_overview_marker/CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="Level_title" type="Label" parent="Camera_overview_marker/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = " Level_02"
+
+[node name="Level_decription" type="Label" parent="Camera_overview_marker/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = " Avoid the cameras light //
+ Jump to grab ledges //
+ Hug Walls to shimmy //"
+
+[node name="input_tool_tip" type="Label" parent="Camera_overview_marker/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Space to continue"
+horizontal_alignment = 1

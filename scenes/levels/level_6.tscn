@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cm14veph4n2xa"]
+[gd_scene load_steps=16 format=3 uid="uid://cm14veph4n2xa"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_g44gb"]
 [ext_resource type="Environment" uid="uid://ch4xbykeg3668" path="res://resources/level_envs/env_level_6.tres" id="2_i0fhw"]
 [ext_resource type="Script" uid="uid://is53do7faoao" path="res://scripts/MovingPlatform.gd" id="3_5wshb"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="3_i0fhw"]
 [ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="4_741xk"]
-[ext_resource type="Script" uid="uid://05s3yan724kc" path="res://scenes/levels/camera_overview.gd" id="6_5wshb"]
+[ext_resource type="Script" uid="uid://05s3yan724kc" path="res://scripts/camera_overview.gd" id="6_5wshb"]
+[ext_resource type="Theme" uid="uid://qry22usrno8o" path="res://resources/menu_theme.tres" id="7_7x7cx"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_g44gb"]
 left_to_right = 0.0
@@ -572,11 +573,41 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.798
 
 [node name="Camera_overview_marker" type="Marker3D" parent="."]
 process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15794, 0, 158.901)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 140.013)
 script = ExtResource("6_5wshb")
 
 [node name="pivot" type="Node3D" parent="Camera_overview_marker"]
 
 [node name="Camera3D" type="Camera3D" parent="Camera_overview_marker/pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 54.4035, 122.221)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -5.33794, 46.6058, 134.04)
 current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera_overview_marker"]
+
+[node name="PanelContainer" type="PanelContainer" parent="Camera_overview_marker/CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -102.0
+offset_right = 421.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme = ExtResource("7_7x7cx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera_overview_marker/CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="Level_title" type="Label" parent="Camera_overview_marker/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = " Level_06"
+
+[node name="Level_decription" type="Label" parent="Camera_overview_marker/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = " Reach the goal at the end of the course //
+ Crouch while sprinting to roll //"
+
+[node name="input_tool_tip" type="Label" parent="Camera_overview_marker/CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Space to continue"
+horizontal_alignment = 1
