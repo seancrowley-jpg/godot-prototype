@@ -120,7 +120,7 @@ shadow_enabled = true
 environment = ExtResource("2_xwbyw")
 
 [node name="Player" parent="." instance=ExtResource("3_i6s4t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.53446)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3535, 0, 41.3096)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_na0ea")
@@ -388,5 +388,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.384
 [node name="motion_floor_light3" parent="MotionFloorLights" instance=ExtResource("18_qgoyv")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.38483, 0, -1.39286)
 
-[node name="Vehicle" parent="." instance=ExtResource("20_xgklb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9758, -0.00156724, 17.2506)
+[node name="Vehicle" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_xgklb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 39.8332, -0.00156724, 27.6842)
+player = NodePath("../Player")
