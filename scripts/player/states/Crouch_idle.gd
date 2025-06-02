@@ -14,6 +14,8 @@ var idle_state: State
 var crouch_walk_state: State
 @export
 var cover_idle_state: State
+@export
+var in_vehicle_state: State
 
 func enter() -> void:
 	super()

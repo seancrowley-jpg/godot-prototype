@@ -14,6 +14,8 @@ var crouch_state: State
 var cover_state: State
 @export
 var grapple_state: State
+@export
+var in_vehicle_state: State
 
 var idling: bool
 
@@ -43,6 +45,8 @@ func process_physics(delta: float) -> State:
 		return fall_state
 	if idling:
 		parent.playback.travel(parent.idle_animations.pick_random())
+	if parent.in_vehicle:
+		return in_vehicle_state
 	return null
 
 func exit() -> void:

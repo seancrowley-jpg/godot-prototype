@@ -12,6 +12,8 @@ var jump_state: State
 var roll_state: State
 @export
 var grapple_state: State
+@export
+var in_vehicle_state: State
 
 func enter() -> void:
 	super()
@@ -36,5 +38,7 @@ func process_physics(delta: float) -> State:
 	if !parent.is_on_floor():
 		return fall_state
 	
+	if parent.in_vehicle:
+		return in_vehicle_state
 	return null
 	

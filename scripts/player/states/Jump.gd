@@ -12,6 +12,8 @@ var sprint_state: State
 var ledge_idle_state: State
 @export
 var grapple_state: State
+@export
+var in_vehicle_state: State
 
 func enter() -> void:
 	super()
@@ -44,7 +46,8 @@ func process_physics(delta: float) -> State:
 			return run_state
 		else:
 			return sprint_state
-	
+	if parent.in_vehicle:
+		return in_vehicle_state
 	return null
 	
 func exit() -> void:

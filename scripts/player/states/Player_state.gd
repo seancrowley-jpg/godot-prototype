@@ -69,6 +69,7 @@ var idle_animations: Array = ["idle 1","idle 3","idle 2"]
 var left_right_lock: bool = false
 var on_ledge: bool = false
 var spotted : bool = false
+var in_vehicle
 
 const HOOK_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_availible.png")
 const HOOK_NOT_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_not_availible.png")
@@ -92,6 +93,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
 			camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 			rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
+			#if !in_vehicle:
 			remote_transform_3d.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
 
 func _physics_process(delta: float) -> void:
@@ -101,8 +103,10 @@ func _physics_process(delta: float) -> void:
 	if !left_right_lock:
 		remote_transform_3d.update_rotation = true
 	else:
-		remote_transform_3d.update_rotation = false
+			remote_transform_3d.update_rotation = false
 		
+	if in_vehicle:
+		remote_transform_3d.rotation.y = 0
 	# UI
 	if hook_controller.allowed_states.has(state_machine.current_state) and hook_raycast.is_colliding():
 		crosshair.texture = HOOK_AVAILIBLE_TEXTURE

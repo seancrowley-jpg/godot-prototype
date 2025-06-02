@@ -55,20 +55,22 @@ top_radius = 0.165
 bottom_radius = 0.0
 height = 0.101
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_d0fkt"]
-radius = 3.566
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvtne"]
+size = Vector3(2.44037, 1.09424, 5.12181)
 
-[node name="Vehicle" type="VehicleBody3D" node_paths=PackedStringArray("interact_area_3d", "camera_3d", "player_pos", "exit_timer")]
+[node name="Vehicle" type="VehicleBody3D" node_paths=PackedStringArray("interact_area_3d", "camera_3d", "player_drive_pos", "exit_timer", "collision")]
 mass = 100.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.824532, 0.745094)
 script = ExtResource("1_pu4i8")
 interact_area_3d = NodePath("Interact_Area3D")
 camera_3d = NodePath("Camera3D")
-player_pos = NodePath("Player_drive_pos")
+player_drive_pos = NodePath("Player_drive_pos")
 exit_timer = NodePath("VehicleExitTimer")
+collision = NodePath("CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.856209, 0)
-visible = false
 shape = SubResource("BoxShape3D_d0fkt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -166,17 +168,24 @@ light_energy = 10.0
 shadow_enabled = true
 
 [node name="Interact_Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79678, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8115, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact_Area3D"]
-shape = SubResource("SphereShape3D_d0fkt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191345, -0.0471191, 0.00266266)
+shape = SubResource("BoxShape3D_tvtne")
 
 [node name="Player_drive_pos" type="Marker3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.561649, 1.28543, 1.89893)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.561649, 1.54438, 1.7158)
 
 [node name="VehicleExitTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="CenterOfMass" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824532, 0.745094)
+
+[node name="front_pos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.561649, 1.54438, 3.51483)
 
 [connection signal="body_entered" from="Interact_Area3D" to="." method="_on_interact_area_3d_body_entered"]
 [connection signal="body_exited" from="Interact_Area3D" to="." method="_on_interact_area_3d_body_exited"]
