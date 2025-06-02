@@ -58,12 +58,13 @@ height = 0.101
 [sub_resource type="SphereShape3D" id="SphereShape3D_d0fkt"]
 radius = 3.566
 
-[node name="Vehicle" type="VehicleBody3D" node_paths=PackedStringArray("interact_area_3d", "camera_3d", "player_pos")]
+[node name="Vehicle" type="VehicleBody3D" node_paths=PackedStringArray("interact_area_3d", "camera_3d", "player_pos", "exit_timer")]
 mass = 100.0
 script = ExtResource("1_pu4i8")
 interact_area_3d = NodePath("Interact_Area3D")
 camera_3d = NodePath("Camera3D")
 player_pos = NodePath("Player_drive_pos")
+exit_timer = NodePath("VehicleExitTimer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.856209, 0)
@@ -173,5 +174,10 @@ shape = SubResource("SphereShape3D_d0fkt")
 [node name="Player_drive_pos" type="Marker3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.561649, 1.28543, 1.89893)
 
+[node name="VehicleExitTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="body_entered" from="Interact_Area3D" to="." method="_on_interact_area_3d_body_entered"]
 [connection signal="body_exited" from="Interact_Area3D" to="." method="_on_interact_area_3d_body_exited"]
+[connection signal="timeout" from="VehicleExitTimer" to="." method="_on_vehicle_timer_timeout"]
