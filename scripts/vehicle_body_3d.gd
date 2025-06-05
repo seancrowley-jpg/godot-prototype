@@ -38,7 +38,7 @@ func enter_vehicle(delta):
 
 func exit_vehicle():
 	if active && can_exit:
-		if Input.is_action_just_pressed("interact"):
+		if Input.is_action_just_pressed("interact") or flipped:
 			active = false
 			camera_3d.current = false
 			can_exit = false
@@ -67,6 +67,10 @@ func flipped_vehicle_check():
 			objects.append(flip_shape_cast.get_collider(i))
 		if objects.any(check):
 			flipped = true
+			#print("E")
+			#if active:
+				#print("R")
+				#exit_vehicle()
 	else:
 		flipped = false
 

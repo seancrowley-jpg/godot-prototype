@@ -305,10 +305,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45974, 1.76824, -19.8533)
 vertices = PackedVector3Array(2.421, 0, -5.202, -4.33, 0, 0.434, -2.574, 0, 5.351, 6.045, 0, -1.319)
 affect_navigation_mesh = true
 
-[node name="Vehicle" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("20_xgklb")]
-transform = Transform3D(-4.37114e-08, 0, -1, -1.74846e-07, 1, 7.64274e-15, 1, 1.74846e-07, -4.37114e-08, 31.6292, -0.017924, 27.6842)
-player = NodePath("../../Player")
-
 [node name="Enemies" type="Node3D" parent="." groups=["Enemies"]]
 
 [node name="Enemy" parent="Enemies" node_paths=PackedStringArray("vision_ignore_bodies") instance=ExtResource("15_vtjth")]
@@ -399,3 +395,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.384
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6619, 1.50207, 28.8779)
 mass = 50.0
 sleeping = true
+
+[node name="Vehicle" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_xgklb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, 1.31135e-07, -4.37114e-08, 1.31135e-07, -1, -5.73205e-15, 31.6292, 3.16487, 27.6842)
+player = NodePath("../Player")
