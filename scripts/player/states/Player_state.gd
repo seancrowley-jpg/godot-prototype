@@ -76,8 +76,6 @@ var in_vehicle
 const HOOK_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_availible.png")
 const HOOK_NOT_AVAILIBLE_TEXTURE = preload("res://addons/grappling_hook_3d/example/hook_not_availible.png")
 
-
-
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
 	# that way they can move and react accordingly
@@ -86,7 +84,6 @@ func _ready() -> void:
 	animation_tree.active = true
 	crouch_shapecast.add_exception($".")
 	cover_shapecast.add_exception($".")
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
@@ -118,17 +115,17 @@ func _physics_process(delta: float) -> void:
 	#Prevents Sprint Sound Detection Area from staying monitorable
 	if playback.get_current_node() != "sprint" and playback.get_current_node() != "running":
 		sprint_sound_area.monitorable = false
-		
+	#Game over is out of bounds
 	if position.y < -50:
 		GlobalVariables.is_game_over = true
-
+	#switch cameras when in vent
 	if GlobalVariables.vent_entered:
 		first_person_camera_3d.current = true
 		visuals.visible = false
 	else:
 		first_person_camera_3d.current = false
 		visuals.visible = true
-	
+	#hide crosshair is paused
 	if get_tree().paused:
 		crosshair.visible = false
 	else:
@@ -138,7 +135,8 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+			if c.get_collider() is not VehicleBody3D:
+				c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -186,7 +184,6 @@ func cam_switch(delta):
 
 	elif !cam_switched:
 		spring_arm_3d.transform = spring_arm_3d.transform.interpolate_with(default_cam_pos.transform, delta * 2 )
-
 
 func crouch_collision():
 	is_crouching = true

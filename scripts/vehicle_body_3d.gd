@@ -13,17 +13,21 @@ const MAX_STEER_ANGLE = 0.8
 @export var exit_timer: Timer
 @export var collision: CollisionShape3D
 @export var front_pos: Marker3D
+@export var flip_shape_cast: ShapeCast3D
 
-var overlapping : bool = false
-var active : bool = false
-var can_exit : bool = false
+@export var overlapping : bool = false
+@export var active : bool = false
+@export var can_exit : bool = false
+@export var flipped : bool = false
 
 func _physics_process(delta):
 	enter_vehicle(delta)
 	exit_vehicle()
+	flipped_vehicle_check()
+	flip_vehicle()
 
 func enter_vehicle(delta):
-	if overlapping && Input.is_action_just_pressed("interact") && !active:
+	if overlapping && Input.is_action_just_pressed("interact") && !active && !flipped:
 		active = true
 		exit_timer.start()
 	if active:
@@ -50,6 +54,24 @@ func vehicle_movement(delta):
 	if Input.is_action_just_pressed("interact"):
 		engine_force = 0
 
+
+func flip_vehicle():
+	if flipped && overlapping && Input.is_action_just_pressed("interact"):
+		apply_central_impulse((Vector3(5,10,0)) * 80)
+		apply_torque_impulse((Vector3(5,10,0)) * 80)
+		print("YEA")
+
+func flipped_vehicle_check():
+	if flip_shape_cast.is_colliding():
+		var objects : Array
+		for i in flip_shape_cast.get_collision_count():
+			objects.append(flip_shape_cast.get_collider(i))
+			print(objects.any(check))
+		if objects.any(check):
+			flipped = true
+	else:
+		flipped = false
+
 func _on_interact_area_3d_body_entered(body):
 	if body.name == "Player":
 		overlapping = true
@@ -60,3 +82,6 @@ func _on_interact_area_3d_body_exited(body):
 
 func _on_vehicle_timer_timeout():
 	can_exit = true
+	
+func check(object):
+	if object.name == "Floor": return true

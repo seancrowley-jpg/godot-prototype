@@ -37,7 +37,7 @@ extends CharacterBody3D
 @export var enemey_can_patrol: bool = true
 @export var go_patrol: bool = false
 @export var use_random_patrol_path: bool = true
-
+@export var push_force: float = 80.0
 
 func _ready() -> void:
 	# Initialize the state machine, passing a reference of the player to the states,
@@ -45,7 +45,6 @@ func _ready() -> void:
 	state_machine.init(self)
 	animation_tree.active = true
 	vision.vision_test_ignore_bodies.append_array(vision_ignore_bodies)
-	
 
 func _physics_process(delta) -> void:
 	state_machine.process_physics(delta)
@@ -60,6 +59,12 @@ func _physics_process(delta) -> void:
 		alert = true
 		alert_timer.start()
 	move_and_slide()
+	#Allows charachter body to apply forces to rigid boddies
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			if c.get_collider() is not VehicleBody3D:
+				c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -109,12 +114,10 @@ func _on_sprint_sound_area_area_entered(area):
 	if area.name == "SprintSoundArea": 
 		alert = true
 
-
 func _on_vision_body_sighted(body):
 	if body.name == "Player":
 		alert_timer.stop()
 		alert = true
-
 
 func _on_vision_body_hidden(body):
 	if body.name == "Player":

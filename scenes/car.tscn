@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cylpwoda052qa"]
+[gd_scene load_steps=15 format=3 uid="uid://cylpwoda052qa"]
 
 [ext_resource type="Script" uid="uid://bg8r3tpahepc" path="res://scripts/vehicle_body_3d.gd" id="1_pu4i8"]
 [ext_resource type="Shader" uid="uid://bf8hjrcmls82c" path="res://shaders/glass.gdshader" id="2_d0fkt"]
@@ -29,13 +29,21 @@ top_radius = 0.1
 bottom_radius = 0.02
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tvtne"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_psfx0"]
+material = SubResource("ShaderMaterial_tvtne")
+top_radius = 0.165
+bottom_radius = 0.0
+height = 0.101
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qt2eu"]
 render_priority = 0
 shader = ExtResource("2_d0fkt")
 shader_parameter/albedo = Color(0.7, 0.7, 0.8, 0.1)
 shader_parameter/opacity = 0.2
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.02
-shader_parameter/refraction = 0.05
+shader_parameter/refraction = 0.52
 shader_parameter/thickness = 0.2
 shader_parameter/specular = 0.5
 shader_parameter/use_tint = false
@@ -45,21 +53,39 @@ shader_parameter/use_custom_texture = false
 shader_parameter/texture_mix = 0.5
 shader_parameter/texture_scale = Vector2(1, 1)
 shader_parameter/texture_offset = Vector2(0, 0)
-shader_parameter/use_lens_distortion = false
+shader_parameter/use_lens_distortion = true
 shader_parameter/lens_distortion_amount = 0.2
 shader_parameter/lens_distortion_scale = 1.0
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_psfx0"]
-material = SubResource("ShaderMaterial_tvtne")
-top_radius = 0.165
-bottom_radius = 0.0
-height = 0.101
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50v30"]
+render_priority = 0
+shader = ExtResource("2_d0fkt")
+shader_parameter/albedo = Color(0.7, 0.7, 0.8, 0.1)
+shader_parameter/opacity = 0.2
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/refraction = 0.542
+shader_parameter/thickness = 0.2
+shader_parameter/specular = 0.5
+shader_parameter/use_tint = false
+shader_parameter/tint_color = Color(0, 0.2, 0.4, 1)
+shader_parameter/tint_intensity = 0.5
+shader_parameter/use_custom_texture = false
+shader_parameter/texture_mix = 0.5
+shader_parameter/texture_scale = Vector2(1, 1)
+shader_parameter/texture_offset = Vector2(0, 0)
+shader_parameter/use_lens_distortion = true
+shader_parameter/lens_distortion_amount = 0.2
+shader_parameter/lens_distortion_scale = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tvtne"]
-size = Vector3(2.44037, 1.09424, 5.12181)
+size = Vector3(3.36401, 2, 5.5)
 
-[node name="Car" type="VehicleBody3D" node_paths=PackedStringArray("interact_area_3d", "camera_3d", "player_drive_pos", "exit_timer", "collision", "front_pos")]
-mass = 100.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_qt2eu"]
+size = Vector3(2.65, 0.27, 5.235)
+
+[node name="Car" type="VehicleBody3D" node_paths=PackedStringArray("interact_area_3d", "camera_3d", "player_drive_pos", "exit_timer", "collision", "front_pos", "flip_shape_cast")]
+mass = 150.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.824532, 0.745094)
 script = ExtResource("1_pu4i8")
@@ -70,6 +96,7 @@ player_drive_pos = NodePath("Player_drive_pos")
 exit_timer = NodePath("VehicleExitTimer")
 collision = NodePath("CollisionShape3D")
 front_pos = NodePath("front_pos")
+flip_shape_cast = NodePath("FlipShapeCast3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.856209, 0)
@@ -152,7 +179,7 @@ skeleton = NodePath("../..")
 [node name="lights" type="MeshInstance3D" parent="visuals"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.59094, 0.842234, 0.917745)
 mesh = SubResource("CylinderMesh_psfx0")
-skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_qt2eu")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="visuals/lights"]
 transform = Transform3D(1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 0, -0.0249975, 0)
@@ -163,6 +190,7 @@ shadow_enabled = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.59094, 0.842234, -0.93972)
 mesh = SubResource("CylinderMesh_psfx0")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_50v30")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="visuals/lights2"]
 transform = Transform3D(1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 0, -0.0433297, 0)
@@ -173,7 +201,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8115, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact_Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191345, -0.0471191, 0.00266266)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0368083, -0.495727, -0.000165462)
 shape = SubResource("BoxShape3D_tvtne")
 
 [node name="Player_drive_pos" type="Marker3D" parent="."]
@@ -184,10 +212,14 @@ wait_time = 0.1
 one_shot = true
 
 [node name="CenterOfMass" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824532, 0.745094)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824532, -0.0993376)
 
 [node name="front_pos" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.561649, 1.54438, 3.51483)
+
+[node name="FlipShapeCast3D" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.369, 0)
+shape = SubResource("BoxShape3D_qt2eu")
 
 [connection signal="body_entered" from="Interact_Area3D" to="." method="_on_interact_area_3d_body_entered"]
 [connection signal="body_exited" from="Interact_Area3D" to="." method="_on_interact_area_3d_body_exited"]

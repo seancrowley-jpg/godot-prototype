@@ -38,22 +38,22 @@ size = Vector3(0.0733032, 2.54468, 16.155)
 render_priority = 0
 shader = ExtResource("6_px1c8")
 shader_parameter/albedo = Color(0.7, 0.7, 0.8, 0.1)
-shader_parameter/opacity = 0.2
+shader_parameter/opacity = 0.11
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.02
 shader_parameter/refraction = 0.05
 shader_parameter/thickness = 0.2
 shader_parameter/specular = 0.5
-shader_parameter/use_tint = false
-shader_parameter/tint_color = Color(0, 0.2, 0.4, 1)
-shader_parameter/tint_intensity = 0.5
+shader_parameter/use_tint = true
+shader_parameter/tint_color = Color(2.40654e-07, 0.247537, 0.127381, 1)
+shader_parameter/tint_intensity = 1.0
 shader_parameter/use_custom_texture = false
 shader_parameter/texture_mix = 0.5
 shader_parameter/texture_scale = Vector2(1, 1)
 shader_parameter/texture_offset = Vector2(0, 0)
-shader_parameter/use_lens_distortion = false
-shader_parameter/lens_distortion_amount = 0.2
-shader_parameter/lens_distortion_scale = 1.0
+shader_parameter/use_lens_distortion = true
+shader_parameter/lens_distortion_amount = 1.0
+shader_parameter/lens_distortion_scale = 10.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_5wre2"]
 size = Vector3(0.0733032, 2.54468, 16.155)
@@ -392,7 +392,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.384
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.38483, 0, -1.39286)
 
 [node name="Vehicle" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_xgklb")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 39.8332, -0.00156724, 27.6842)
+transform = Transform3D(-4.37114e-08, 0, -1, 1, 1.31134e-07, -4.37114e-08, 1.31134e-07, -1, -5.73206e-15, 39.8332, 6.63323, 27.6842)
 player = NodePath("../Player")
 
 [node name="Ball" parent="." instance=ExtResource("21_5wre2")]
