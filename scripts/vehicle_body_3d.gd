@@ -12,7 +12,7 @@ const MAX_STEER_ANGLE = 0.8
 @export var player_drive_pos: Marker3D
 @export var exit_timer: Timer
 @export var collision: CollisionShape3D
-@onready var front_pos = $front_pos
+@export var front_pos: Marker3D
 
 var overlapping : bool = false
 var active : bool = false
@@ -30,6 +30,7 @@ func enter_vehicle(delta):
 		vehicle_movement(delta)
 		camera_3d.current = true
 		player.in_vehicle = true
+		player.player_collision.disabled  = true
 
 func exit_vehicle():
 	if active && can_exit:
@@ -38,7 +39,9 @@ func exit_vehicle():
 			camera_3d.current = false
 			can_exit = false
 			player.in_vehicle = false
-
+			player.rotation = Vector3.ZERO
+			player.player_collision.disabled  = false
+			
 func vehicle_movement(delta):
 	steering = move_toward(steering, Input.get_axis("right","left") * MAX_STEER_ANGLE, delta * 2.5)
 	brake = Input.get_action_strength("sprint") * brake_power

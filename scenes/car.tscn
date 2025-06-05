@@ -58,16 +58,18 @@ height = 0.101
 [sub_resource type="BoxShape3D" id="BoxShape3D_tvtne"]
 size = Vector3(2.44037, 1.09424, 5.12181)
 
-[node name="Vehicle" type="VehicleBody3D" node_paths=PackedStringArray("interact_area_3d", "camera_3d", "player_drive_pos", "exit_timer", "collision")]
+[node name="Car" type="VehicleBody3D" node_paths=PackedStringArray("interact_area_3d", "camera_3d", "player_drive_pos", "exit_timer", "collision", "front_pos")]
 mass = 100.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.824532, 0.745094)
 script = ExtResource("1_pu4i8")
+engine_power = 300
 interact_area_3d = NodePath("Interact_Area3D")
 camera_3d = NodePath("Camera3D")
 player_drive_pos = NodePath("Player_drive_pos")
 exit_timer = NodePath("VehicleExitTimer")
 collision = NodePath("CollisionShape3D")
+front_pos = NodePath("front_pos")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.856209, 0)
@@ -175,7 +177,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191345, -0.0471191, 0.002
 shape = SubResource("BoxShape3D_tvtne")
 
 [node name="Player_drive_pos" type="Marker3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.561649, 1.54438, 1.7158)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.562, 1.23104, 1.716)
 
 [node name="VehicleExitTimer" type="Timer" parent="."]
 wait_time = 0.1

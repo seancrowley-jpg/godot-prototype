@@ -45,6 +45,7 @@ func _ready() -> void:
 	state_machine.init(self)
 	animation_tree.active = true
 	vision.vision_test_ignore_bodies.append_array(vision_ignore_bodies)
+	
 
 func _physics_process(delta) -> void:
 	state_machine.process_physics(delta)

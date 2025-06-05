@@ -17,6 +17,8 @@ extends CharacterBody3D
 @export var joy_stick_dead_zone: float = 0.1
 @export var joy_stick_sens_horizontal: float = 2
 @export var joy_stick_sens_vertical: float = 2
+# This represents the player's inertia.
+@export var push_force: float = 80.0
 
 @export_group("Nodes")
 @export var crouch_shapecast: ShapeCast3D
@@ -132,15 +134,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		crosshair.visible = true
 
-
-	#if on_ledge:
-		#var obj = ledge_raycast_1.get_collider()
-		#if obj is AnimatableBody3D:
-			#print("Ledge ",ledge_raycast_1.get_collision_point())
-			#print("Player ",position)
-			#print("Holder ",stick_point_holder.global_transform.origin)
-			#print("X ",stick_point.global_transform.origin.x)
-			#print("Z ",stick_point.global_transform.origin.z)
+	#Allows charachter body to apply forces to rigid boddies
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -159,7 +157,6 @@ func movement(speed, delta):
 	
 	if not is_on_floor():
 		velocity.y -= fall_acceleration * delta
-	
 	
 	move_and_slide()
 
@@ -189,7 +186,7 @@ func cam_switch(delta):
 
 	elif !cam_switched:
 		spring_arm_3d.transform = spring_arm_3d.transform.interpolate_with(default_cam_pos.transform, delta * 2 )
-	
+
 
 func crouch_collision():
 	is_crouching = true

@@ -22,6 +22,7 @@ var idling: bool
 func enter() -> void:
 	super()
 	parent.velocity = Vector3.ZERO
+	parent.stand_collision()
 
 func process_input(event: InputEvent) -> State:
 	if event.is_action_pressed("crouch"):
