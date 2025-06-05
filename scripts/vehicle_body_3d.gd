@@ -59,14 +59,12 @@ func flip_vehicle():
 	if flipped && overlapping && Input.is_action_just_pressed("interact"):
 		apply_central_impulse((Vector3(5,10,0)) * 80)
 		apply_torque_impulse((Vector3(5,10,0)) * 80)
-		print("YEA")
 
 func flipped_vehicle_check():
 	if flip_shape_cast.is_colliding():
 		var objects : Array
 		for i in flip_shape_cast.get_collision_count():
 			objects.append(flip_shape_cast.get_collider(i))
-			print(objects.any(check))
 		if objects.any(check):
 			flipped = true
 	else:
