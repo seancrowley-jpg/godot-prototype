@@ -35,6 +35,7 @@ func enter_vehicle(delta):
 		camera_3d.current = true
 		player.in_vehicle = true
 		player.player_collision.disabled  = true
+		
 
 func exit_vehicle():
 	if active && can_exit:
@@ -67,10 +68,6 @@ func flipped_vehicle_check():
 			objects.append(flip_shape_cast.get_collider(i))
 		if objects.any(check):
 			flipped = true
-			#print("E")
-			#if active:
-				#print("R")
-				#exit_vehicle()
 	else:
 		flipped = false
 
@@ -86,4 +83,4 @@ func _on_vehicle_timer_timeout():
 	can_exit = true
 	
 func check(object):
-	if object.name == "Floor": return true
+	if object.is_in_group("Floor"): return true

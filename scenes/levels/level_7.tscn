@@ -1,0 +1,299 @@
+[gd_scene load_steps=9 format=3 uid="uid://t61dil4cl764"]
+
+[ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_d06uk"]
+[ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="2_772ry"]
+[ext_resource type="Environment" uid="uid://bsaf45y4ascsj" path="res://resources/level_envs/env_level_7.tres" id="2_hq5i0"]
+[ext_resource type="PackedScene" uid="uid://cylpwoda052qa" path="res://scenes/car.tscn" id="3_d06uk"]
+[ext_resource type="PackedScene" uid="uid://bi8cvwjgsp55f" path="res://scenes/levels/goal.tscn" id="4_hq5i0"]
+[ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="4_u1w5x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvnin"]
+albedo_texture = ExtResource("2_772ry")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d06uk"]
+albedo_texture = ExtResource("2_772ry")
+uv1_triplanar = true
+
+[node name="level_7" type="Node3D"]
+script = ExtResource("1_d06uk")
+day_time = 6.0597
+planet_axial_tilt = -53.86
+clouds_cutoff = 0.54
+clouds_weight = 0.06
+time_scale = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_hq5i0")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.827116, 0, -0.562031, 0.289131, -0.857527, 0.425501, -0.481957, -0.51444, -0.709274, 0, 0, 0)
+rotation_order = 4
+light_energy = 0.6
+shadow_enabled = true
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.416929, 0, -0.908939, -0.614509, 0.736835, 0.281875, 0.669738, 0.676073, -0.307208, 0, 0, 0)
+rotation_order = 4
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="Map" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 153.402, 0)
+
+[node name="Floor_Nodes" type="Node3D" parent="Map" groups=["Floor"]]
+
+[node name="Floor" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -49.6249, 80.6844, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(264.712, 1, 21.7405)
+
+[node name="Floor2" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -185.263, 114.925, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(15.9003, 1, 21.7405)
+
+[node name="Floor3" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.758, 39.6438, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(92.7939, 1, 21.7405)
+
+[node name="Floor10" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 433.604, 19.967, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(63.8396, 1, 80)
+
+[node name="Floor5" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.975095, 0.221787, 0, -0.221787, 0.975095, 0, 0, 0, 1, 84.4642, 45.0222, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(13.6374, 1, 21.7405)
+
+[node name="Floor6" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.982955, 0.183848, 0, -0.183848, 0.982955, 0, 0, 0, 1, 97.0822, 42.3904, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(12.369, 1, 21.7405)
+
+[node name="Floor7" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.992724, 0.120414, 0, -0.120414, 0.992724, 0, 0, 0, 1, 106.929, 40.8047, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(8.0307, 1, 21.7405)
+
+[node name="Floor8" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.997545, 0.070035, 0, -0.070035, 0.997545, 0, 0, 0, 1, 114.785, 40.0326, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(8.0307, 1, 21.7405)
+
+[node name="Floor9" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.999907, 0.0136131, 0, -0.0136131, 0.999907, 0, 0, 0, 1, 122.7, 39.6989, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(8.0307, 1, 21.7405)
+
+[node name="Floor4" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.981567, -0.191117, 0, 0.191117, 0.981567, 0, 0, 0, 1, 227.125, 41.1887, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(16.4599, 1, 21.7405)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map/Floor_Nodes"]
+operation = 2
+use_collision = true
+
+[node name="Floor11" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 404.74, 31.35, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(6.113, 21.764, 80)
+
+[node name="Floor12" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 404.74, 32.453, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(6.113, 23.972, 20)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Map/Floor_Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.93, 0, 0)
+operation = 2
+use_collision = true
+
+[node name="Floor11" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 404.74, 31.35, -2.85901)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(6.113, 21.764, 138.615)
+
+[node name="Floor13" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D2" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 404.74, 25.684, -25)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(6.113, 10.4338, 20)
+
+[node name="Floor14" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D2" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 404.74, 25.684, 25)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(6.113, 10.4338, 20)
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="Map/Floor_Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299683, 0, 0.0088768)
+material_override = SubResource("StandardMaterial3D_d06uk")
+use_collision = true
+
+[node name="Floor11" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D3" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 524.297, 19.967, -2.44027)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(117.627, 1, 139.157)
+
+[node name="Floor12" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D3" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 493.25, 19.9752, 0.134473)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(44.5945, 1.66968, 30.0151)
+
+[node name="Floor13" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D3" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 500.41, 20.0692, 42.8284)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(38.4985, 1.66968, 33.8031)
+
+[node name="Floor14" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D3" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 548.911, 20.2035, 36.0949)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(40.2447, 1.66968, 52.4287)
+
+[node name="Floor15" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D3" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 552.383, 20.2035, -58.3913)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(47.1881, 1.66968, 20.9066)
+
+[node name="Floor17" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D3" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 545.074, 20.2035, -22.9612)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(48.0271, 1.66968, 29.6713)
+
+[node name="Floor16" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D3" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 498.432, 20.2035, -43.9204)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(25.8451, 1.66968, 35.9468)
+
+[node name="Floor18" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 641.466, 19.967, -47.574)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(119.686, 1, 18.9499)
+
+[node name="Floor19" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 641.466, 19.967, 53.0826)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(119.686, 1, 18.9499)
+
+[node name="Floor20" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.992604, -0.121402, 0, 0.121402, 0.992604, 0, 0, 0, 1, 703.569, 20.2305, 53.0826)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(4.98397, 1, 18.9499)
+
+[node name="Floor21" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.98349, -0.180965, 0, 0.180965, 0.98349, 0, 0, 0, 1, 708.157, 20.9259, 53.0826)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(4.60293, 1, 18.9499)
+
+[node name="Floor22" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.975331, -0.220749, 0, 0.220749, 0.975331, 0, 0, 0, 1, 761.302, 32.8661, 53.0826)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(104.64, 1, 18.9499)
+
+[node name="Floor23" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.992604, -0.121402, 0, 0.121402, 0.992604, 0, 0, 0, 1, 703.398, 20.2305, -47.5593)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(4.98397, 1, 18.9499)
+
+[node name="Floor24" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.98349, -0.180965, 0, 0.180965, 0.98349, 0, 0, 0, 1, 707.986, 20.9259, -47.5593)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(4.60293, 1, 18.9499)
+
+[node name="Floor25" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(0.975331, -0.220749, 0, 0.220749, 0.975331, 0, 0, 0, 1, 761.21, 32.8843, -47.5593)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(104.805, 1, 18.9499)
+
+[node name="Floor26" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 864.072, 44.428, -47.559)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(103.793, 1, 72.8818)
+
+[node name="Floor27" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 864.072, 44.428, 53.6834)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(103.793, 1, 72.8818)
+
+[node name="Floor28" type="CSGBox3D" parent="Map/Floor_Nodes" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 992.728, 44.428, 3.05875)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(153.753, 1, 174.131)
+
+[node name="CSGCombiner3D4" type="CSGCombiner3D" parent="Map/Floor_Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1021.82, 67.915, 0)
+use_collision = true
+
+[node name="Floor29" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D4" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.03922)
+material_override = SubResource("StandardMaterial3D_uvnin")
+use_collision = true
+size = Vector3(95.3067, 47.9747, 174.007)
+
+[node name="Floor30" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D4" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.779, -5.2695, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(13.917, 36.5664, 18.4802)
+
+[node name="Floor31" type="CSGBox3D" parent="Map/Floor_Nodes/CSGCombiner3D4" groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.1769, -10.6704, 0)
+material_override = SubResource("StandardMaterial3D_uvnin")
+operation = 2
+use_collision = true
+size = Vector3(11.3474, 14.1965, 12.1537)
+
+[node name="Goal" parent="Map" instance=ExtResource("4_hq5i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.649, 51.1366, 0)
+
+[node name="Player" parent="." instance=ExtResource("4_u1w5x")]
+transform = Transform3D(0.281722, 0, -0.959496, 0, 1, 0, 0.959496, 0, 0.281722, -191.327, 268.828, 6.73351)
+
+[node name="Car" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_d06uk")]
+transform = Transform3D(-4.37114e-08, 0, 1, -1.74846e-07, 1, -7.64274e-15, -1, -1.74846e-07, -4.37114e-08, -185.092, 269.329, 0)
+player = NodePath("../Player")

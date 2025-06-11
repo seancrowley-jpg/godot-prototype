@@ -12,7 +12,6 @@ func enter() -> void:
 
 func process_physics(delta: float) -> State:
 	#parent.movement(0,delta)
-	
 	if !parent.in_vehicle:
 		return idle_state
 	return null

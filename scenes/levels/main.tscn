@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://v4grtipktv4t"]
+[gd_scene load_steps=35 format=3 uid="uid://v4grtipktv4t"]
 
 [ext_resource type="Script" uid="uid://dj5te51km5h0f" path="res://scripts/World.gd" id="1_quwq4"]
+[ext_resource type="PackedScene" uid="uid://cn3yudi8lecys" path="res://scenes/guide_spheres.tscn" id="2_qy6q0"]
 [ext_resource type="Environment" uid="uid://48habvlwjl0k" path="res://resources/level_envs/env.tres" id="2_xwbyw"]
 [ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="3_i6s4t"]
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assests/textures/grids/Dark/texture_05.png" id="4_7nyyx"]
@@ -117,6 +118,9 @@ rotation_order = 4
 light_energy = 0.0
 shadow_enabled = true
 
+[node name="GuideSpheres" parent="." instance=ExtResource("2_qy6q0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9143, -0.00618303, 37.2198)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xwbyw")
 
@@ -128,7 +132,7 @@ navigation_mesh = SubResource("NavigationMesh_na0ea")
 
 [node name="Map" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D/Map"]
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D/Map" groups=["Floor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_48xpd")
 use_collision = true
@@ -396,6 +400,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6619, 1.50207, 28.8779)
 mass = 50.0
 sleeping = true
 
-[node name="Vehicle" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_xgklb")]
-transform = Transform3D(-4.37114e-08, 0, -1, 1, 1.31135e-07, -4.37114e-08, 1.31135e-07, -1, -5.73205e-15, 31.6292, 3.16487, 27.6842)
+[node name="Car" parent="." node_paths=PackedStringArray("player") instance=ExtResource("20_xgklb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 34.0868, 0, 24.8005)
 player = NodePath("../Player")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cylpwoda052qa"]
+[gd_scene load_steps=16 format=3 uid="uid://cylpwoda052qa"]
 
 [ext_resource type="Script" uid="uid://bg8r3tpahepc" path="res://scripts/vehicle_body_3d.gd" id="1_pu4i8"]
 [ext_resource type="Shader" uid="uid://bf8hjrcmls82c" path="res://shaders/glass.gdshader" id="2_d0fkt"]
@@ -28,10 +28,14 @@ material = SubResource("StandardMaterial3D_d0fkt")
 top_radius = 0.1
 bottom_radius = 0.02
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvtne"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qt2eu"]
+blend_mode = 1
+albedo_color = Color(1, 1, 1, 0)
+emission_enabled = true
+emission = Color(0.733837, 0.732437, 0.582286, 1)
+emission_energy_multiplier = 3.13
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_psfx0"]
-material = SubResource("ShaderMaterial_tvtne")
 top_radius = 0.165
 bottom_radius = 0.0
 height = 0.101
@@ -43,7 +47,7 @@ shader_parameter/albedo = Color(0.7, 0.7, 0.8, 0.1)
 shader_parameter/opacity = 0.2
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.02
-shader_parameter/refraction = 0.52
+shader_parameter/refraction = 1.0
 shader_parameter/thickness = 0.2
 shader_parameter/specular = 0.5
 shader_parameter/use_tint = false
@@ -56,6 +60,13 @@ shader_parameter/texture_offset = Vector2(0, 0)
 shader_parameter/use_lens_distortion = true
 shader_parameter/lens_distortion_amount = 0.2
 shader_parameter/lens_distortion_scale = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50v30"]
+blend_mode = 1
+albedo_color = Color(1, 1, 1, 0)
+emission_enabled = true
+emission = Color(0.733837, 0.732437, 0.582286, 1)
+emission_energy_multiplier = 3.13
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_50v30"]
 render_priority = 0
@@ -104,6 +115,7 @@ shape = SubResource("BoxShape3D_d0fkt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.856209, 0)
+gi_mode = 2
 mesh = SubResource("BoxMesh_tvtne")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -168,16 +180,19 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="visuals"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.638809, -1.28011)
+gi_mode = 2
 mesh = SubResource("CylinderMesh_d0fkt")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="visuals"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.638809, 1.27236)
+gi_mode = 2
 mesh = SubResource("CylinderMesh_d0fkt")
 skeleton = NodePath("../..")
 
 [node name="lights" type="MeshInstance3D" parent="visuals"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.59094, 0.842234, 0.917745)
+material_overlay = SubResource("StandardMaterial3D_qt2eu")
 mesh = SubResource("CylinderMesh_psfx0")
 surface_material_override/0 = SubResource("ShaderMaterial_qt2eu")
 
@@ -188,6 +203,7 @@ shadow_enabled = true
 
 [node name="lights2" type="MeshInstance3D" parent="visuals"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.59094, 0.842234, -0.93972)
+material_overlay = SubResource("StandardMaterial3D_50v30")
 mesh = SubResource("CylinderMesh_psfx0")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_50v30")

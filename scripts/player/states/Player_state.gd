@@ -92,7 +92,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera_mount.rotate_x(deg_to_rad(-event.relative.y * sens_vertical))
 			camera_mount.rotation.x = clamp(camera_mount.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 			rotate_y(deg_to_rad(-event.relative.x * sens_horizontal))
-			#if !in_vehicle:
 			remote_transform_3d.rotate_y(deg_to_rad(event.relative.x * sens_horizontal))
 
 func _physics_process(delta: float) -> void:

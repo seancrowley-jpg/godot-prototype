@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q2w17"]
 render_priority = 0
 shader = ExtResource("1_ihqpb")
-shader_parameter/shininess = 200.0
+shader_parameter/shininess = 50.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_x1v1b"]
 top_radius = 0.0
@@ -25,7 +25,6 @@ height = 2.588
 
 [node name="Goal" type="CSGCombiner3D"]
 material_override = SubResource("ShaderMaterial_q2w17")
-gi_mode = 2
 script = ExtResource("2_o3d4o")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
@@ -36,18 +35,17 @@ mesh = SubResource("CylinderMesh_x1v1b")
 mesh = SubResource("CylinderMesh_rncyu")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.389657, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0050047, -0.876692, 0)
+visible = false
 light_color = Color(0.516463, 0.816851, 0.384281, 1)
-light_energy = 2.0
-light_indirect_energy = 2.0
-light_volumetric_fog_energy = 10.0
+light_energy = 0.1
 light_size = 1.0
 light_negative = true
 light_specular = 1.0
 shadow_enabled = true
 shadow_bias = 2.0
 shadow_blur = 5.0
-omni_range = 1.784
+omni_range = 0.60238
 omni_attenuation = 2.5
 
 [node name="Area3D" type="Area3D" parent="."]
