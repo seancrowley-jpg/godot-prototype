@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://csrv22w1ji862"]
+
+[ext_resource type="Script" uid="uid://cvr3phgcjon4k" path="res://scripts/tram.gd" id="1_us4xn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i3hxq"]
+size = Vector3(5, 1, 3.83411)
+
+[sub_resource type="BoxMesh" id="BoxMesh_us4xn"]
+size = Vector3(5, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4836a"]
+size = Vector3(5, 1.40615, 1.01582)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jahas"]
+size = Vector3(5, 1.40615, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ckdh1"]
+size = Vector3(5, 1.40615, 0.995801)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2h1mg"]
+size = Vector3(2, 1.99707, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aie50"]
+size = Vector3(2, 1.99707, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_us4xn"]
+size = Vector3(4.48256, 1, 1.85)
+
+[node name="Tram" type="AnimatableBody3D"]
+script = ExtResource("1_us4xn")
+
+[node name="Base" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0816956, 0, -0.0126343)
+shape = SubResource("BoxShape3D_i3hxq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base"]
+gi_mode = 2
+mesh = SubResource("BoxMesh_us4xn")
+skeleton = NodePath("../..")
+
+[node name="Left" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.082, 1.2, -1.40591)
+shape = SubResource("BoxShape3D_4836a")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Left"]
+gi_mode = 2
+mesh = SubResource("BoxMesh_jahas")
+skeleton = NodePath("../../Base")
+
+[node name="Right" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.082, 1.2, 1.3999)
+shape = SubResource("BoxShape3D_ckdh1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Right"]
+gi_mode = 2
+mesh = SubResource("BoxMesh_jahas")
+skeleton = NodePath("../../Base")
+
+[node name="Front" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.17048, 1.31058, 0)
+shape = SubResource("BoxShape3D_2h1mg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Front"]
+gi_mode = 2
+mesh = SubResource("BoxMesh_aie50")
+skeleton = NodePath("../..")
+
+[node name="PlayerInteractArea3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerInteractArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318779, 0.938315, 0)
+shape = SubResource("BoxShape3D_us4xn")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07124, 0.504983, 0)
+
+[connection signal="body_entered" from="PlayerInteractArea3D" to="." method="_on_player_interact_area_3d_body_entered"]
+[connection signal="body_exited" from="PlayerInteractArea3D" to="." method="_on_player_interact_area_3d_body_exited"]

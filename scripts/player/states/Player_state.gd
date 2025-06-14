@@ -49,6 +49,8 @@ extends CharacterBody3D
 @export var game_over_menu: Control
 @export var results_menu: Control
 @export var ui_timer: Control
+@export var enter_vehicle_label: Label
+@export var flip_vehicle_label: Label
 
 @onready var playback  = animation_tree["parameters/playback"]
 @onready var visuals = $visuals

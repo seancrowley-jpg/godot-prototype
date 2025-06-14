@@ -200,6 +200,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_qt2eu")
 transform = Transform3D(1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 0, -0.0249975, 0)
 light_energy = 10.0
 shadow_enabled = true
+spot_range = 20.0
 
 [node name="lights2" type="MeshInstance3D" parent="visuals"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.59094, 0.842234, -0.93972)
@@ -212,6 +213,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_50v30")
 transform = Transform3D(1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 0, -0.0433297, 0)
 light_energy = 10.0
 shadow_enabled = true
+spot_range = 20.0
 
 [node name="Interact_Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8115, 0)

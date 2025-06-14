@@ -295,5 +295,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 991.649, 51.1366, 0)
 transform = Transform3D(0.281722, 0, -0.959496, 0, 1, 0, 0.959496, 0, 0.281722, -191.327, 268.828, 6.73351)
 
 [node name="Car" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_d06uk")]
-transform = Transform3D(-4.37114e-08, 0, 1, -1.74846e-07, 1, -7.64274e-15, -1, -1.74846e-07, -4.37114e-08, -185.092, 269.329, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, -1.74846e-07, 1, -7.64274e-15, -1, -1.74846e-07, -4.37114e-08, -185.092, 268.975, 0)
 player = NodePath("../Player")

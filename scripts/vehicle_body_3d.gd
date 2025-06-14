@@ -25,6 +25,7 @@ func _physics_process(delta):
 	exit_vehicle()
 	flipped_vehicle_check()
 	flip_vehicle()
+	display_vehicle_tooltip()
 
 func enter_vehicle(delta):
 	if overlapping && Input.is_action_just_pressed("interact") && !active && !flipped:
@@ -84,3 +85,15 @@ func _on_vehicle_timer_timeout():
 	
 func check(object):
 	if object.is_in_group("Floor"): return true
+
+func display_vehicle_tooltip():
+	if overlapping and not flipped:
+		player.enter_vehicle_label.visible = true
+	else:
+		player.enter_vehicle_label.visible = false
+		
+	if overlapping and flipped:
+		player.flip_vehicle_label.visible = true
+	else:
+		player.flip_vehicle_label.visible = false
+	

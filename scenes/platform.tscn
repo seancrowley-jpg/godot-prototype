@@ -12,4 +12,5 @@ size = Vector3(4, 0.5, 4)
 shape = SubResource("BoxShape3D_e6dfp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+gi_mode = 2
 mesh = SubResource("BoxMesh_g2t5q")
