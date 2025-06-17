@@ -60,6 +60,8 @@ navigation_mesh = SubResource("NavigationMesh_2bnyt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0442, -0.5, 39.7756)
 material_override = SubResource("StandardMaterial3D_pimnq")
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(27.0884, 1, 20.4487)
 
 [node name="Walls" type="Node3D" parent="NavigationRegion3D/Map"]

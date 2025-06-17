@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp74nhwblndpo"]
+
+[ext_resource type="PackedScene" uid="uid://bfid8f2b21vrq" path="res://scenes/ragdoll.tscn" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://dnlj8ysr23c6b" path="res://scenes/Player.tscn" id="2_bl13t"]
+
+[node name="TestRagdolls" type="Node3D"]
+
+[node name="ragdoll" parent="." instance=ExtResource("1_errlg")]
+transform = Transform3D(1, 0, 0, 0, 0.820591, 0.571516, 0, -0.571516, 0.820591, 0, 10.517, -4.4383)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0683594, 0, -3.55615)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(4.95898, 1, 12.1768)
+
+[node name="Player" parent="." instance=ExtResource("2_bl13t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12346, 1.51368)
+
+[node name="ragdoll2" parent="." instance=ExtResource("1_errlg")]
+transform = Transform3D(1, 0, 0, 0, 0.51928, 0.854604, 0, -0.854604, 0.51928, -0.424558, 11.9875, -2.91492)
+
+[node name="ragdoll3" parent="." instance=ExtResource("1_errlg")]
+transform = Transform3D(0.855084, -0.51849, 0, 0.51849, 0.855084, 0, 0, 0, 1, 1.62923, 11.6714, -4.74897)
+
+[node name="ragdoll4" parent="." instance=ExtResource("1_errlg")]
+transform = Transform3D(1, 0, 0, 0, -0.0796944, -0.996819, 0, 0.996819, -0.0796944, -0.650961, 14.0854, -6.09106)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4.274, -4.41878)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 0.2
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.964493, 6.23534, -4.41878)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 0.2
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.03044, 5.66841, -4.41878)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 0.2
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.97209, 4.96656, -4.41878)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 0.2
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.87201, 4.96656, -4.41878)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 0.2
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.522933, 6.88656, -4.41878)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+radius = 0.2

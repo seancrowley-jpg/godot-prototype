@@ -96,6 +96,8 @@ size = Vector3(3.36401, 2, 5.5)
 size = Vector3(2.65, 0.27, 5.235)
 
 [node name="Car" type="VehicleBody3D" node_paths=PackedStringArray("interact_area_3d", "camera_3d", "player_drive_pos", "exit_timer", "collision", "front_pos", "flip_shape_cast")]
+collision_layer = 3
+collision_mask = 3
 mass = 150.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.824532, 0.745094)

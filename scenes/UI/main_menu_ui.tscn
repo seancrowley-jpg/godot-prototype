@@ -45,7 +45,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="GameOverHeaderLabel" type="Label" parent="main_menu/PanelContainer/VBoxContainer"]
+[node name="MainMenuHeaderLabel" type="Label" parent="main_menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "--Main Menu--"
 horizontal_alignment = 1
